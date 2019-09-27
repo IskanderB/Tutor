@@ -65,16 +65,17 @@ header .container .row nav .menu .menu__item div a {
 }
 header .container .row nav .menu .menu__item:hover {
   transition: 0.7s;
-  background-color: #E4E7E5;
+  background-color: #e4e7e5;
 }
 header .container .row nav .menu .menu__item:hover a {
   transition: 0.7s;
-  color: #989A99;
+  color: #989a99;
 }
 .content_self {
   margin-top: 40px;
 }
 .content_self .img_author {
+  display: block;
   border-radius: 100%;
   width: 250px;
   height: 250px;
@@ -82,8 +83,128 @@ header .container .row nav .menu .menu__item:hover a {
 }
 .content_self .icons {
   font-size: 40px;
+  display: block;
 }
-.content_self .icons center ul .fa {
+.content_self .icons ul {
+  display: block;
+}
+.content_self .icons ul .fa {
+  /*  margin-left: 55px;*/
+}
+.content_self .form_entrance form button.btn_registration {
+  float: right;
+}
+.content_self .materials {
+  margin-top: 70px;
+}
+.content_self .materials h5 {
+  margin-bottom: 15px;
+}
+.content_self .materials .list-counter-circle {
+  list-style: none;
+  counter-reset: list;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+.content_self .materials .list-counter-circle > li {
+  transition: 0.7s;
+  position: relative;
+  display: block;
+  height: 2rem;
+  line-height: 2rem;
+  margin-left: 1.75rem;
+  margin-bottom: .25rem;
+  padding-left: 1rem;
+  padding-right: .5rem;
+  color: #000;
+  background: #e4e7e5;
+  white-space: nowrap;
+  border-radius: 0.25rem;
+}
+.content_self .materials .list-counter-circle > li:last-child {
+  margin-bottom: 0;
+}
+.content_self .materials .list-counter-circle > li > ::before {
+  content: counter(list);
+  counter-increment: list;
+  position: absolute;
+  left: -2rem;
+  top: -0.25rem;
+  bottom: -0.25rem;
+  width: 2.5rem;
+  line-height: 2rem;
+  border-radius: 1.25rem;
+  border: 0.25rem solid #f7faf8;
+  text-align: center;
+  color: #000;
+  background: #e4e7e5;
+}
+.content_self .materials .list-counter-circle > li > a {
+  transition: 0.7s;
+}
+.content_self .materials .list-counter-circle > li:hover a {
+  transition: 0.7s;
+  color: #989a99;
+}
+.footer {
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+.footer .logo_footer {
+  font-size: 28px;
+  color: #989a99;
+  margin-top: 12px;
+}
+.footer .logo_footer .logo_text {
+  margin-left: 10px;
+}
+.footer .logo_footer .logo_text a {
+  font-family: 'Fredoka One', cursive;
+  color: #989a99;
+}
+.footer .logo_footer .fa {
+  color: #989a99;
+}
+.footer .menu_footer nav {
+  height: 100%;
+}
+.footer .menu_footer nav .menu {
+  height: 100%;
+}
+.footer .menu_footer nav .menu .menu__item {
+  height: 100%;
+  border-radius: 25px;
+  transition: 0.5s;
+}
+.footer .menu_footer nav .menu .menu__item div {
+  margin: 23px 27px;
+}
+.footer .menu_footer nav .menu .menu__item div a {
+  font-size: 14px;
+  transition: 0.3s;
+  color: #000;
+}
+.footer .menu_footer nav .menu .menu__item:hover {
+  transition: 0.7s;
+  background-color: #e4e7e5;
+}
+.footer .menu_footer nav .menu .menu__item:hover a {
+  transition: 0.7s;
+  color: #989a99;
+}
+.footer .icons_footer {
+  font-size: 40px;
+  display: block;
+}
+.footer .icons_footer ul {
+  display: block;
+  float: right;
+  margin-top: 3px;
+}
+.footer .icons_footer ul li:last-child {
   margin-left: 25px;
-  margin-right: 25px;
+}
+.footer .icons_footer ul li a {
+  color: #989a99;
 }

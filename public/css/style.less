@@ -1,5 +1,7 @@
 /* Vars color */
 @white: #F7FAF8;
+@gray: #E4E7E5;
+@superb_gray: #989A99;
 /* Specification */
 
 body {
@@ -67,10 +69,10 @@ header{
 
           .menu__item:hover{
             transition: 0.7s;
-            background-color: #E4E7E5;
+            background-color: @gray;
             a{
               transition: 0.7s;
-              color: #989A99;
+              color: @superb_gray;
             }
           }
         }
@@ -85,6 +87,7 @@ header{
 .content_self{
   margin-top: 40px;
   .img_author{
+    display: block;
     border-radius: 100%;
     width: 250px;
     height: 250px;
@@ -99,13 +102,150 @@ header{
 
   .icons{
     font-size: 40px;
-    center{
+    display: block;
       ul{
+        display: block;
         .fa{
-        margin-left: 25px;
-        margin-right: 25px;
+      /*  margin-left: 55px;*/
+        }
+      }
+  }
+
+  .form_entrance{
+    form{
+      button.btn_registration{
+        float: right;
+      }
+    }
+  }
+
+  .materials{
+    margin-top: 70px;
+
+    h5{
+      margin-bottom: 15px;
+    }
+
+    .list-counter-circle {
+      list-style: none;
+      counter-reset: list;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .list-counter-circle>li {
+      transition: 0.7s;
+      position: relative;
+      display: block;
+      height: 2rem;
+      line-height: 2rem;
+      margin-left: 1.75rem;
+      margin-bottom: .25rem;
+      padding-left: 1rem;
+      padding-right: .5rem;
+      color: #000;
+      background: @gray;
+      white-space: nowrap;
+      border-radius: .25rem
+    }
+    .list-counter-circle>li:last-child {
+      margin-bottom: 0;
+    }
+    .list-counter-circle>li>::before {
+      content: counter(list);
+      counter-increment: list;
+      position: absolute;
+      left: -2rem;
+      top: -.25rem;
+      bottom: -.25rem;
+      width: 2.5rem;
+      line-height: 2rem;
+      border-radius: 1.25rem;
+      border: .25rem solid @white;
+      text-align: center;
+      color: #000;
+      background: @gray;
+    }
+
+    .list-counter-circle>li>a{
+      transition: 0.7s;
+    }
+    .list-counter-circle>li:hover{
+      a{
+        transition: 0.7s;
+        color: @superb_gray;
+      }
+
+    }
+  }
+}
+
+
+.footer{
+  margin-top: 100px;
+  margin-bottom: 30px;
+  .logo_footer{
+    font-size: 28px;
+    color: @superb_gray;
+    margin-top: 12px;
+    .logo_text{
+      margin-left: 10px;
+      a{
+        font-family: 'Fredoka One', cursive;
+        color: @superb_gray;
+      }
+    }
+    .fa{
+      color: @superb_gray;
+    }
+  }
+
+  .menu_footer{
+    nav{
+      height: 100%;
+      .menu{
+        height: 100%;
+        .menu__item{
+          height: 100%;
+          border-radius: 25px;
+          transition: 0.5s;
+          div{
+            margin: 23px 27px;
+            a{
+              font-size: 14px;
+              transition: 0.3s;
+              color: #000;
+            }
+          }
+        }
+
+        .menu__item:hover{
+          transition: 0.7s;
+          background-color: @gray;
+          a{
+            transition: 0.7s;
+            color: @superb_gray;
+          }
         }
       }
     }
+  }
+
+  .icons_footer{
+    font-size: 40px;
+    display: block;
+      ul{
+        display: block;
+        float: right;
+        margin-top: 3px;
+        li:last-child{
+          margin-left: 25px;
+        }
+        li{
+          a{
+            color: @superb_gray;
+          }
+        }
+      }
   }
 }
