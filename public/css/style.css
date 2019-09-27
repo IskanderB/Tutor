@@ -1,0 +1,89 @@
+/* Vars color */
+/* Specification */
+body {
+  font-family: 'PT Sans', sans-serif;
+  background-color: #f7faf8;
+}
+a {
+  color: #000;
+}
+a:hover {
+  text-decoration: none;
+  color: #000;
+}
+ul,
+li {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-weight: 700;
+  color: #000;
+}
+/* First screen */
+.logo {
+  font-size: 48px;
+}
+.logo .logo_text {
+  margin-left: 10px;
+}
+.logo .logo_text a {
+  font-family: 'Fredoka One', cursive;
+}
+.logo .fa-graduation-cap {
+  margin-top: 10px;
+}
+header {
+  padding-top: 38px;
+}
+header .container .row {
+  height: 100%;
+}
+header .container .row nav {
+  height: 100%;
+}
+header .container .row nav .menu {
+  height: 100%;
+}
+header .container .row nav .menu .menu__item {
+  height: 100%;
+  border-radius: 25px;
+  transition: 0.5s;
+}
+header .container .row nav .menu .menu__item div {
+  margin: 23px 27px;
+}
+header .container .row nav .menu .menu__item div a {
+  font-size: 18px;
+  transition: 0.3s;
+  color: #000;
+}
+header .container .row nav .menu .menu__item:hover {
+  transition: 0.7s;
+  background-color: #E4E7E5;
+}
+header .container .row nav .menu .menu__item:hover a {
+  transition: 0.7s;
+  color: #989A99;
+}
+.content_self {
+  margin-top: 40px;
+}
+.content_self .img_author {
+  border-radius: 100%;
+  width: 250px;
+  height: 250px;
+  background-image: url(/images/author_avatar.jpg);
+}
+.content_self .icons {
+  font-size: 40px;
+}
+.content_self .icons center ul .fa {
+  margin-left: 25px;
+  margin-right: 25px;
+}

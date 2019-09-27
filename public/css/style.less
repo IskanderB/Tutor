@@ -1,0 +1,111 @@
+/* Vars color */
+@white: #F7FAF8;
+/* Specification */
+
+body {
+    font-family: 'PT Sans', sans-serif;
+    background-color: @white;
+}
+
+a{
+  color: #000;
+}
+a:hover{
+  text-decoration: none;
+  color: #000;
+}
+
+ul, li{
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5{
+  font-weight: 700;
+  color: #000;
+}
+
+/* First screen */
+.logo{
+  font-size: 48px;
+  .logo_text{
+    margin-left: 10px;
+    a{
+      font-family: 'Fredoka One', cursive;
+    }
+  }
+
+  .fa-graduation-cap{
+    margin-top: 10px;
+  }
+}
+
+
+header{
+  padding-top: 38px;
+  .container{
+    .row{
+      height: 100%;
+      nav{
+        height: 100%;
+        .menu{
+          height: 100%;
+          .menu__item{
+            height: 100%;
+            border-radius: 25px;
+            transition: 0.5s;
+            div{
+              margin: 23px 27px;
+              a{
+                font-size: 18px;
+                transition: 0.3s;
+                color: #000;
+              }
+            }
+          }
+
+          .menu__item:hover{
+            transition: 0.7s;
+            background-color: #E4E7E5;
+            a{
+              transition: 0.7s;
+              color: #989A99;
+            }
+          }
+        }
+      }
+
+    }
+
+  }
+
+}
+
+.content_self{
+  margin-top: 40px;
+  .img_author{
+    border-radius: 100%;
+    width: 250px;
+    height: 250px;
+    background-image: url(/images/author_avatar.jpg);
+
+    .text_author{
+      .content_author{
+
+      }
+    }
+  }
+
+  .icons{
+    font-size: 40px;
+    center{
+      ul{
+        .fa{
+        margin-left: 25px;
+        margin-right: 25px;
+        }
+      }
+    }
+  }
+}
