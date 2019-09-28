@@ -41,6 +41,10 @@ h1, h2, h3, h4, h5{
   .fa-graduation-cap{
     margin-top: 10px;
   }
+
+  .menu_bar{
+    display: none;
+  }
 }
 
 
@@ -49,6 +53,7 @@ header{
   .container{
     .row{
       height: 100%;
+
       nav{
         height: 100%;
         .menu{
@@ -102,11 +107,11 @@ header{
 
   .icons{
     font-size: 40px;
-    display: block;
-      ul{
-        display: block;
+      .icons_ul{
+        justify-content: center;
         .fa{
-      /*  margin-left: 55px;*/
+          margin-left: 25px;
+          margin-right: 25px;
         }
       }
   }
@@ -248,4 +253,119 @@ header{
         }
       }
   }
+}
+
+
+//Media orders
+
+@media screen and (max-width: 1200px){
+  .content_self{
+    margin-top: 40px;
+    .img_author{
+      display: block;
+      border-radius: 100%;
+      width: 200px;
+      height: 200px;
+      background-image: url(/images/author_avatar_sm.jpg);
+
+      .text_author{
+        .content_author{
+
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 992px){
+  .logo{
+    font-size: 48px;
+    justify-content: center;
+    .logo_text{
+      margin-left: 10px;
+      a{
+        font-family: 'Fredoka One', cursive;
+      }
+    }
+
+    .fa-graduation-cap{
+      margin-top: 10px;
+    }
+  }
+
+  .text_author{
+    text-align: center;
+    .title_author{
+      h2{
+        text-align: center;
+      }
+    }
+    .lable_author{
+      h4{
+        text-align: center;
+      }
+    }
+
+  }
+
+  .form_entrance{
+    margin-top: 35px;
+  }
+
+  .footer{
+    .logo_footer{
+      justify-content: center;
+    }
+
+    .icons_footer{
+      ul.icons_footer_ul{
+        float: none;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 768px){
+  .header{
+    .logo{
+      justify-content: space-between;
+      .menu_bar{
+        display: block;
+      }
+    }
+
+    nav{
+      display: none;
+      .menu{
+        flex-direction: column;
+        li{
+          text-align: center;
+          max-height: 50px;
+        }
+      }
+    }
+  }
+
+  .footer{
+    nav{
+      .menu{
+        flex-direction: column;
+        li{
+          text-align: center;
+          max-height: 30px;
+        }
+      }
+    }
+
+    .icons_footer{
+      margin-top: 20px;
+    }
+
+    .logo_footer{
+      margin-bottom: -10px;
+    }
+  }
+
+
 }
