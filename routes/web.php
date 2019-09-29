@@ -14,3 +14,7 @@
 Route::get('/', 'HomePageController@index');
 
 Route::get('/registration', 'RegistrationPageController@index');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
