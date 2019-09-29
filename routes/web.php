@@ -12,3 +12,5 @@
 */
 
 Route::get('/', 'HomePageController@index');
+
+Route::get('/registration', 'RegistrationPageController@index');

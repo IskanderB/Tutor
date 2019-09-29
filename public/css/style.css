@@ -94,8 +94,14 @@ header .container .row nav .menu .menu__item:hover a {
   margin-left: 25px;
   margin-right: 25px;
 }
-.content_self .form_entrance form button.btn_registration {
+.content_self .form_entrance form a.btn_registration {
   float: right;
+}
+.content_self .form_entrance .a_password_foget {
+  margin-top: 10px;
+}
+.content_self .form_entrance .a_password_foget a {
+  color: #0000FF;
 }
 .content_self .materials {
   margin-top: 70px;

@@ -13,6 +13,7 @@
    rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
    <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
    <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
+   <link rel="stylesheet" href="{{URL::asset('css/registration.css')}}">
 </head>
 
 <body>
@@ -21,9 +22,9 @@
       <div class="row">
         <div class="col-lg-3 logo d-flex">
           <div class="logo_text_icon d-flex">
-            <a href="#"> <i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
+            <a href="/"> <i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
               <div class="logo_text">
-                <a href="#">Tuter</a>
+                <a href="/">Tuter</a>
               </div>
           </div>
           <div class="menu_bar" id="menu_bar">
@@ -42,7 +43,7 @@
             <ul class="menu d-flex justify-content-center">
               <li class="menu__item">
                 <div>
-                  <a href="#">Главная страница</a>
+                  <a href="/">Главная страница</a>
                 </div>
               </li>
 
@@ -88,8 +89,11 @@
                 <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
               </div>
               <button type="submit" class="btn btn-primary">Вход</button>
-              <button type="submit" class="btn btn-primary btn_registration">Регистрация</button>
+              <a href="/registration" class="btn btn-primary btn_registration">Регистрация</a>
             </form>
+            <div class="a_password_foget">
+              <a href="#" class="">Забыли пароль?</a>
+            </div>
           </div>
 
           <div class="materials">
@@ -120,9 +124,9 @@
       <div class="row">
         <div class="col-lg-2">
           <div class="logo_footer d-flex">
-            <a href="#"> <i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
+            <a href="/"> <i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
             <div class="logo_text">
-              <a href="#">Tuter</a>
+              <a href="/">Tuter</a>
             </div>
           </div>
 
@@ -133,7 +137,7 @@
             <ul class="menu d-flex justify-content-center">
               <li class="menu__item">
                 <div>
-                  <a href="#">Главная страница</a>
+                  <a href="/">Главная страница</a>
                 </div>
               </li>
 
