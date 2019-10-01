@@ -7,8 +7,8 @@
     <div class="card-header">Регистрация</div>
 
     <div class="card-body">
-      <form class="registration_form" action="{{ route('login') }}" method="POST">
-        {!! csrf_field() !!}
+      <form class="registration_form" action="{{ route('register') }}" method="POST">
+          @csrf
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Логин</label>
           <div class="col-lg-6">
@@ -26,7 +26,7 @@
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Пароль(ещё раз)</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="password_dubl">
+            <input type="text" id="full_name" class="form-control" name="password_confirmation">
           </div>
         </div>
 
