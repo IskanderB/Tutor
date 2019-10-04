@@ -78,16 +78,33 @@
         @yield('content')
 
         <div class="col-lg-3">
+
+          @if (!$check_user)
           <div class="form_entrance">
-            <form class="form_entrance">
+            <form class="form_entrance" method="POST" action="{{ route('login') }}">
+              @csrf
               <div class="form-group">
                 <label for="exampleInputEmail1">Email</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
               </div>
+
+              @error('email')
+                  <div class="errors_reg">
+                      <strong>{{ $message }}</strong>
+                  </div>
+              @enderror
+
               <div class="form-group">
                 <label for="exampleInputPassword1">Пароль</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
               </div>
+
+              @error('password')
+                  <div class="errors_reg" role="alert">
+                      <strong>{{ $message }}</strong>
+                  </div>
+              @enderror
+
               <button type="submit" class="btn btn-primary">Вход</button>
               <a href="/registration" class="btn btn-primary btn_registration">Регистрация</a>
             </form>
@@ -95,6 +112,22 @@
               <a href="#" class="">Забыли пароль?</a>
             </div>
           </div>
+
+          @endif
+
+          @if ($check_user)
+          <div class="" >
+              <a class="" href="{{ route('logout') }}"
+                 onclick="event.preventDefault();
+                               document.getElementById('logout-form').submit();">
+                  {{ __('Logout') }}
+              </a>
+
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+              </form>
+          </div>
+          @endif
 
           <div class="materials">
             <h5>Подготовка к ЕГЭ и ОГЭ:</h5>

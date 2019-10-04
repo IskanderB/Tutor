@@ -23,6 +23,14 @@
           </div>
         </div>
 
+          @error('password')
+              <div class="col-lg-9 offset-lg-3 errors_reg " >
+                <div class="left_move_reg">
+                  <strong>{{ $message }}</strong>
+                </div>
+              </div>
+          @enderror
+
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Пароль(ещё раз)</label>
           <div class="col-lg-6">
@@ -37,6 +45,14 @@
           </div>
         </div>
 
+        @error('email')
+            <div class="col-lg-9 offset-lg-3 errors_reg">
+              <div class="left_move_reg">
+                <strong>{{ $message }}</strong>
+              </div>
+            </div>
+        @enderror
+
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Номер телефона</label>
           <div class="col-lg-6">
@@ -50,6 +66,14 @@
             <input type="text" id="full_name" class="form-control" name="name">
           </div>
         </div>
+
+        @error('name')
+            <div class="col-lg-9 offset-lg-3 errors_reg">
+              <div class="left_move_reg">
+                <strong>{{ $message }}</strong>
+              </div>
+            </div>
+        @enderror
 
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Адрес</label>
@@ -95,7 +119,7 @@
 
         <div class="col-lg-6 offset-lg-3 justify-content-start registration_btn">
           <div class="">
-            <button type="submit" class="btn btn-primary">
+            <button type="submit" class="btn btn-primary left_move_reg">
             Зарегистрироваться
             </button>
           </div>
