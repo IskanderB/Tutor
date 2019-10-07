@@ -8,6 +8,6 @@ class RegistrationPageController extends Controller
 {
     public function index()
     {
-      return view('auth.registration');
+      return view('auth.registration', CustCheckAuthController::cust_chesk_auth());
     }
 }

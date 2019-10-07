@@ -12,9 +12,17 @@
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Логин</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="login">
+            <input type="text" id="full_name" class="form-control" name="name">
           </div>
         </div>
+
+        @error('name')
+            <div class="col-lg-9 offset-lg-3 errors_reg">
+              <div class="left_move_reg">
+                <strong>{{ $message }}</strong>
+              </div>
+            </div>
+        @enderror
 
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Пароль</label>
@@ -56,24 +64,16 @@
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Номер телефона</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="number_phone">
+            <input type="text" id="number_phone" class="form-control" name="number_phone">
           </div>
         </div>
 
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">ФИО</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="name">
+            <input type="text" id="full_name" class="form-control" name="full_name">
           </div>
         </div>
-
-        @error('name')
-            <div class="col-lg-9 offset-lg-3 errors_reg">
-              <div class="left_move_reg">
-                <strong>{{ $message }}</strong>
-              </div>
-            </div>
-        @enderror
 
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Адрес</label>

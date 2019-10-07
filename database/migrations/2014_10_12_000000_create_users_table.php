@@ -21,6 +21,14 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->string('number_phone')->default('Не заполнено');
+            $table->string('full_name')->default('Не заполнено');
+            $table->string('address')->default('Не заполнено');
+            $table->string('number_school')->default('Не заполнено');
+            $table->string('number_class')->default('Не заполнено');
+            $table->string('subject')->default('Не заполнено');
+            $table->string('mark')->default('Не заполнено');
+            $table->string('goal')->default('Не заполнено');
         });
     }
 
