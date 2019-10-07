@@ -63,6 +63,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+      foreach($data as $key => $value)
+        {
+            if($value == null)
+            {
+               $data[$key] = 'Не заполнено';
+            }
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

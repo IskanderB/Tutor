@@ -12,7 +12,7 @@
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Логин</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="name">
+            <input type="text" id="full_name" class="form-control" name="name" value="{{ old('name') }}">
           </div>
         </div>
 
@@ -27,7 +27,7 @@
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Пароль</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="password">
+            <input type="text" id="full_name" class="form-control" name="password" value="{{ old('password') }}">
           </div>
         </div>
 
@@ -42,14 +42,14 @@
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Пароль(ещё раз)</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="password_confirmation">
+            <input type="text" id="full_name" class="form-control" name="password_confirmation" value="{{ old('password_confirmation') }}">
           </div>
         </div>
 
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Email</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="email">
+            <input type="text" id="full_name" class="form-control" name="email" value="{{ old('email') }}">
           </div>
         </div>
 
@@ -64,56 +64,56 @@
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Номер телефона</label>
           <div class="col-lg-6">
-            <input type="text" id="number_phone" class="form-control" name="number_phone">
+            <input type="text" id="number_phone" class="form-control" name="number_phone" value="">
           </div>
         </div>
 
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">ФИО</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="full_name">
+            <input type="text" id="full_name" class="form-control" name="full_name" value="{{ old('full_name') }}">
           </div>
         </div>
 
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Адрес</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="address">
+            <input type="text" id="full_name" class="form-control" name="address" value="{{ old('address') }}">
           </div>
         </div>
 
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Номер школы</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="number_school">
+            <input type="text" id="full_name" class="form-control" name="number_school" value="{{ old('number_school') }}">
           </div>
         </div>
 
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Класс</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="number_class">
+            <input type="text" id="full_name" class="form-control" name="number_class" value="{{ old('number_class') }}">
           </div>
         </div>
 
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Предмет(ы)</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="subject">
+            <input type="text" id="full_name" class="form-control" name="subject" value="{{ old('subject') }}">
           </div>
         </div>
 
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Оценка по предмету(ам)</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="mark">
+            <input type="text" id="full_name" class="form-control" name="mark" value="{{ old('mark') }}">
           </div>
         </div>
 
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Цель занятий</label>
           <div class="col-lg-6">
-            <input type="text" id="full_name" class="form-control" name="goal">
+            <input type="text" id="full_name" class="form-control" name="goal" value="{{ old('goal') }}">
           </div>
         </div>
 
