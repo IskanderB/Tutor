@@ -77,7 +77,7 @@
 
         @yield('content')
 
-        <div class="col-lg-3">
+        <div class="col-lg-3 sitebar">
 
           @if (!$check_user)
           <div class="form_entrance">
@@ -85,7 +85,7 @@
               @csrf
               <div class="form-group">
                 <label for="exampleInputEmail1">Email</label>
-                <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+                <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="{{ old('email') }}">
               </div>
 
               @error('email')
@@ -96,7 +96,7 @@
 
               <div class="form-group">
                 <label for="exampleInputPassword1">Пароль</label>
-                <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" id="exampleInputPassword1" placeholder="Password">
               </div>
 
               @error('password')
@@ -105,6 +105,10 @@
                   </div>
               @enderror
 
+              <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember" {{ old('remember') ? 'checked' : '' }}>
+                <label class="form-check-label" for="exampleCheck1">Запомнить меня</label>
+              </div>
               <button type="submit" class="btn btn-primary">Вход</button>
               <a href="/registration" class="btn btn-primary btn_registration">Регистрация</a>
             </form>
@@ -116,35 +120,32 @@
           @endif
 
           @if ($check_user)
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">User name</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-            </tbody>
-          </table>
-          <div class="user_info" >
+            <div class="user_info">
+              <div class="user_name user_center">
+                <a href="#"><h5><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{$user->name}}</h5></a>
+              </div>
 
-              <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                  @csrf
+              <div class="user_data">
+                <ul class="list-group user_data_list">
+                  <li class="list-group-item d-flex justify-content-between align-items-center">
+                    Задания
+                    <span class="badge badge-primary badge-pill">14</span>
+                  </li>
+                </ul>
 
-                  <button type="submit" class="btn btn-primary">Выход</button>
-              </form>
-          </div>
+
+              </div>
+
+
+              <div class="logout user_center" >
+
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" >
+                      @csrf
+
+                      <button type="submit" class="btn btn-primary">Выход</button>
+                  </form>
+              </div>
+            </div>
           @endif
 
           <div class="materials">

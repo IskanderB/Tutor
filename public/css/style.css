@@ -77,6 +77,38 @@ header .container .row nav .menu .menu__item:hover a {
 .content_self {
   margin-top: 40px;
 }
+.content_self .user_info {
+  justify-content: center;
+  background-color: #e4e7e5;
+  border-radius: 30px;
+  padding-bottom: 25px;
+}
+.content_self .user_info .user_center {
+  display: block;
+  max-width: 85%;
+  margin: auto;
+  float: none;
+}
+.content_self .user_info .user_name {
+  padding-top: 20px;
+}
+.content_self .user_info .user_name h5 {
+  transition: 0.5s;
+}
+.content_self .user_info .user_name h5:hover {
+  color: #989a99;
+  transition: 0.5s;
+}
+.content_self .user_info .user_name:hover {
+  color: #989a99;
+}
+.content_self .user_info .user_data .user_data_list li {
+  background-color: #e4e7e5;
+  border: none;
+}
+.content_self .user_info .logout {
+  margin-top: 10px;
+}
 .content_self .img_author {
   display: block;
   border-radius: 100%;
@@ -262,6 +294,23 @@ header .container .row nav .menu .menu__item:hover a {
     float: none;
     justify-content: center;
   }
+  .sitebar {
+    display: inline-flex;
+    justify-content: space-between;
+  }
+  .sitebar .materials {
+    width: 40%;
+  }
+  .sitebar .form_entrance {
+    width: 70%;
+  }
+  .sitebar .user_info {
+    width: 40%;
+    margin-top: 70px;
+  }
+  .sitebar .user_info .logout {
+    margin-top: 50px;
+  }
 }
 @media screen and (max-width: 768px) {
   .header .logo {
@@ -292,5 +341,45 @@ header .container .row nav .menu .menu__item:hover a {
   }
   .footer .logo_footer {
     margin-bottom: -10px;
+  }
+  .sitebar {
+    display: inline-flex;
+    justify-content: space-between;
+  }
+  .sitebar .materials {
+    width: 50%;
+  }
+  .sitebar .form_entrance {
+    width: 70%;
+  }
+  .sitebar .user_info {
+    width: 40%;
+    margin-top: 70px;
+  }
+  .sitebar .user_info .logout {
+    margin-top: 50px;
+  }
+}
+@media screen and (max-width: 540px) {
+  .sitebar {
+    display: block;
+    justify-content: none;
+  }
+  .sitebar .materials {
+    width: 100%;
+  }
+  .sitebar .form_entrance {
+    width: 100%;
+  }
+  .sitebar .user_info {
+    width: 100%;
+    margin-top: 70px;
+  }
+  .sitebar .user_info .logout {
+    margin-top: 50px;
+  }
+  .sitebar .user_info .user_data {
+    width: 93%;
+    margin: auto;
   }
 }

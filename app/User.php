@@ -5,6 +5,10 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class User extends Authenticatable
 {
@@ -15,9 +19,11 @@ class User extends Authenticatable
      *
      * @var array
      */
-    protected $fillable = [
-        'name', 'email', 'password', 'number_phone', 'full_name', 'address', 'number_school', 'number_class', 'subject', 'mark', 'goal',
-    ];
+    // protected $fillable = [
+    //     'name', 'email', 'password', 'number_phone', 'full_name', 'address', 'number_school', 'number_class', 'subject', 'mark', 'goal','confirmation-token'
+    // ];
+
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for arrays.
@@ -36,4 +42,25 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function confirmed()
+    {
+      return !! $this->is_confirmed;
+    }
+
+    public function getConfirmationToken()
+    {
+      $this->incrementing = true;
+      // $this->update([
+      //   'confirmation-token' => Str::random(),
+      // ]);
+
+
+
+      $affected = DB::table('users')
+              ->where('id', 4)
+              ->update(['confirmation-token' => $token = Str::random()]);
+
+      return $this;
+    }
 }

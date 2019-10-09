@@ -29,6 +29,7 @@ class CreateUsersTable extends Migration
             $table->string('subject')->default('Не заполнено');
             $table->string('mark')->default('Не заполнено');
             $table->string('goal')->default('Не заполнено');
+            $table->string('confirmation-token')->unique()->nullable();
         });
     }
 
