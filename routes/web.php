@@ -21,6 +21,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/myaccount', 'UserAccountController@index')->middleware(['auth', 'confirmed']);
 
-Route::get('/verifycation', 'VerifycationPageController@index');
+Route::get('user/{user}/verifycation', 'VerifycationPageController@index')->name('verifycation');
 
-Route::get('/confirmation/{token}', 'VerifycationPageController@confirm');
+Route::get('users/{user}/confirmation/{token}', 'VerifycationPageController@confirm')->name('confirm-email');
+
+Route::get('/RedirectRegister', 'RedirectRegisterController@redirecrRegister')->name('RedirectRegister');

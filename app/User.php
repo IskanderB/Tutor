@@ -58,9 +58,9 @@ class User extends Authenticatable
 
 
       $affected = DB::table('users')
-              ->where('id', 4)
+              ->where('id', Auth::user()->id)
               ->update(['confirmation-token' => $token = Str::random()]);
 
-      return $this;
+      return $token;
     }
 }

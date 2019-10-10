@@ -6,21 +6,24 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Mail\EmailConfirmation;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
 
 class VerifycationPageController extends Controller
 {
+
   public function index(User $user, Request $request)
   {
     $token = $user->getConfirmationToken();
-    dd($token);
+    dd($user);
 
-    //Mail::to($user->email)->send(new EmailConfirmation($user, $token));
+    //Mail::to(Auth::user()->email)->send(new EmailConfirmation($user, $token));
 
-    return view('auth.verifycation', CustCheckAuthController::cust_chesk_auth());
+    return view('auth.verifycation', [CustCheckAuthController::cust_chesk_auth(), compact('user')]);
   }
 
-  public function confirm()
+  public function confirm(User $user, $token)
   {
-    return view('auth.confirmation', CustCheckAuthController::cust_chesk_auth());
+
+    //return view('auth.confirmation', CustCheckAuthController::cust_chesk_auth());
   }
 }

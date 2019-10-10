@@ -16,7 +16,7 @@ class CheckUserConfirmedEmail
     public function handle($request, Closure $next)
     {
         if(!$request->user()->confirmed()){
-          return redirect()->route('/verifycation');
+          return redirect()->route('/RedirectRegister');
         }
 
         return $next($request);

@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Mail\EmailConfirmation;
+use Redirect;
 
 class RegisterController extends Controller
 {
@@ -24,21 +25,30 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    public $user = 1;
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/verifycation';
+    protected $redirectTo = '/RedirectRegister';
+
+    // protected function redirectTo()
+    // {
+    //   //$user = 1;
+    //   //return \Redirect::route('verifycation', ['user' => $user]);
+    //   //return redirect()->route('verifycation', ['user' => 1]);
+    // }
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(User $user)
     {
         $this->middleware('guest');
+      //  $this->user = $user;
     }
 
     /**
@@ -78,7 +88,7 @@ class RegisterController extends Controller
                $data[$key] = 'Не заполнено';
             }
         }
-        
+
 
 
         return User::create([

@@ -6,6 +6,6 @@
   </head>
   <body>
     <h3>Чтобы подтвердить ваш email, перейдите по ссылке:</h3>
-    <a href="{{ route('/confirmation', $user) }}"></a>
+    <a href="{{ route('confirm-email', [$user, $token]) }}">Подтвердить email</a>
   </body>
 </html>

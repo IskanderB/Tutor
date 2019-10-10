@@ -11,7 +11,7 @@ use App\Mail\EmailConfirmation;
 
 class HomePageController extends Controller
 {
-    public function index()
+    public function index(User $user)
     {
       // if (Auth::check()) {
       //   $check_user = TRUE;
