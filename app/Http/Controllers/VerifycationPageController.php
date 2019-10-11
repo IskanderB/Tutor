@@ -39,4 +39,9 @@ class VerifycationPageController extends Controller
 
     return view('auth.confirmation', CustCheckAuthController::cust_chesk_auth());
   }
+
+  public function redirectFromAccount(User $user, Request $request)
+  {
+    return view('auth.verifycation', CustCheckAuthController::cust_chesk_auth());
+  }
 }

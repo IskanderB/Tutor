@@ -26,3 +26,5 @@ Route::get('user/{user}/verifycation', 'VerifycationPageController@index')->name
 Route::get('users/{user}/confirmation/{token}', 'VerifycationPageController@confirm')->name('confirm-email');
 
 Route::get('/RedirectRegister', 'RedirectRegisterController@redirecrRegister')->name('RedirectRegister');
+
+Route::get('/verifycation', 'VerifycationPageController@redirectFromAccount')->name('redirectFromAccount');
