@@ -14,11 +14,11 @@ class VerifycationPageController extends Controller
   public function index(User $user, Request $request)
   {
     $token = $user->getConfirmationToken();
-    dd($user);
+    //dd($user);
 
     //Mail::to(Auth::user()->email)->send(new EmailConfirmation($user, $token));
 
-    return view('auth.verifycation', [CustCheckAuthController::cust_chesk_auth(), compact('user')]);
+    return view('auth.verifycation', CustCheckAuthController::cust_chesk_auth());
   }
 
   public function confirm(User $user, $token)
