@@ -113,7 +113,7 @@
               <a href="/registration" class="btn btn-primary btn_registration">Регистрация</a>
             </form>
             <div class="a_password_foget">
-              <a href="#" class="">Забыли пароль?</a>
+              <a href="{{ route('password.request') }}" class="">Забыли пароль?</a>
             </div>
           </div>
 

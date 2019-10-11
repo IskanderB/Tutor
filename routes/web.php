@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomePageController@index')->name('/');
 
-Route::get('/registration', 'RegistrationPageController@index');
+Route::get('/registration', 'RegistrationPageController@index')->middleware('guest');
 
 Auth::routes();
 
