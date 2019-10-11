@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Mail\EmailConfirmation;
-use Redirect;
+//use Redirect;
 
 class RegisterController extends Controller
 {
@@ -25,13 +25,13 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
-    public $user = 1;
+    //public $user = 1;
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = '/RedirectRegister';
+    protected $redirectTo = 'RedirectRegister';
 
     // protected function redirectTo()
     // {
@@ -45,7 +45,7 @@ class RegisterController extends Controller
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct()
     {
         $this->middleware('guest');
       //  $this->user = $user;

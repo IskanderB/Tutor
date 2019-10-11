@@ -51,16 +51,25 @@ class User extends Authenticatable
     public function getConfirmationToken()
     {
       $this->incrementing = true;
-      // $this->update([
-      //   'confirmation-token' => Str::random(),
-      // ]);
+      $this->update([
+        'confirmation-token' => $token = Str::random(),
+      ]);
 
 
 
-      $affected = DB::table('users')
-              ->where('id', Auth::user()->id)
-              ->update(['confirmation-token' => $token = Str::random()]);
+      // $affected = DB::table('users')
+      //         ->where('id', Auth::user()->id)
+      //         ->update(['confirmation-token' => $token = Str::random()]);
 
       return $token;
+    }
+
+    public function confirm()
+    {
+      $this->update([
+        'is_confirmed' => true,
+        'confirmation-token' => null,
+      ]);
+      return $this;
     }
 }

@@ -61,7 +61,7 @@
 
               <li class="menu__item">
                 <div>
-                  <a href="#">Мой аккаунт</a>
+                  <a href="/myaccount">Мой аккаунт</a>
                 </div>
               </li>
             </ul>
@@ -207,7 +207,7 @@
 
               <li class="menu__item">
                 <div>
-                  <a href="#">Мой аккаунт</a>
+                  <a href="/myaccount">Мой аккаунт</a>
                 </div>
               </li>
             </ul>
