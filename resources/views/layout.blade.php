@@ -5,7 +5,7 @@
    <meta name="viewport"
            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title>Tuter</title>
+   <title>Tutor</title>
    <link rel="shortcut icon" href="{{URL::asset('images/title.png')}}" type="image/x-icon">
    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
@@ -14,6 +14,8 @@
    <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
    <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
    <link rel="stylesheet" href="{{URL::asset('css/registration.css')}}">
+   <link rel="stylesheet" href="{{URL::asset('css/passwordReset.css')}}">
+   <link rel="stylesheet" href="{{URL::asset('css/myAccount.css')}}">
 </head>
 
 <body>
@@ -24,7 +26,7 @@
           <div class="logo_text_icon d-flex">
             <a href="/"> <i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
               <div class="logo_text">
-                <a href="/">Tuter</a>
+                <a href="/">Tutor</a>
               </div>
           </div>
           <div class="menu_bar" id="menu_bar">
@@ -79,73 +81,22 @@
 
         <div class="col-lg-3 sitebar">
 
-          @if (!$check_user)
-          <div class="form_entrance">
-            <form class="form_entrance" method="POST" action="{{ route('login') }}">
-              @csrf
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email</label>
-                <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" value="{{ old('email') }}">
-              </div>
+          @unless (Auth::check())
 
-              @error('email')
-                  <div class="errors_reg">
-                      <strong>{{ $message }}</strong>
-                  </div>
-              @enderror
+          @include('sideBarLayouts.entranceLayout')
 
-              <div class="form-group">
-                <label for="exampleInputPassword1">Пароль</label>
-                <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password" id="exampleInputPassword1" placeholder="Password">
-              </div>
+          @endunless
 
-              @error('password')
-                  <div class="errors_reg" role="alert">
-                      <strong>{{ $message }}</strong>
-                  </div>
-              @enderror
+          @if (Auth::check() and !($checkAccountPage ?? 0))
 
-              <div class="form-group form-check">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember" {{ old('remember') ? 'checked' : '' }}>
-                <label class="form-check-label" for="exampleCheck1">Запомнить меня</label>
-              </div>
-              <button type="submit" class="btn btn-primary">Вход</button>
-              <a href="/registration" class="btn btn-primary btn_registration">Регистрация</a>
-            </form>
-            <div class="a_password_foget">
-              <a href="{{ route('password.request') }}" class="">Забыли пароль?</a>
-            </div>
-          </div>
+          @include('sideBarLayouts.userInfoLayout')
 
           @endif
 
-          @if ($check_user)
-            <div class="user_info">
-              <div class="user_name user_center">
-                <a href="#"><h5><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{$user->name}}</h5></a>
-              </div>
+          @if (($checkAccountPage ?? 0))
 
-              <div class="user_data">
-                <ul class="list-group user_data_list">
-                  <li class="list-group-item d-flex justify-content-between align-items-center">
-                    Задания
-                    <span class="badge badge-primary badge-pill">14</span>
-                  </li>
-                </ul>
+          @include('sideBarLayouts.userFullInfoLayout')
 
-
-              </div>
-
-
-              <div class="logout user_center" >
-
-                  <form id="logout-form" action="{{ route('logout') }}" method="POST" >
-                      @csrf
-
-                      <button type="submit" class="btn btn-primary">Выход</button>
-                  </form>
-              </div>
-            </div>
           @endif
 
           <div class="materials">
@@ -178,7 +129,7 @@
           <div class="logo_footer d-flex">
             <a href="/"> <i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
             <div class="logo_text">
-              <a href="/">Tuter</a>
+              <a href="/">Tutor</a>
             </div>
           </div>
 

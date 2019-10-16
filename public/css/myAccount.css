@@ -1,0 +1,53 @@
+/* Vars color */
+.user_info_full {
+  justify-content: center;
+}
+.user_info_full .user_if_list {
+  display: block;
+  margin: auto;
+  float: none;
+}
+.user_info_full .user_if_list li:first-child {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-radius: 30px;
+  margin-bottom: 20px;
+}
+.user_info_full .user_if_list li:first-child .li_box h5 {
+  margin: auto;
+  transition: 0.5s;
+}
+.user_info_full .user_if_list li:first-child .li_box h5:hover {
+  color: #989a99;
+  transition: 0.5s;
+}
+.user_info_full .user_if_list li {
+  background-color: #e4e7e5;
+  border-radius: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
+  overflow-x: hidden;
+}
+.user_info_full .user_if_list li .li_box {
+  display: block;
+  max-width: 85%;
+  margin: auto;
+  float: none;
+}
+.user_info_full .user_info_full_btn {
+  padding-top: 10px;
+}
+.user_info_full .user_info_full_btn .btn_edit {
+  float: right;
+}
+.btn_box_edit {
+  flex-direction: column;
+}
+.btn_box_edit .btn_edit_password {
+  margin-top: 20px;
+}
+@media screen and (max-width: 992px) {
+  .user_info_full {
+    margin-top: 70px;
+  }
+}

@@ -1,0 +1,70 @@
+/* Vars color */
+@white: #F7FAF8;
+@gray: #E4E7E5;
+@superb_gray: #989A99;
+
+
+.user_info_full{
+  justify-content: center;
+
+  .user_if_list{
+    display: block;
+
+    margin: auto;
+    float: none;
+
+    li:first-child{
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border-radius: 30px;
+      margin-bottom: 20px;
+      .li_box{
+        h5{
+          margin: auto;
+          transition: 0.5s;
+        }
+        h5:hover{
+          color: @superb_gray;
+          transition: 0.5s;
+        }
+      }
+    }
+
+    li{
+      background-color: @gray;
+      border-radius: 10px;
+      justify-content: center;
+      margin-bottom: 10px;
+      overflow-x:hidden;
+
+      .li_box{
+        display: block;
+        max-width: 85%;
+        margin: auto;
+        float: none;
+
+      }
+    }
+  }
+
+  .user_info_full_btn{
+    padding-top: 10px;
+    .btn_edit{
+      float: right;
+    }
+  }
+}
+
+.btn_box_edit{
+  flex-direction: column;
+
+  .btn_edit_password{
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 992px){
+  .user_info_full{
+    margin-top: 70px;
+  }
+}

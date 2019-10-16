@@ -28,3 +28,9 @@ Route::get('users/{user}/confirmation/{token}', 'VerifycationPageController@conf
 Route::get('/RedirectRegister', 'RedirectRegisterController@redirecrRegister')->name('RedirectRegister');
 
 Route::get('/verifycation', 'VerifycationPageController@redirectFromAccount')->name('redirectFromAccount');
+
+Route::get('/fogotpassword', 'PasswordChangeEmailPageController@index')->name('fogotpassword');
+
+Route::get('/myaccount/edit', 'EditUserDataPageController@index')->middleware(['auth', 'confirmed'])->name('editDataUser');
+
+Route::post('user/{user}/edit', 'EditUserDataController@upDate')->name('edit');

@@ -72,4 +72,29 @@ class User extends Authenticatable
       ]);
       return $this;
     }
+
+    public function edit($request)
+    {
+      $this->incrementing = true;
+
+      if($request->email == $this->email){
+        $is_confirmed = true;
+      }
+      else{
+        $is_confirmed = false;
+      }
+      $this->update([
+        'email' => $request->email,
+        'number_phone' => $request->number_phone,
+        'full_name' => $request->full_name,
+        'address' => $request->address,
+        'number_school' => $request->number_school,
+        'number_class' => $request->number_class,
+        'subject' => $request->subject,
+        'mark' => $request->mark,
+        'goal' => $request->goal,
+        'is_confirmed' => $is_confirmed,
+      ]);
+      return $is_confirmed;
+    }
 }
