@@ -34,3 +34,9 @@ Route::get('/fogotpassword', 'PasswordChangeEmailPageController@index')->name('f
 Route::get('/myaccount/edit', 'EditUserDataPageController@index')->middleware(['auth', 'confirmed'])->name('editDataUser');
 
 Route::post('user/{user}/edit', 'EditUserDataController@upDate')->name('edit');
+
+Route::get('/send-message', 'ChatController@sendMessage')->name('send-message');
+
+// Route::post('messages', function(Illuminate\Http\Request $request){
+//   App\Events\Message::dispatch($request->input('body'))
+// });

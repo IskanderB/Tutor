@@ -41,6 +41,10 @@
             Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
     </div>
   </div>
+
+  <div id="app">
+    <socket-chat-component></socket-chat-component>
+  </div>
 </div>
 
 @endsection

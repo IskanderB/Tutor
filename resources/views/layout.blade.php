@@ -5,6 +5,7 @@
    <meta name="viewport"
            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
    <title>Tutor</title>
    <link rel="shortcut icon" href="{{URL::asset('images/title.png')}}" type="image/x-icon">
    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
@@ -117,6 +118,8 @@
               <li><a href="#">EXAMER</a></li>
             </ol>
           </div>
+
+
         </div>
       </div>
     </div>
@@ -182,4 +185,9 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="{{URL::asset('js/app.js')}}"></script>
 </body>
+<script type="text/javascript">
+window.Laravel = <?php echo json_encode([
+  'csrfToken' => csrf_token(),
+]); ?>
+</script>
 </html>
