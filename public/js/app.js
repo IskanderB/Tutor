@@ -1937,30 +1937,48 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       dataMessages: [],
-      message: ""
+      message: "",
+      usersSelect: []
     };
   },
-  mounted: function mounted() {
+  props: ['users', 'user'],
+  created: function created() {
     var socket = io.connect('http://localhost:3000');
-    socket.on("new-action:App\\Events\\Message", function (data) {
-      this.dataMessages.push(data.result);
+    socket.on("new-action." + this.user.id + ":App\\Events\\Message", function (data) {
+      this.dataMessages.push(data.message.user + ':' + data.message.message);
+    }.bind(this));
+    socket.on("new-action.:App\\Events\\Message", function (data) {
+      this.dataMessages.push(data.message.user + ':' + data.message.message);
     }.bind(this));
   },
   methods: {
     sendMessage: function sendMessage() {
       var _this = this;
 
+      if (!this.usersSelect.length) {
+        this.usersSelect.push('new-action.');
+      }
+
       axios({
         method: 'get',
         url: '/send-message',
         params: {
-          message: this.message
+          channels: this.usersSelect,
+          message: this.message,
+          user: this.user.email
         }
       }).then(function (response) {
+        _this.dataMessages.push(_this.user.email + ':' + _this.message);
+
         _this.message = "";
       });
     }
@@ -47419,6 +47437,47 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-lg-9" }, [
+        _c("div", { staticClass: "row col-lg-9" }, [
+          _c(
+            "select",
+            {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.usersSelect,
+                  expression: "usersSelect"
+                }
+              ],
+              staticClass: "form-control",
+              attrs: { name: "", multiple: "" },
+              on: {
+                change: function($event) {
+                  var $$selectedVal = Array.prototype.filter
+                    .call($event.target.options, function(o) {
+                      return o.selected
+                    })
+                    .map(function(o) {
+                      var val = "_value" in o ? o._value : o.value
+                      return val
+                    })
+                  _vm.usersSelect = $event.target.multiple
+                    ? $$selectedVal
+                    : $$selectedVal[0]
+                }
+              }
+            },
+            _vm._l(_vm.users, function(user) {
+              return _c(
+                "option",
+                { domProps: { value: "new-action." + user.id } },
+                [_vm._v(_vm._s(user.email))]
+              )
+            }),
+            0
+          )
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "form-group" }, [
           _c(
             "textarea",

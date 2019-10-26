@@ -42,9 +42,7 @@
     </div>
   </div>
 
-  <div id="app">
-    <socket-chat-component></socket-chat-component>
-  </div>
+  
 </div>
 
 @endsection

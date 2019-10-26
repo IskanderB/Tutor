@@ -3,8 +3,8 @@ var io = require('socket.io')(http);
 var Redis = require('ioredis');
 
 var redis = new Redis();
-redis.subscribe('new-action');
-redis.on('message', function(channel, message) {
+redis.psubscribe('new-action.*');
+redis.on('pmessage', function(pattern, channel, message) {
   console.log('Message recieved: ' + message);
   console.log('Channel: ' + channel);
   message = JSON.parse(message);

@@ -3,6 +3,11 @@
         <hr>
         <div class="row">
           <div class="col-lg-9">
+            <div class="row col-lg-9">
+              <select class="form-control" name="" multiple="" v-model="usersSelect">
+                <option v-for="user in users" :value="'new-action.' + user.id">{{ user.email }}</option>
+              </select>
+            </div>
             <div class="form-group">
               <textarea class="form-control" rows="10" readonly="">{{ dataMessages.join('\n') }}</textarea>
             </div>
@@ -24,27 +29,44 @@
           return {
             dataMessages: [],
             message: "",
+            usersSelect: [],
           }
         },
 
-        mounted() {
+        props: [
+          'users',
+          'user'
+        ],
+
+        created() {
           var socket = io.connect('http://localhost:3000');
 
-          socket.on("new-action:App\\Events\\Message", function(data) {
-            this.dataMessages.push(data.result);
+          socket.on("new-action." + this.user.id + ":App\\Events\\Message", function(data) {
+            this.dataMessages.push(data.message.user + ':' + data.message.message);
           }.bind(this));
+
+          socket.on("new-action.:App\\Events\\Message", function(data) {
+            this.dataMessages.push(data.message.user + ':' + data.message.message);
+          }.bind(this));
+
         },
 
         methods: {
           sendMessage: function() {
+
+            if(!this.usersSelect.length){
+              this.usersSelect.push('new-action.');
+            }
+
             axios({
               method: 'get',
               url: '/send-message',
-              params: { message: this.message },
+              params: { channels: this.usersSelect, message: this.message, user: this.user.email },
             })
 
             .then((response) => {
-              this.message = ""
+              this.dataMessages.push(this.user.email + ':' + this.message);
+              this.message = "";
             });
           }
         }

@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="col-lg-9">
-  <div class="chat_box" id='app'>
-    <chat></chat>
+  <div id="app">
+    <socket-chat-component :users="{{ \App\User::select('email', 'id')->where('id', '!=', Auth::id())->get() }}" :user="{{ Auth::user() }}"></socket-chat-component>
   </div>
 </div>
 @endsection

@@ -33,6 +33,6 @@ class Message implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return ['new-action'];
+        return $this->message['channels'];
     }
 }
