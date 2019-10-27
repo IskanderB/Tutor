@@ -31,6 +31,7 @@ class CreateUsersTable extends Migration
             $table->string('goal')->default('Не заполнено');
             $table->string('confirmation-token')->unique()->nullable();
             $table->string('is_confirmed')->default(false);
+            $table->boolean('is_tutor')->default(false);
         });
     }
 

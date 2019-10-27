@@ -3,8 +3,10 @@
         <hr>
         <div class="row">
           <div class="col-lg-9">
-            <div class="row col-lg-9">
-              <select class="form-control" name="" multiple="" v-model="usersSelect">
+            {{tutor}}
+            {{nottutor}}
+            <div class="row col-lg-9" v-bind:class="{ is_tutor: tutor, not_tutor: nottutor }">
+              <select class="form-control" name="" multiple="" v-model="usersSelect" >
                 <option v-for="user in users" :value="'new-action.' + user.id">{{ user.email }}</option>
               </select>
             </div>
@@ -23,6 +25,16 @@
     </div>
 </template>
 
+<style media="screen">
+  .is_tutor{
+    display: block;
+  }
+
+  .not_tutor{
+    display: none;
+  }
+</style>
+
 <script>
     export default {
         data: function() {
@@ -30,6 +42,8 @@
             dataMessages: [],
             message: "",
             usersSelect: [],
+            tutor: false,
+            nottutor: false,
           }
         },
 
@@ -41,13 +55,28 @@
         created() {
           var socket = io.connect('http://localhost:3000');
 
-          socket.on("new-action." + this.user.id + ":App\\Events\\Message", function(data) {
-            this.dataMessages.push(data.message.user + ':' + data.message.message);
-          }.bind(this));
+          if(this.user.is_tutor){
+            this.tutor = true;
+          }
+          else{
+            this.nottutor = true;
+          }
 
-          socket.on("new-action.:App\\Events\\Message", function(data) {
-            this.dataMessages.push(data.message.user + ':' + data.message.message);
-          }.bind(this));
+          if(this.user.is_tutor){
+            socket.on("new-action." + this.user.id + ":App\\Events\\Message", function(data) {
+              this.dataMessages.push(data.message.user + ':' + data.message.message);
+            }.bind(this));
+
+            socket.on("new-action.:App\\Events\\Message", function(data) {
+              this.dataMessages.push(data.message.user + ':' + data.message.message);
+            }.bind(this));
+          }
+          else {
+            socket.on("new-action." + 3 + ":App\\Events\\Message", function(data) {
+              this.dataMessages.push(data.message.user + ':' + data.message.message);
+            }.bind(this));
+          }
+
 
         },
 
