@@ -1982,7 +1982,7 @@ __webpack_require__.r(__webpack_exports__);
         this.dataMessages.push(data.message.user + ':' + data.message.message);
       }.bind(this));
     } else {
-      socket.on("new-action." + 3 + ":App\\Events\\Message", function (data) {
+      socket.on("new-action." + this.user.id + ":App\\Events\\Message", function (data) {
         this.dataMessages.push(data.message.user + ':' + data.message.message);
       }.bind(this));
     }
@@ -1991,8 +1991,14 @@ __webpack_require__.r(__webpack_exports__);
     sendMessage: function sendMessage() {
       var _this = this;
 
-      if (!this.usersSelect.length) {
-        this.usersSelect.push('new-action.');
+      if (this.user.is_tutor) {
+        if (!this.usersSelect.length) {
+          this.usersSelect.push('new-action.');
+        }
+      } else {
+        if (!this.usersSelect.length) {
+          this.usersSelect.push('new-action.3');
+        }
       }
 
       axios({
