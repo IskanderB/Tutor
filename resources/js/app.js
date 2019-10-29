@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 //Vue.component('laravel-updated', require('./components/LaravelUpdated.vue').default);
 Vue.component('socket-chat-component', require('./components/SocketChatComponent.vue').default);
+Vue.component('socket-chattutor-component', require('./components/SocketChatTutorComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -3,6 +3,7 @@
         <hr>
         <div class="row">
           <div class="col-lg-9">
+            {{this.stud.full_name}}
             <div class="form-group">
               <textarea class="form-control" rows="10" readonly="">{{ dataMessages.join('\n') }}</textarea>
             </div>
@@ -25,15 +26,16 @@
           return {
             dataMessages: [],
             message: "",
-            usersSelect: "new-action.3",
             is_tutor: 0,
             tutor: false,
             nottutor: false,
             urldata: [],
+            usersSelect: "",
           }
         },
 
         props: [
+          'stud',
           'user'
         ],
 
@@ -43,20 +45,27 @@
           socket.on("new-action." + this.user.id + ":App\\Events\\Message", function(data) {
             this.dataMessages.push(data.message.user + ':' + data.message.message);
           }.bind(this));
-
-
-
-
         },
 
         methods: {
           sendMessage: function() {
+            this.usersSelect = "new-action."+this.stud.id.toString()
+            if(this.user.is_tutor){
+              if(!this.usersSelect.length){
+                this.usersSelect.push('new-action.');
+              }
+            }
+            else{
+              if(!this.usersSelect.length){
+                this.usersSelect.push('new-action.3');
+              }
+            }
 
 
             axios({
               method: 'get',
               url: '/send-message',
-              params: { channels: this.usersSelect, message: this.message, user: this.user.email, to: 3, from: this.user.id },
+              params: { channels: this.usersSelect, message: this.message, user: this.user.email, to: this.stud.id, from: this.user.id },
             })
 
             .then((response) => {
