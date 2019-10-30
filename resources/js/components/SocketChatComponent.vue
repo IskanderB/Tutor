@@ -52,7 +52,10 @@
         methods: {
           sendMessage: function() {
 
-
+            if(this.message == ""){
+              return false;
+            }
+            
             axios({
               method: 'get',
               url: '/send-message',

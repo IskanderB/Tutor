@@ -1,6 +1,12 @@
 <div class="user_info">
   <div class="user_name user_center">
-    <a href="/myaccount"><h5><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{Auth::user()->name}}</h5></a>
+    <a href="
+    @if(Auth::user()['is_tutor'])
+    /tutoraccount
+    @else
+    /myaccount
+    @endif
+    "><h5><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{Auth::user()->name}}</h5></a>
   </div>
 
   <div class="user_data">

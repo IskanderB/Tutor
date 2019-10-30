@@ -2,7 +2,13 @@
   <ul class="user_if_list">
     <li>
       <div class="li_box">
-        <a href="/myaccount"><h5><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{Auth::user()->name}}</h5></a>
+        <a href="
+        @if(Auth::user()['is_tutor'])
+        /tutoraccount
+        @else
+        /myaccount
+        @endif
+        "><h5><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{Auth::user()->name}}</h5></a>
       </div>
     </li>
 

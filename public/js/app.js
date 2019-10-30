@@ -1961,6 +1961,10 @@ __webpack_require__.r(__webpack_exports__);
     sendMessage: function sendMessage() {
       var _this = this;
 
+      if (this.message == "") {
+        return false;
+      }
+
       axios({
         method: 'get',
         url: '/send-message',
@@ -2021,13 +2025,39 @@ __webpack_require__.r(__webpack_exports__);
       is_tutor: 0,
       tutor: false,
       nottutor: false,
-      urldata: [],
       usersSelect: ""
     };
   },
-  props: ['stud', 'user'],
+  props: ['stud', 'user', 'messagesfromdb'],
   created: function created() {
     var socket = io.connect('http://localhost:3000');
+    console.log(this.messagesfromdb);
+    var val;
+    var _iteratorNormalCompletion = true;
+    var _didIteratorError = false;
+    var _iteratorError = undefined;
+
+    try {
+      for (var _iterator = this.messagesfromdb[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+        val = _step.value;
+        this.dataMessages.push(val);
+      } //this.dataMessages.push(this.messagesfromdb[0]);
+
+    } catch (err) {
+      _didIteratorError = true;
+      _iteratorError = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion && _iterator["return"] != null) {
+          _iterator["return"]();
+        }
+      } finally {
+        if (_didIteratorError) {
+          throw _iteratorError;
+        }
+      }
+    }
+
     socket.on("new-action." + this.user.id + ":App\\Events\\Message", function (data) {
       this.dataMessages.push(data.message.user + ':' + data.message.message);
     }.bind(this));
@@ -2038,14 +2068,8 @@ __webpack_require__.r(__webpack_exports__);
 
       this.usersSelect = "new-action." + this.stud.id.toString();
 
-      if (this.user.is_tutor) {
-        if (!this.usersSelect.length) {
-          this.usersSelect.push('new-action.');
-        }
-      } else {
-        if (!this.usersSelect.length) {
-          this.usersSelect.push('new-action.3');
-        }
+      if (this.message == "") {
+        return false;
       }
 
       axios({

@@ -167,7 +167,13 @@
 
               <li class="menu__item">
                 <div>
-                  <a href="/myaccount">Мой аккаунт</a>
+                  <a href="
+                  @if(Auth::user()['is_tutor'])
+                  /tutoraccount
+                  @else
+                  /myaccount
+                  @endif
+                  ">Мой аккаунт</a>
                 </div>
               </li>
             </ul>

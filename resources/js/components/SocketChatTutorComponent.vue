@@ -29,19 +29,24 @@
             is_tutor: 0,
             tutor: false,
             nottutor: false,
-            urldata: [],
             usersSelect: "",
           }
         },
 
         props: [
           'stud',
-          'user'
+          'user',
+          'messagesfromdb'
         ],
 
         created() {
           var socket = io.connect('http://localhost:3000');
-
+          console.log(this.messagesfromdb);
+          var val;
+          for (val of this.messagesfromdb) {
+              this.dataMessages.push(val);
+          }
+          //this.dataMessages.push(this.messagesfromdb[0]);
           socket.on("new-action." + this.user.id + ":App\\Events\\Message", function(data) {
             this.dataMessages.push(data.message.user + ':' + data.message.message);
           }.bind(this));
@@ -49,18 +54,11 @@
 
         methods: {
           sendMessage: function() {
-            this.usersSelect = "new-action."+this.stud.id.toString()
-            if(this.user.is_tutor){
-              if(!this.usersSelect.length){
-                this.usersSelect.push('new-action.');
-              }
-            }
-            else{
-              if(!this.usersSelect.length){
-                this.usersSelect.push('new-action.3');
-              }
-            }
+            this.usersSelect = "new-action."+this.stud.id.toString();
 
+            if(this.message == ""){
+              return false;
+            }
 
             axios({
               method: 'get',
