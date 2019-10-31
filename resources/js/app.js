@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 
+
 window.Vue = require('vue');
 
 /**
@@ -32,3 +33,6 @@ Vue.component('socket-chattutor-component', require('./components/SocketChatTuto
 const app = new Vue({
     el: '#app',
 });
+
+require('./components/style.js');
+require('./components/jquery.scrollbar.min.js');

@@ -14,9 +14,10 @@
    rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
    <link rel="stylesheet" href="{{URL::asset('css/bootstrap.min.css')}}">
    <link rel="stylesheet" href="{{URL::asset('css/style.css')}}">
-   <link rel="stylesheet" href="{{URL::asset('css/registration.css')}}">
+  <!-- <link rel="stylesheet" href="{{URL::asset('css/registration.css')}}">
    <link rel="stylesheet" href="{{URL::asset('css/passwordReset.css')}}">
    <link rel="stylesheet" href="{{URL::asset('css/myAccount.css')}}">
+   <link rel="stylesheet" href="{{URL::asset('css/chat_box.css')}}">-->
 </head>
 
 <body>
