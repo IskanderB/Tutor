@@ -2,13 +2,13 @@
 
 @section('content')
 <div class="col-lg-9">
-<!--
+
   <?php foreach ($users as $value ): ?>
     <a href="/myaccount/tutorchatroom/{{$value->id}}"> <p>{{$value->email}}</p> </a>
   <?php endforeach; ?>
--->
 
-  <div class="col-lg-8 offset-lg-2">
+
+<!--  <div class="col-lg-8 offset-lg-2">
 
     <div class="chat_box">
       <div class="messages_box">
@@ -327,7 +327,7 @@
       </div>
 
     </div>
-  </div>
+  </div> -->
 
 </div>
 @endsection

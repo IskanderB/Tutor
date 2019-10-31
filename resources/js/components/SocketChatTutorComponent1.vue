@@ -1,42 +1,21 @@
 <template>
     <div class="container">
-      <div class="col-lg-8 offset-lg-2">
+        <hr>
+        <div class="row">
+          <div class="col-lg-9">
+            {{this.stud.full_name}}
+            <div class="form-group">
+              <textarea class="form-control" rows="10" readonly="">{{ dataMessages.join('\n') }}</textarea>
+            </div>
 
-        <div class="chat_box">
-          <div class="messages_box">
-            <ul class="message_list">
-              <li>
-                <div class="message_box d-flex">
-                  <div class="message_icon">
-                    <a href="#">T</a>
-                  </div>
-                  <div class="message_info">
-                    <div class="message_name_time d-flex">
-                      <div class="message_name bottom_line">
-                        <a href="#">Alexandr</a>
-                      </div>
-                      <div class="message_time bottom_line">
-                        22:45
-                      </div>
-                    </div>
-                    <div class="message_cont">
-                      Hi! How are you?
-                    </div>
-                  </div>
-                </div>
-              </li>
-            </ul>
+            <div class="input-group col-lg-6">
+              <input type="text" class="form-control"  placeholder="Наберите сообщение" v-model="message">
+              <div class="input-group-append">
+                <button @click="sendMessage" type="button"class="btn btn-outline-secondary">Отправить</button>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="send_box d-flex">
-          <div class="input_box col-lg-11">
-            <textarea type="text" class="form-control"  placeholder="Наберите сообщение" v-model="message"></textarea>
-          </div>      
-          <div class="button_box">
-            <i class="fa fa-paper-plane" aria-hidden="true"></i>
-          </div>
-        </div>
-      </div>
     </div>
 </template>
 

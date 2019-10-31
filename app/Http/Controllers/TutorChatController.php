@@ -13,7 +13,7 @@ class TutorChatController extends Controller
     {
       $checkAccountPage = true;
       $stud = User::select('id', 'full_name')->where('id', '=', $request->studid)->get();
-      //$resMessageFromDB = Chat::select()->where('from_user', '=', Auth::id())->where('to_user', '=', $request->studid)->get();
+      $resMessageFromDB = Chat::select()->where('from_user', '=', Auth::id())->where('to_user', '=', $request->studid)->get();
       $resMessagesFromDB = Chat::select()->where([
         ['from_user', '=', Auth::id()],
         ['to_user', '=', $request->studid],
@@ -21,10 +21,39 @@ class TutorChatController extends Controller
           ['to_user', '=', Auth::id()],
           ['from_user', '=', $request->studid],
           ])->get();
+        $from = [
+          $stud[0]->id,
+          Auth::id()
+        ];
+        $authors = User::select('name', 'id', 'is_tutor')->whereIn('id', $from)->get();
+
       $messagesFromDB = [];
       foreach ($resMessagesFromDB as $value) {
-        $messagesFromDB[] = $value->from_user . ":" . $value->content;
+        // $messagesFromDB[] = $value->from_user . ":" . $value->content;
+        if($value->from_user == $authors[0]->id){
+          $from_user = $authors[0]->name;
+          $is_tutor = $authors[0]->is_tutor;
+        }
+        else{
+          $from_user = $authors[1]->name;
+          $is_tutor = $authors[1]->is_tutor;
+        }
+
+        if($is_tutor){
+          $position = 'T';
+        }
+        else {
+          $position = 'S';
+        }
+
+        $messagesFromDB[] = array(
+          'from_user' => $from_user,
+          'content' => $value->content,
+          'time' => $value->created_at,
+          'position' => $position,
+        );
       }
+
       // $stud = $request->studid;
 
       $user = Auth::user();

@@ -2017,6 +2017,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2031,7 +2055,6 @@ __webpack_require__.r(__webpack_exports__);
   props: ['stud', 'user', 'messagesfromdb'],
   created: function created() {
     var socket = io.connect('http://localhost:3000');
-    console.log(this.messagesfromdb);
     var val;
     var _iteratorNormalCompletion = true;
     var _didIteratorError = false;
@@ -2042,6 +2065,9 @@ __webpack_require__.r(__webpack_exports__);
         val = _step.value;
         this.dataMessages.push(val);
       } //this.dataMessages.push(this.messagesfromdb[0]);
+      // socket.on("new-action." + this.user.id + ":App\\Events\\Message", function(data) {
+      //   this.dataMessages.push(data.message.user + ':' + data.message.message);
+      // }.bind(this));
 
     } catch (err) {
       _didIteratorError = true;
@@ -2059,8 +2085,13 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     socket.on("new-action." + this.user.id + ":App\\Events\\Message", function (data) {
-      this.dataMessages.push(data.message.user + ':' + data.message.message);
-    }.bind(this));
+      this.dataMessages.push({
+        from_user: data.message.user,
+        time: "Test",
+        content: data.message.message,
+        position: "S"
+      });
+    }.bind(this)); // $(".messages_box").scrollTop($(".messages_box")[0].scrollHeight);
   },
   methods: {
     sendMessage: function sendMessage() {
@@ -2083,7 +2114,12 @@ __webpack_require__.r(__webpack_exports__);
           from: this.user.id
         }
       }).then(function (response) {
-        _this.dataMessages.push(_this.user.email + ':' + _this.message);
+        _this.dataMessages.push({
+          from_user: _this.user.email,
+          time: "Test",
+          content: _this.message,
+          position: "S"
+        });
 
         _this.message = "";
       });
@@ -47616,24 +47652,57 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("hr"),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-lg-9" }, [
-        _vm._v("\n        " + _vm._s(this.stud.full_name) + "\n        "),
-        _c("div", { staticClass: "form-group" }, [
+    _c("div", { staticClass: "col-lg-8 offset-lg-2" }, [
+      _c("div", { staticClass: "chat_box" }, [
+        _c("div", { staticClass: "messages_box" }, [
           _c(
-            "textarea",
-            {
-              staticClass: "form-control",
-              attrs: { rows: "10", readonly: "" }
-            },
-            [_vm._v(_vm._s(_vm.dataMessages.join("\n")))]
+            "ul",
+            { staticClass: "message_list" },
+            _vm._l(_vm.dataMessages, function(iter) {
+              return _c("li", { key: iter.from_user }, [
+                _c("div", { staticClass: "message_box d-flex" }, [
+                  _c("div", { staticClass: "message_icon" }, [
+                    _c("a", { attrs: { href: "#" } }, [
+                      _vm._v(_vm._s(iter.position))
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "message_info" }, [
+                    _c("div", { staticClass: "message_name_time d-flex" }, [
+                      _c("div", { staticClass: "message_name bottom_line" }, [
+                        _c("a", { attrs: { href: "#" } }, [
+                          _vm._v(_vm._s(iter.from_user))
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "message_time bottom_line" }, [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(iter.time) +
+                            "\n                  "
+                        )
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "message_cont" }, [
+                      _vm._v(
+                        "\n                  " +
+                          _vm._s(iter.content) +
+                          "\n                "
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            }),
+            0
           )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "input-group col-lg-6" }, [
-          _c("input", {
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "send_box d-flex" }, [
+        _c("div", { staticClass: "input_box col-lg-11" }, [
+          _c("textarea", {
             directives: [
               {
                 name: "model",
@@ -47653,19 +47722,15 @@ var render = function() {
                 _vm.message = $event.target.value
               }
             }
-          }),
-          _vm._v(" "),
-          _c("div", { staticClass: "input-group-append" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-outline-secondary",
-                attrs: { type: "button" },
-                on: { click: _vm.sendMessage }
-              },
-              [_vm._v("Отправить")]
-            )
-          ])
+          })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "button_box" }, [
+          _c("i", {
+            staticClass: "fa fa-paper-plane",
+            attrs: { "aria-hidden": "true" },
+            on: { click: _vm.sendMessage }
+          })
         ])
       ])
     ])
