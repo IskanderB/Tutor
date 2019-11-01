@@ -1,7 +1,7 @@
 <template>
     <div class="container">
       <div class="col-lg-8 offset-lg-2">
-
+        {{stud.name}}
         <div class="chat_box">
           <div class="messages_box">
             <ul class="message_list">
@@ -15,9 +15,10 @@
                       <div class="message_name bottom_line">
                         <a href="#">{{iter.from_user}}</a>
                       </div>
-                      <div class="message_time bottom_line">
+                      <div class="message_time bottom_line" data-hint="Какой-то текст к div-у 1">
                         {{iter.time}}
                       </div>
+                      <div id="hint"></div>
                     </div>
                     <div class="message_cont">
                       {{iter.content}}
@@ -70,6 +71,13 @@
           for (val of this.messagesfromdb) {
               this.dataMessages.push(val);
           }
+          var tutor_message;
+          if(this.stud.is_tutor){
+            tutor_message = "T";
+          }
+          else {
+            tutor_message = "S";
+          }
 
           //this.dataMessages.push(this.messagesfromdb[0]);
           // socket.on("new-action." + this.user.id + ":App\\Events\\Message", function(data) {
@@ -78,9 +86,9 @@
           socket.on("new-action." + this.user.id + ":App\\Events\\Message", function(data) {
             this.dataMessages.push(
             {from_user: data.message.user,
-            time: "Test",
+            time: data.message.time,
             content: data.message.message,
-            position: "S"}
+            position: tutor_message}
             );
           }.bind(this));
           // $(".messages_box").scrollTop($(".messages_box")[0].scrollHeight);
@@ -94,18 +102,37 @@
               return false;
             }
 
+            var tutor_my;
+            if(this.user.is_tutor){
+              tutor_my = "T";
+            }
+            else{
+              tutor_my = "S";
+            }
+            var now = new Date();
+            var time = now.getHours() + ":" + now.getMinutes();
+            var full_time = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate() + " " + time;
+            // console.log( full_time );
             axios({
               method: 'get',
               url: '/send-message',
-              params: { channels: this.usersSelect, message: this.message, user: this.user.email, to: this.stud.id, from: this.user.id },
+              params: {
+                 channels: this.usersSelect,
+                 message: this.message,
+                 user: this.user.name,
+                 to: this.stud.id,
+                 from: this.user.id,
+                 time: time,
+                 full_time: full_time
+               },
             })
 
             .then((response) => {
               this.dataMessages.push(
-              {from_user: this.user.email,
-              time: "Test",
+              {from_user: this.user.name,
+              time: time,
               content: this.message,
-              position: "S"}
+              position: tutor_my}
               );
               this.message = "";
             });

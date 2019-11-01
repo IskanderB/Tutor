@@ -1971,7 +1971,7 @@ __webpack_require__.r(__webpack_exports__);
         params: {
           channels: this.usersSelect,
           message: this.message,
-          user: this.user.email,
+          user: this.user.name,
           to: 3,
           from: this.user.id
         }
@@ -2041,6 +2041,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2064,11 +2065,7 @@ __webpack_require__.r(__webpack_exports__);
       for (var _iterator = this.messagesfromdb[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
         val = _step.value;
         this.dataMessages.push(val);
-      } //this.dataMessages.push(this.messagesfromdb[0]);
-      // socket.on("new-action." + this.user.id + ":App\\Events\\Message", function(data) {
-      //   this.dataMessages.push(data.message.user + ':' + data.message.message);
-      // }.bind(this));
-
+      }
     } catch (err) {
       _didIteratorError = true;
       _iteratorError = err;
@@ -2084,12 +2081,24 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
 
+    var tutor_message;
+
+    if (this.stud.is_tutor) {
+      tutor_message = "T";
+    } else {
+      tutor_message = "S";
+    } //this.dataMessages.push(this.messagesfromdb[0]);
+    // socket.on("new-action." + this.user.id + ":App\\Events\\Message", function(data) {
+    //   this.dataMessages.push(data.message.user + ':' + data.message.message);
+    // }.bind(this));
+
+
     socket.on("new-action." + this.user.id + ":App\\Events\\Message", function (data) {
       this.dataMessages.push({
         from_user: data.message.user,
-        time: "Test",
+        time: data.message.time,
         content: data.message.message,
-        position: "S"
+        position: tutor_message
       });
     }.bind(this)); // $(".messages_box").scrollTop($(".messages_box")[0].scrollHeight);
   },
@@ -2103,22 +2112,36 @@ __webpack_require__.r(__webpack_exports__);
         return false;
       }
 
+      var tutor_my;
+
+      if (this.user.is_tutor) {
+        tutor_my = "T";
+      } else {
+        tutor_my = "S";
+      }
+
+      var now = new Date();
+      var time = now.getHours() + ":" + now.getMinutes();
+      var full_time = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate() + " " + time; // console.log( full_time );
+
       axios({
         method: 'get',
         url: '/send-message',
         params: {
           channels: this.usersSelect,
           message: this.message,
-          user: this.user.email,
+          user: this.user.name,
           to: this.stud.id,
-          from: this.user.id
+          from: this.user.id,
+          time: time,
+          full_time: full_time
         }
       }).then(function (response) {
         _this.dataMessages.push({
-          from_user: _this.user.email,
-          time: "Test",
+          from_user: _this.user.name,
+          time: time,
           content: _this.message,
-          position: "S"
+          position: tutor_my
         });
 
         _this.message = "";
@@ -47653,6 +47676,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "col-lg-8 offset-lg-2" }, [
+      _vm._v("\n    " + _vm._s(_vm.stud.name) + "\n    "),
       _c("div", { staticClass: "chat_box" }, [
         _c("div", { staticClass: "messages_box" }, [
           _c(
@@ -47675,13 +47699,22 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "message_time bottom_line" }, [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(iter.time) +
-                            "\n                  "
-                        )
-                      ])
+                      _c(
+                        "div",
+                        {
+                          staticClass: "message_time bottom_line",
+                          attrs: { "data-hint": "Какой-то текст к div-у 1" }
+                        },
+                        [
+                          _vm._v(
+                            "\n                    " +
+                              _vm._s(iter.time) +
+                              "\n                  "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("div", { attrs: { id: "hint" } })
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "message_cont" }, [
@@ -60603,6 +60636,17 @@ jQuery(document).ready(function () {
   jQuery('.scrollbar-inner').scrollbar();
 });
 $(".messages_box").scrollTop($(".messages_box")[0].scrollHeight);
+var hint = $('#hint');
+$('div[data-hint]').on({
+  mouseenter: function mouseenter() {
+    hint.text($(this).data('hint')).show();
+  },
+  mouseleave: function mouseleave() {
+    hint.hide();
+  },
+  mousemove: function mousemove(e) {//hint.css({top: e.pageY, left: e.pageX});
+  }
+});
 
 /***/ }),
 

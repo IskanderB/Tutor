@@ -55,11 +55,11 @@
             if(this.message == ""){
               return false;
             }
-            
+
             axios({
               method: 'get',
               url: '/send-message',
-              params: { channels: this.usersSelect, message: this.message, user: this.user.email, to: 3, from: this.user.id },
+              params: { channels: this.usersSelect, message: this.message, user: this.user.name, to: 3, from: this.user.id },
             })
 
             .then((response) => {

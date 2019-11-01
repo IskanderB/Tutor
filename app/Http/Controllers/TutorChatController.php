@@ -7,12 +7,13 @@ use App\User;
 use App\Chat;
 use Illuminate\Support\Facades\Auth;
 
+
 class TutorChatController extends Controller
 {
     public function redirect(Request $request)
     {
       $checkAccountPage = true;
-      $stud = User::select('id', 'full_name')->where('id', '=', $request->studid)->get();
+      $stud = User::select('id', 'full_name', 'name', 'is_tutor')->where('id', '=', $request->studid)->get();
       $resMessageFromDB = Chat::select()->where('from_user', '=', Auth::id())->where('to_user', '=', $request->studid)->get();
       $resMessagesFromDB = Chat::select()->where([
         ['from_user', '=', Auth::id()],
@@ -49,10 +50,14 @@ class TutorChatController extends Controller
         $messagesFromDB[] = array(
           'from_user' => $from_user,
           'content' => $value->content,
-          'time' => $value->created_at,
+          'time' => $value->created_at->format("H:i"),
+          'full_time' => $value->created_at->format("Y-m-d H:i:s"),
           'position' => $position,
         );
       }
+
+      // $messagesFromDB[0]['time']->format('d.m.Y');
+      // dd($messagesFromDB[0]['time']->format('d.m.Y'));
 
       // $stud = $request->studid;
 
