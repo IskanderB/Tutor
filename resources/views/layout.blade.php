@@ -69,7 +69,7 @@
                   @if(Auth::user()['is_tutor'])
                   /tutoraccount
                   @else
-                  /myaccount
+                  /myaccount/tutorchatroom/3
                   @endif
                   ">Мой аккаунт</a>
                 </div>
@@ -172,7 +172,7 @@
                   @if(Auth::user()['is_tutor'])
                   /tutoraccount
                   @else
-                  /myaccount
+                  /myaccount/tutorchatroom/3
                   @endif
                   ">Мой аккаунт</a>
                 </div>
@@ -197,10 +197,11 @@
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="{{URL::asset('js/app.js')}}"></script>
+  <script type="text/javascript">
+  window.Laravel = <?php echo json_encode([
+    'csrfToken' => csrf_token(),
+  ]); ?>
+  </script>
 </body>
-<script type="text/javascript">
-window.Laravel = <?php echo json_encode([
-  'csrfToken' => csrf_token(),
-]); ?>
-</script>
+
 </html>

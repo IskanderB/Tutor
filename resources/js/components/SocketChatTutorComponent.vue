@@ -1,9 +1,13 @@
 <template>
     <div class="container">
       <div class="col-lg-8 offset-lg-2">
-        {{stud.name}}
+        <div class="chat_name_box row">
+          <span class="chat_name align-items-center"">
+            <a href="#"><h5>{{stud.full_name}}</h5></a> 
+          </span>
+        </div>
         <div class="chat_box">
-          <div class="messages_box">
+          <div class="messages_box" >
             <ul class="message_list">
               <li v-for="iter in dataMessages" v-bind:key="iter.from_user">
                 <div class="message_box d-flex">
@@ -15,7 +19,7 @@
                       <div class="message_name bottom_line">
                         <a href="#">{{iter.from_user}}</a>
                       </div>
-                      <div class="message_time bottom_line" data-hint="Какой-то текст к div-у 1">
+                      <div class="message_time bottom_line" :data-hint="`${iter.full_time}`">
                         {{iter.time}}
                       </div>
                       <div id="hint"></div>
@@ -42,8 +46,6 @@
       </div>
     </div>
 </template>
-
-
 
 <script>
     export default {
@@ -84,13 +86,20 @@
           //   this.dataMessages.push(data.message.user + ':' + data.message.message);
           // }.bind(this));
           socket.on("new-action." + this.user.id + ":App\\Events\\Message", function(data) {
-            this.dataMessages.push(
-            {from_user: data.message.user,
-            time: data.message.time,
-            content: data.message.message,
-            position: tutor_message}
-            );
+            if(data.message.from == this.stud.id){
+              this.dataMessages.push({
+                from_user: data.message.user,
+                time: data.message.time,
+                content: data.message.message,
+                position: tutor_message,
+                full_time: data.message.full_time
+              });
+
+            }
+
+
           }.bind(this));
+
           // $(".messages_box").scrollTop($(".messages_box")[0].scrollHeight);
         },
 
@@ -138,8 +147,14 @@
             });
           },
 
-
-
+          scrollToEnd: function() {
+            var container = document.querySelector(".messages_box");
+            var scrollHeight = container.scrollHeight;
+            container.scrollTop  = scrollHeight;
+          },
+        },
+        updated() {
+          this.scrollToEnd();
         }
     }
 </script>

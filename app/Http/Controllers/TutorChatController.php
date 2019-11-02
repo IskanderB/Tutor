@@ -14,14 +14,13 @@ class TutorChatController extends Controller
     {
       $checkAccountPage = true;
       $stud = User::select('id', 'full_name', 'name', 'is_tutor')->where('id', '=', $request->studid)->get();
-      $resMessageFromDB = Chat::select()->where('from_user', '=', Auth::id())->where('to_user', '=', $request->studid)->get();
       $resMessagesFromDB = Chat::select()->where([
         ['from_user', '=', Auth::id()],
         ['to_user', '=', $request->studid],
         ])->orWhere([
           ['to_user', '=', Auth::id()],
           ['from_user', '=', $request->studid],
-          ])->get();
+          ])->skip(0)->take(3)->get();
         $from = [
           $stud[0]->id,
           Auth::id()

@@ -37,9 +37,9 @@ Route::post('user/{user}/edit', 'EditUserDataController@upDate')->name('edit');
 
 Route::get('/send-message', 'ChatController@sendMessage')->name('send-message');
 
-Route::get('/myaccount/tutorchatroom/{studid}', 'TutorChatController@redirect')->name('tutorchatroom');
+Route::get('/myaccount/tutorchatroom/{studid}', 'TutorChatController@redirect')->name('tutorchatroom')->middleware(['auth', 'confirmed']);
 
-Route::get('/tutoraccount', 'UserAccountController@studList')->name('tutoraccount')->middleware(['auth', 'confirmed']);;
+Route::get('/tutoraccount', 'UserAccountController@studList')->name('tutoraccount')->middleware(['auth', 'confirmed']);
 
 
 // Route::post('messages', function(Illuminate\Http\Request $request){

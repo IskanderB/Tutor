@@ -6,7 +6,7 @@
         @if(Auth::user()['is_tutor'])
         /tutoraccount
         @else
-        /myaccount
+        /myaccount/tutorchatroom/3
         @endif
         "><h5><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{Auth::user()->name}}</h5></a>
       </div>

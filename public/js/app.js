@@ -2042,6 +2042,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2094,12 +2096,15 @@ __webpack_require__.r(__webpack_exports__);
 
 
     socket.on("new-action." + this.user.id + ":App\\Events\\Message", function (data) {
-      this.dataMessages.push({
-        from_user: data.message.user,
-        time: data.message.time,
-        content: data.message.message,
-        position: tutor_message
-      });
+      if (data.message.from == this.stud.id) {
+        this.dataMessages.push({
+          from_user: data.message.user,
+          time: data.message.time,
+          content: data.message.message,
+          position: tutor_message,
+          full_time: data.message.full_time
+        });
+      }
     }.bind(this)); // $(".messages_box").scrollTop($(".messages_box")[0].scrollHeight);
   },
   methods: {
@@ -2146,7 +2151,15 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.message = "";
       });
+    },
+    scrollToEnd: function scrollToEnd() {
+      var container = document.querySelector(".messages_box");
+      var scrollHeight = container.scrollHeight;
+      container.scrollTop = scrollHeight;
     }
+  },
+  updated: function updated() {
+    this.scrollToEnd();
   }
 });
 
@@ -47676,7 +47689,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
     _c("div", { staticClass: "col-lg-8 offset-lg-2" }, [
-      _vm._v("\n    " + _vm._s(_vm.stud.name) + "\n    "),
+      _c("div", { staticClass: "chat_name_box row" }, [
+        _c("span", { staticClass: "chat_name align-items-center" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("h5", [_vm._v(_vm._s(_vm.stud.full_name))])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
       _c("div", { staticClass: "chat_box" }, [
         _c("div", { staticClass: "messages_box" }, [
           _c(
@@ -47703,7 +47723,7 @@ var render = function() {
                         "div",
                         {
                           staticClass: "message_time bottom_line",
-                          attrs: { "data-hint": "Какой-то текст к div-у 1" }
+                          attrs: { "data-hint": "" + iter.full_time }
                         },
                         [
                           _vm._v(
@@ -60168,14 +60188,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************************!*\
   !*** ./resources/js/components/SocketChatTutorComponent.vue ***!
   \**************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SocketChatTutorComponent_vue_vue_type_template_id_240b731d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SocketChatTutorComponent.vue?vue&type=template&id=240b731d& */ "./resources/js/components/SocketChatTutorComponent.vue?vue&type=template&id=240b731d&");
 /* harmony import */ var _SocketChatTutorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SocketChatTutorComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/SocketChatTutorComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _SocketChatTutorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _SocketChatTutorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -60205,7 +60226,7 @@ component.options.__file = "resources/js/components/SocketChatTutorComponent.vue
 /*!***************************************************************************************!*\
   !*** ./resources/js/components/SocketChatTutorComponent.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -60631,11 +60652,11 @@ textarea.addEventListener('keyup', function () {
   if (this.scrollTop > 0) {
     this.style.height = this.scrollHeight + "px";
   }
-});
-jQuery(document).ready(function () {
-  jQuery('.scrollbar-inner').scrollbar();
-});
-$(".messages_box").scrollTop($(".messages_box")[0].scrollHeight);
+}); // jQuery(document).ready(function(){
+//   jQuery('.scrollbar-inner').scrollbar();
+// });
+// $(".messages_box").scrollTop($(".messages_box")[0].scrollHeight);
+
 var hint = $('#hint');
 $('div[data-hint]').on({
   mouseenter: function mouseenter() {
@@ -60644,9 +60665,20 @@ $('div[data-hint]').on({
   mouseleave: function mouseleave() {
     hint.hide();
   },
-  mousemove: function mousemove(e) {//hint.css({top: e.pageY, left: e.pageX});
+  mousemove: function mousemove(e) {
+    hint.css({
+      top: e.pageY,
+      left: e.pageX
+    });
   }
-});
+}); // var container = this.$el.querySelector("#messages_box");
+// container.scrollTop = container.scrollHeight;
+// var messageDisplay = vueContent.$refs.messageDisplay;
+// messageDisplay.scrollTop = messageDisplay.scrollHeight;
+
+var container = document.querySelector(".messages_box");
+var scrollHeight = container.scrollHeight;
+container.scrollTop = scrollHeight;
 
 /***/ }),
 
