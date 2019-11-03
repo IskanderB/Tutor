@@ -69,15 +69,21 @@
 }
 .send_box {
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 .send_box .button_box {
   font-size: 25px;
   transition: 0.5s;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .send_box .button_box:hover {
   color: #989a99;
   transition: 0.5s;
   cursor: pointer;
+}
+.send_box .input_box {
+  max-width: 80%;
 }
 .send_box .input_box textarea {
   height: 38px;
@@ -104,4 +110,7 @@
   color: #989a99;
   background-color: #fff;
   z-index: 100500;
+}
+.floating-div .picker_comp {
+  min-width: 100%;
 }

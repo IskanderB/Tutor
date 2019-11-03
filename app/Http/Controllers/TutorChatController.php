@@ -20,7 +20,7 @@ class TutorChatController extends Controller
         ])->orWhere([
           ['to_user', '=', Auth::id()],
           ['from_user', '=', $request->studid],
-          ])->skip(0)->take(3)->get();
+          ])->orderBy('id', 'desc')->take(30)->get();
         $from = [
           $stud[0]->id,
           Auth::id()
@@ -55,6 +55,8 @@ class TutorChatController extends Controller
         );
       }
 
+
+
       // $messagesFromDB[0]['time']->format('d.m.Y');
       // dd($messagesFromDB[0]['time']->format('d.m.Y'));
 
@@ -65,7 +67,7 @@ class TutorChatController extends Controller
         'checkAccountPage' => $checkAccountPage,
         'user' => $user,
         'stud' => $stud[0],
-        'messagesFromDB' => json_encode($messagesFromDB),
+        'messagesFromDB' => json_encode(array_reverse($messagesFromDB)),
     ]);
     }
 }

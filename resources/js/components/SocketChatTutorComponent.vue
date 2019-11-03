@@ -3,7 +3,7 @@
       <div class="col-lg-8 offset-lg-2">
         <div class="chat_name_box row">
           <span class="chat_name align-items-center"">
-            <a href="#"><h5>{{stud.full_name}}</h5></a> 
+            <a href="#"><h5>{{stud.full_name}}</h5></a>
           </span>
         </div>
         <div class="chat_box">
@@ -36,18 +36,34 @@
           </div>
         </div>
         <div class="send_box d-flex">
+          <div class="button_box">
+            <i class="fa fa-paperclip" aria-hidden="true"></i>
+          </div>
           <div class="input_box col-lg-11">
-            <textarea type="text" class="form-control"  placeholder="Наберите сообщение" v-model="message"></textarea>
+            <textarea type="text" class="form-control" name="description" placeholder="Наберите сообщение" v-model="message" id="description" autofocus></textarea>
+          </div>
+          <div class="button_box">
+            <i class="fa fa-smile-o" aria-hidden="true" @click="toggleEmo"></i>
           </div>
           <div class="button_box">
             <i class="fa fa-paper-plane" aria-hidden="true" @click="sendMessage"></i>
           </div>
+        </div>
+        <!-- <div id="smile">&#128513;</div> -->
+        <!-- <div class="ml-2 text-right" xs1>
+          <button @click="toggleEmo" fab dark small color="pink">
+            <i>insert_emotion</i>
+          </button>
+        </div> -->
+        <div class="floating-div">
+          <picker v-if="emoStatus" set="apple" @select="onTextarea" title="Pick" class="picker_comp" />
         </div>
       </div>
     </div>
 </template>
 
 <script>
+  import { Picker } from 'emoji-mart-vue'
     export default {
         data: function() {
           return {
@@ -57,6 +73,7 @@
             tutor: false,
             nottutor: false,
             usersSelect: "",
+            emoStatus: false,
           }
         },
 
@@ -65,6 +82,10 @@
           'user',
           'messagesfromdb'
         ],
+
+        components: {
+          Picker
+        },
 
         created() {
           var socket = io.connect('http://localhost:3000');
@@ -152,9 +173,32 @@
             var scrollHeight = container.scrollHeight;
             container.scrollTop  = scrollHeight;
           },
-        },
+
+          toggleEmo: function() {
+            this.emoStatus = !this.emoStatus;
+            },
+
+            onTextarea: function(e) {
+              console.log(e);
+              if(!e){
+                return false;
+              }
+
+              if(!this.message){
+                this.message = e.native;
+              }
+              else{
+                this.message = this.message + e.native;
+              }
+            },
+
+          },
+
+
+
         updated() {
           this.scrollToEnd();
+
         }
     }
 </script>

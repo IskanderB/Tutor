@@ -24,6 +24,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "emoji-mart-vue": "^2.6.6",
         "express": "^4.17.1",
         "ioredis": "^4.14.1",
         "socket.io": "^2.3.0",
