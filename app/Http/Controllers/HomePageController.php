@@ -28,7 +28,8 @@ class HomePageController extends Controller
       //   'user' => $user
       // ]);
       //$a = CustCheckAuthController::cust();
-      
+      // $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+      // $out->writeln("Hello from Terminal");
       return view('HomePage.index', CustCheckAuthController::cust_chesk_auth());
     }
 

@@ -41,6 +41,8 @@ Route::get('/myaccount/tutorchatroom/{studid}', 'TutorChatController@redirect')-
 
 Route::get('/tutoraccount', 'UserAccountController@studList')->name('tutoraccount')->middleware(['auth', 'confirmed']);
 
+Route::post('/image/upload', 'ImageController@upload')->name('image.upload')->middleware(['auth', 'confirmed']);
+
 
 // Route::post('messages', function(Illuminate\Http\Request $request){
 //   App\Events\Message::dispatch($request->input('body'))

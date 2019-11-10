@@ -35,9 +35,39 @@
             </ul>
           </div>
         </div>
+
+        <div class="upload_wrap justify-content-center">
+          <div class="upload_box">
+            <div class="progress">
+              <div class="progress-bar" role="progressbar" :style="{width: fileProgress + '%'}">
+                {{ fileCurrent }}%
+              </div>
+            </div>
+            <div class="row upload_lists">
+              <div class="col-lg-6 upload_list">
+                <h5 class="text-center">Файлы в очереди({{ filesOrder.length }})</h5>
+                <ul class="list-group">
+                  <li class="list-group-item" v-for="file in filesOrder">
+                    {{ file.name }} : {{ file.type }}
+                  </li>
+                </ul>
+              </div>
+              <div class="col-lg-6 upload_list">
+                <h5 class="text-center">Загруженные файлы({{ filesFinish.length }})</h5>
+                <ul class="list-group">
+                  <li class="list-group-item" v-for="file in filesFinish">
+                    {{ file.name }} : {{ file.type }}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div class="send_box d-flex">
           <div class="button_box">
-            <i class="fa fa-paperclip" aria-hidden="true"></i>
+            <i class="fa fa-paperclip" aria-hidden="true" id="upload_icon"> </i>
+            <input type="file" name="image" value="" id="upload" multiple="" @change="fileInputRemove">
           </div>
           <div class="input_box col-lg-11">
             <textarea type="text" class="form-control" name="description" placeholder="Наберите сообщение" v-model="message" id="description" autofocus></textarea>
@@ -70,10 +100,14 @@
             dataMessages: [],
             message: "",
             is_tutor: 0,
-            tutor: false,
-            nottutor: false,
             usersSelect: "",
             emoStatus: false,
+            filesOrder: [],
+            filesFinish: [],
+            fileProgress: 0,
+            fileCurrent: "",
+            files: [],
+            relationship: "",
           }
         },
 
@@ -128,7 +162,7 @@
           sendMessage: function() {
             this.usersSelect = "new-action."+this.stud.id.toString();
 
-            if(this.message == ""){
+            if((this.message == "")&&(this.files.length == 0)){
               return false;
             }
 
@@ -142,7 +176,12 @@
             var now = new Date();
             var time = now.getHours() + ":" + now.getMinutes();
             var full_time = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate() + " " + time;
-            // console.log( full_time );
+
+            this.relationship = full_time + "f" + this.user.id.toString() + "t" + this.stud.id.toString();
+
+            if(this.files.length){
+             this.fileInputChange();
+            }
             axios({
               method: 'get',
               url: '/send-message',
@@ -153,7 +192,8 @@
                  to: this.stud.id,
                  from: this.user.id,
                  time: time,
-                 full_time: full_time
+                 full_time: full_time,
+                 relationship: this.relationship,
                },
             })
 
@@ -192,13 +232,45 @@
               }
             },
 
+            async fileInputChange() {
+              let files = this.files;
+              // this.filesOrder = files.slice();
+
+              for(let item of files){
+                await this.uploadFile(item);
+              }
+
+            },
+
+            async uploadFile(item){
+              let form = new FormData();
+              form.append('image', item);
+              form.append('relationship', this.relationship);
+              await axios.post('/image/upload', form, {
+                onUploadProgress: (itemUpload) => {
+                  this.fileProgress = Math.round((itemUpload.loaded / itemUpload.total) * 100);
+                  this.fileCurrent = item.name + ' ' + this.fileProgress;
+                }
+              })
+              .then(response => {
+                this.fileProgress = 0;
+                this.fileCurrent = '';
+                this.filesFinish.push(item);
+                this.filesOrder.splice(item, 1);
+              })
+            },
+
+            fileInputRemove(event) {
+              this.files = Array.from(event.target.files);
+              this.filesOrder = this.files.slice();
+            }
+
           },
 
 
 
         updated() {
           this.scrollToEnd();
-
         }
     }
 </script>

@@ -27,6 +27,7 @@
 
 
 .chat_box{
+  width: 100%;
   min-height: 500px;
   max-height: 500px;
   background-color: white;
@@ -36,6 +37,7 @@
   //overflow-y: scroll;
   .messages_box{
     max-width: 85%;
+    min-width: 85%;
     min-height: 493px;
     max-height: 493px;
     overflow-y: scroll;
@@ -140,5 +142,23 @@
 .floating-div{
   .picker_comp{
     min-width: 100%;
+  }
+}
+
+#upload{
+  display: none;
+  visibility: hidden;
+}
+
+.upload_wrap{
+  margin-top: 10px;
+  .upload_box{
+    margin: auto;
+    float: none;
+    display: block;
+    max-width: 80%;
+    .progress{
+      height: 20px;
+    }
   }
 }

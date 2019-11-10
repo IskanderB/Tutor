@@ -35,20 +35,13 @@ var container = document.querySelector(".messages_box");
 var scrollHeight = container.scrollHeight;
 container.scrollTop  = scrollHeight;
 
-$('#smile').click(function(){
+// $('#smile').click(function(){
+//
+//     var smiley = this.textContent;
+//     $('#description').val($('#description').val()+smiley);
+//     console.log($('#description').val());
+// });
 
-    var smiley = this.textContent;
-    $('#description').val($('#description').val()+smiley);
-    console.log($('#description').val());
+$('#upload_icon').click(function(){
+    $('#upload').click();
 });
-
-// $('#smile').click(
-// function(){var smiley = this.textContent;
-//
-// var cursorIndex = $('#description').attr("selectionStart");
-// var lStr =  $('#description').val().substr(0,cursorIndex) + " " + smiley + " ";
-// var rStr = $('#description').val().substr(cursorIndex);
-//
-// $('#description').val(lStr+rStr);
-// $('#description').attr("selectionStart",lStr.length);
-// });​

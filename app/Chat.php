@@ -12,6 +12,7 @@ class Chat extends Model
       'content' => $message->message,
       'from_user' => $message->from,
       'to_user' => $message->to,
+      'relationship' => $message->relationship,
     ]);
   }
 }
