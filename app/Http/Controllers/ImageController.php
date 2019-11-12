@@ -7,17 +7,20 @@ use App\Image;
 
 class ImageController extends Controller
 {
-    public function upload(Request $request, Image $image)
+    public function upload(Request $request)
     {
 
     //  dd($request->image);
       $path = $request->file('image')->store('uploads', 'public');
       $relationship = $request->relationship;
 
-      $image->create([
+      $image = new Image();
+      $res = $image->create([
         'path' => $path,
         'relationship' => $relationship,
-    ]);
+      ]);
+
+      // $res = $image;
       // Image::create($path);
 //dd($path);
       // $out = new \Symfony\Component\Console\Output\ConsoleOutput();
@@ -27,6 +30,6 @@ class ImageController extends Controller
       // $request->image->move(public_path('uploads'), $fileName);
 
 
-      // return true;
+       return json_encode(['res' => $res]);
     }
 }

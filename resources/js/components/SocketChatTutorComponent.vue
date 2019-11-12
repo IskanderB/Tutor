@@ -108,6 +108,8 @@
             fileCurrent: "",
             files: [],
             relationship: "",
+            res: [],
+            res_finish: "",
           }
         },
 
@@ -159,7 +161,7 @@
         },
 
         methods: {
-          sendMessage: function() {
+          sendMessage: async function() {
             this.usersSelect = "new-action."+this.stud.id.toString();
 
             if((this.message == "")&&(this.files.length == 0)){
@@ -179,9 +181,15 @@
 
             this.relationship = full_time + "f" + this.user.id.toString() + "t" + this.stud.id.toString();
 
+            let res;
+
             if(this.files.length){
-             this.fileInputChange();
+              await this.fileInputChange();
             }
+            console.log(this.res);
+            // let json = this.res;
+            let json = JSON.parse(JSON.stringify(this.res));
+            console.log(json);
             axios({
               method: 'get',
               url: '/send-message',
@@ -194,6 +202,7 @@
                  time: time,
                  full_time: full_time,
                  relationship: this.relationship,
+                 result: json,
                },
             })
 
@@ -240,6 +249,11 @@
                 await this.uploadFile(item);
               }
 
+              console.log(this.res);
+
+              // let r = this.res;
+              // this.resFull(r);
+
             },
 
             async uploadFile(item){
@@ -253,6 +267,7 @@
                 }
               })
               .then(response => {
+                this.res.push(response.data.res);
                 this.fileProgress = 0;
                 this.fileCurrent = '';
                 this.filesFinish.push(item);
@@ -263,7 +278,11 @@
             fileInputRemove(event) {
               this.files = Array.from(event.target.files);
               this.filesOrder = this.files.slice();
-            }
+            },
+
+            resFull(a) {
+              this.res_finish = a;
+            },
 
           },
 

@@ -2125,7 +2125,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       fileProgress: 0,
       fileCurrent: "",
       files: [],
-      relationship: ""
+      relationship: "",
+      res: [],
+      res_finish: ""
     };
   },
   props: ['stud', 'user', 'messagesfromdb'],
@@ -2184,56 +2186,90 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }.bind(this)); // $(".messages_box").scrollTop($(".messages_box")[0].scrollHeight);
   },
   methods: {
-    sendMessage: function sendMessage() {
-      var _this = this;
+    sendMessage: function () {
+      var _sendMessage = _asyncToGenerator(
+      /*#__PURE__*/
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var _this = this;
 
-      this.usersSelect = "new-action." + this.stud.id.toString();
+        var tutor_my, now, time, full_time, res, json;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                this.usersSelect = "new-action." + this.stud.id.toString();
 
-      if (this.message == "" && this.files.length == 0) {
-        return false;
+                if (!(this.message == "" && this.files.length == 0)) {
+                  _context.next = 3;
+                  break;
+                }
+
+                return _context.abrupt("return", false);
+
+              case 3:
+                if (this.user.is_tutor) {
+                  tutor_my = "T";
+                } else {
+                  tutor_my = "S";
+                }
+
+                now = new Date();
+                time = now.getHours() + ":" + now.getMinutes();
+                full_time = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate() + " " + time;
+                this.relationship = full_time + "f" + this.user.id.toString() + "t" + this.stud.id.toString();
+
+                if (!this.files.length) {
+                  _context.next = 11;
+                  break;
+                }
+
+                _context.next = 11;
+                return this.fileInputChange();
+
+              case 11:
+                console.log(this.res); // let json = this.res;
+
+                json = JSON.parse(JSON.stringify(this.res));
+                console.log(json);
+                axios({
+                  method: 'get',
+                  url: '/send-message',
+                  params: {
+                    channels: this.usersSelect,
+                    message: this.message,
+                    user: this.user.name,
+                    to: this.stud.id,
+                    from: this.user.id,
+                    time: time,
+                    full_time: full_time,
+                    relationship: this.relationship,
+                    result: json
+                  }
+                }).then(function (response) {
+                  _this.dataMessages.push({
+                    from_user: _this.user.name,
+                    time: time,
+                    content: _this.message,
+                    position: tutor_my
+                  });
+
+                  _this.message = "";
+                });
+
+              case 15:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      function sendMessage() {
+        return _sendMessage.apply(this, arguments);
       }
 
-      var tutor_my;
-
-      if (this.user.is_tutor) {
-        tutor_my = "T";
-      } else {
-        tutor_my = "S";
-      }
-
-      var now = new Date();
-      var time = now.getHours() + ":" + now.getMinutes();
-      var full_time = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate() + " " + time;
-      this.relationship = full_time + "f" + this.user.id.toString() + "t" + this.stud.id.toString();
-
-      if (this.files.length) {
-        this.fileInputChange();
-      }
-
-      axios({
-        method: 'get',
-        url: '/send-message',
-        params: {
-          channels: this.usersSelect,
-          message: this.message,
-          user: this.user.name,
-          to: this.stud.id,
-          from: this.user.id,
-          time: time,
-          full_time: full_time,
-          relationship: this.relationship
-        }
-      }).then(function (response) {
-        _this.dataMessages.push({
-          from_user: _this.user.name,
-          time: time,
-          content: _this.message,
-          position: tutor_my
-        });
-
-        _this.message = "";
-      });
-    },
+      return sendMessage;
+    }(),
     scrollToEnd: function scrollToEnd() {
       var container = document.querySelector(".messages_box");
       var scrollHeight = container.scrollHeight;
@@ -2258,76 +2294,80 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     fileInputChange: function () {
       var _fileInputChange = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var files, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, item;
 
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
-            switch (_context.prev = _context.next) {
+            switch (_context2.prev = _context2.next) {
               case 0:
                 files = this.files; // this.filesOrder = files.slice();
 
                 _iteratorNormalCompletion2 = true;
                 _didIteratorError2 = false;
                 _iteratorError2 = undefined;
-                _context.prev = 4;
+                _context2.prev = 4;
                 _iterator2 = files[Symbol.iterator]();
 
               case 6:
                 if (_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done) {
-                  _context.next = 13;
+                  _context2.next = 13;
                   break;
                 }
 
                 item = _step2.value;
-                _context.next = 10;
+                _context2.next = 10;
                 return this.uploadFile(item);
 
               case 10:
                 _iteratorNormalCompletion2 = true;
-                _context.next = 6;
+                _context2.next = 6;
                 break;
 
               case 13:
-                _context.next = 19;
+                _context2.next = 19;
                 break;
 
               case 15:
-                _context.prev = 15;
-                _context.t0 = _context["catch"](4);
+                _context2.prev = 15;
+                _context2.t0 = _context2["catch"](4);
                 _didIteratorError2 = true;
-                _iteratorError2 = _context.t0;
+                _iteratorError2 = _context2.t0;
 
               case 19:
-                _context.prev = 19;
-                _context.prev = 20;
+                _context2.prev = 19;
+                _context2.prev = 20;
 
                 if (!_iteratorNormalCompletion2 && _iterator2["return"] != null) {
                   _iterator2["return"]();
                 }
 
               case 22:
-                _context.prev = 22;
+                _context2.prev = 22;
 
                 if (!_didIteratorError2) {
-                  _context.next = 25;
+                  _context2.next = 25;
                   break;
                 }
 
                 throw _iteratorError2;
 
               case 25:
-                return _context.finish(22);
+                return _context2.finish(22);
 
               case 26:
-                return _context.finish(19);
+                return _context2.finish(19);
 
               case 27:
+                console.log(this.res); // let r = this.res;
+                // this.resFull(r);
+
+              case 28:
               case "end":
-                return _context.stop();
+                return _context2.stop();
             }
           }
-        }, _callee, this, [[4, 15, 19, 27], [20,, 22, 26]]);
+        }, _callee2, this, [[4, 15, 19, 27], [20,, 22, 26]]);
       }));
 
       function fileInputChange() {
@@ -2339,24 +2379,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     uploadFile: function () {
       var _uploadFile = _asyncToGenerator(
       /*#__PURE__*/
-      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2(item) {
+      _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3(item) {
         var _this2 = this;
 
         var form;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
-            switch (_context2.prev = _context2.next) {
+            switch (_context3.prev = _context3.next) {
               case 0:
                 form = new FormData();
                 form.append('image', item);
                 form.append('relationship', this.relationship);
-                _context2.next = 5;
+                _context3.next = 5;
                 return axios.post('/image/upload', form, {
                   onUploadProgress: function onUploadProgress(itemUpload) {
                     _this2.fileProgress = Math.round(itemUpload.loaded / itemUpload.total * 100);
                     _this2.fileCurrent = item.name + ' ' + _this2.fileProgress;
                   }
                 }).then(function (response) {
+                  _this2.res.push(response.data.res);
+
                   _this2.fileProgress = 0;
                   _this2.fileCurrent = '';
 
@@ -2367,10 +2409,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2, this);
+        }, _callee3, this);
       }));
 
       function uploadFile(_x) {
@@ -2382,6 +2424,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     fileInputRemove: function fileInputRemove(event) {
       this.files = Array.from(event.target.files);
       this.filesOrder = this.files.slice();
+    },
+    resFull: function resFull(a) {
+      this.res_finish = a;
     }
   },
   updated: function updated() {
