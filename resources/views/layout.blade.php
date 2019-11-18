@@ -69,7 +69,7 @@
                   @if(Auth::user()['is_tutor'])
                   /tutoraccount
                   @else
-                  /myaccount/tutorchatroom/3
+                  /myaccount/tutorchatroom/1
                   @endif
                   ">Мой аккаунт</a>
                 </div>
@@ -172,7 +172,7 @@
                   @if(Auth::user()['is_tutor'])
                   /tutoraccount
                   @else
-                  /myaccount/tutorchatroom/3
+                  /myaccount/tutorchatroom/1
                   @endif
                   ">Мой аккаунт</a>
                 </div>

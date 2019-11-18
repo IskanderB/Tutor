@@ -2111,6 +2111,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2192,21 +2202,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
         var _this = this;
 
-        var tutor_my, now, time, full_time, res, json;
+        var tutor_my, now, time, full_time, json;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 this.usersSelect = "new-action." + this.stud.id.toString();
 
-                if (!(this.message == "" && this.files.length == 0)) {
-                  _context.next = 3;
+                if (!(this.message == "")) {
+                  _context.next = 4;
+                  break;
+                }
+
+                if (!(this.files.length == 0)) {
+                  _context.next = 4;
                   break;
                 }
 
                 return _context.abrupt("return", false);
 
-              case 3:
+              case 4:
                 if (this.user.is_tutor) {
                   tutor_my = "T";
                 } else {
@@ -2217,20 +2232,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 time = now.getHours() + ":" + now.getMinutes();
                 full_time = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate() + " " + time;
                 this.relationship = full_time + "f" + this.user.id.toString() + "t" + this.stud.id.toString();
+                json = "";
+                console.log("Length " + this.files.length.toString());
 
                 if (!this.files.length) {
-                  _context.next = 11;
+                  _context.next = 17;
                   break;
                 }
 
-                _context.next = 11;
+                _context.next = 14;
                 return this.fileInputChange();
 
-              case 11:
-                console.log(this.res); // let json = this.res;
-
+              case 14:
+                console.log(this.res);
                 json = JSON.parse(JSON.stringify(this.res));
                 console.log(json);
+
+              case 17:
                 axios({
                   method: 'get',
                   url: '/send-message',
@@ -2256,7 +2274,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.message = "";
                 });
 
-              case 15:
+              case 18:
               case "end":
                 return _context.stop();
             }
@@ -54553,6 +54571,23 @@ var render = function() {
                           "\n                "
                       )
                     ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "images_box" }, [
+                    _c(
+                      "ul",
+                      { staticClass: "images_list" },
+                      _vm._l(iter.images_path, function(img) {
+                        return _c("li", [
+                          _c("div", { staticClass: "image_box" }, [
+                            _c("img", {
+                              attrs: { src: "" + img.path, alt: "" }
+                            })
+                          ])
+                        ])
+                      }),
+                      0
+                    )
                   ])
                 ])
               ])

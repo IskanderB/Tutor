@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Image extends Model
 {
     public $timestamps = false;
@@ -12,7 +13,7 @@ class Image extends Model
     {
 
       $res = $this->insertGetId([
-        'path' => $data['path'],
+        'path' => asset('storage/'. $data['path']),
         'relationship' => $data['relationship'],
       ]);
 

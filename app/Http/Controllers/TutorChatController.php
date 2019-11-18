@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Chat;
+use App\Image;
 use Illuminate\Support\Facades\Auth;
 
 
@@ -28,8 +29,17 @@ class TutorChatController extends Controller
         $authors = User::select('name', 'id', 'is_tutor')->whereIn('id', $from)->get();
 
       $messagesFromDB = [];
+      // $messagesId = [];
+      //
+      // foreach ($resMessagesFromDB as $value) {
+      //   $messagesId[] = $value->id;
+      // }
+      //
+      // $images_path = Image::select()->whereIn('relationship', $messagesId)->get();
+
       foreach ($resMessagesFromDB as $value) {
         // $messagesFromDB[] = $value->from_user . ":" . $value->content;
+
         if($value->from_user == $authors[0]->id){
           $from_user = $authors[0]->name;
           $is_tutor = $authors[0]->is_tutor;
@@ -39,6 +49,8 @@ class TutorChatController extends Controller
           $is_tutor = $authors[1]->is_tutor;
         }
 
+
+
         if($is_tutor){
           $position = 'T';
         }
@@ -46,16 +58,17 @@ class TutorChatController extends Controller
           $position = 'S';
         }
 
+        $images_path = Image::select('path')->where('relationship', $value->id)->get();
+
         $messagesFromDB[] = array(
           'from_user' => $from_user,
           'content' => $value->content,
           'time' => $value->created_at->format("H:i"),
           'full_time' => $value->created_at->format("Y-m-d H:i:s"),
           'position' => $position,
+          'images_path' => $images_path,
         );
       }
-
-
 
       // $messagesFromDB[0]['time']->format('d.m.Y');
       // dd($messagesFromDB[0]['time']->format('d.m.Y'));
@@ -68,6 +81,7 @@ class TutorChatController extends Controller
         'user' => $user,
         'stud' => $stud[0],
         'messagesFromDB' => json_encode(array_reverse($messagesFromDB)),
+        // 'images_path' => json_encode($images_path),
     ]);
     }
 }

@@ -28,6 +28,16 @@
                       {{iter.content}}
                     </div>
                   </div>
+                  <div class="images_box">
+                    <ul class="images_list">
+                      <li v-for="img in iter.images_path">
+                        <div class="image_box">
+                          <img :src="`${img.path}`" alt="">
+                          <!-- <img src="" alt="" class="image_chat"> -->
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
               </li>
               <!-- <li v-for="a in dataMessages">{{a}}</li> -->
@@ -164,8 +174,10 @@
           sendMessage: async function() {
             this.usersSelect = "new-action."+this.stud.id.toString();
 
-            if((this.message == "")&&(this.files.length == 0)){
-              return false;
+            if(this.message == ""){
+              if(this.files.length == 0){
+                return false;
+              }
             }
 
             var tutor_my;
@@ -181,15 +193,15 @@
 
             this.relationship = full_time + "f" + this.user.id.toString() + "t" + this.stud.id.toString();
 
-            let res;
-
+            let json = "";
+            console.log("Length " + this.files.length.toString());
             if(this.files.length){
               await this.fileInputChange();
+              console.log(this.res);
+              json = JSON.parse(JSON.stringify(this.res));
+              console.log(json);
             }
-            console.log(this.res);
-            // let json = this.res;
-            let json = JSON.parse(JSON.stringify(this.res));
-            console.log(json);
+
             axios({
               method: 'get',
               url: '/send-message',
