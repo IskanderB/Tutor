@@ -51,37 +51,61 @@
     .message_list{
       li{
         .message_box{
-          .message_icon{
-            min-width: 33px;
-            a{
-              font-size: 45px;
-              font-family: 'Fredoka One', cursive;
-              transition: 0.5s;
-            }
-          }
-          .message_icon:hover{
-            a{transition: 0.5s;
-            color: @superb_gray;}
-          }
-          .message_info{
-            margin-left: 10px;
-            margin-top: 12px;
-            .message_name_time{
-              font-size: 14px;
-              .message_name{
-                font-weight: 700;
-                margin-right: 10px;
-              }
-              .message_time{
-                cursor: pointer;
-                color: @superb_gray;
-              }
-              .bottom_line:hover{
-                text-decoration: underline;
+          .message_not_img{
+            .message_icon{
+              min-width: 33px;
+              a{
+                font-size: 45px;
+                font-family: 'Fredoka One', cursive;
+                transition: 0.5s;
               }
             }
-            .message_cont{
+            .message_icon:hover{
+              a{transition: 0.5s;
+              color: @superb_gray;}
+            }
+            .message_info{
+              margin-left: 10px;
+              margin-top: 12px;
+              .message_name_time{
+                font-size: 14px;
+                .message_name{
+                  font-weight: 700;
+                  margin-right: 10px;
+                }
+                .message_time{
+                  cursor: pointer;
+                  color: @superb_gray;
+                }
+                .bottom_line:hover{
+                  text-decoration: underline;
+                }
+              }
+              .message_cont{
 
+              }
+            }
+          }
+
+          .images_box{
+            max-width: 400px;
+            .images_list{
+              max-width: 400px;
+              display: block;
+              flex-wrap: wrap;
+              li{
+                .image_box{
+                  max-width: 200px;
+                  max-height: 100px;
+                  display: block;
+                  margin-right: 5px;
+                  margin-bottom: 5px;
+                  img{
+                    max-width: 200px;
+                    max-height: 100px;
+                  }
+                }
+              }
             }
           }
         }
@@ -152,6 +176,7 @@
 
 .upload_wrap{
   margin-top: 10px;
+  display: none;
   .upload_box{
     margin: auto;
     float: none;
@@ -159,6 +184,32 @@
     max-width: 80%;
     .progress{
       height: 20px;
+      margin-bottom: 10px;
+    }
+    .upload_lists{
+      .upload_list{
+        .upload_label_box{
+          background-color: @gray;
+          border-radius: 10px;
+          justify-content: center;
+          margin-bottom: 10px;
+          overflow-x:hidden;
+          .upload_label{
+            display: block;
+            max-width: 85%;
+            margin: auto;
+            float: none;
+            text-align: center;
+          }
+        }
+        .upload_ul{
+          .upload_li{
+            text-align: center;
+            margin-bottom: 10px;
+            padding: 0 0 0 0;
+          }
+        }
+      }
     }
   }
 }

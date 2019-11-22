@@ -2121,6 +2121,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2137,7 +2149,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       files: [],
       relationship: "",
       res: [],
-      res_finish: ""
+      res_finish: "",
+      isDNone: false
     };
   },
   props: ['stud', 'user', 'messagesfromdb'],
@@ -2190,7 +2203,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           time: data.message.time,
           content: data.message.message,
           position: tutor_message,
-          full_time: data.message.full_time
+          full_time: data.message.full_time,
+          images_path: data.message.result
         });
       }
     }.bind(this)); // $(".messages_box").scrollTop($(".messages_box")[0].scrollHeight);
@@ -2232,23 +2246,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 time = now.getHours() + ":" + now.getMinutes();
                 full_time = now.getFullYear() + "-" + now.getMonth() + "-" + now.getDate() + " " + time;
                 this.relationship = full_time + "f" + this.user.id.toString() + "t" + this.stud.id.toString();
-                json = "";
-                console.log("Length " + this.files.length.toString());
+                json = ""; // console.log("Length " + this.files.length.toString());
 
                 if (!this.files.length) {
-                  _context.next = 17;
+                  _context.next = 14;
                   break;
                 }
 
-                _context.next = 14;
+                _context.next = 13;
                 return this.fileInputChange();
 
-              case 14:
-                console.log(this.res);
-                json = JSON.parse(JSON.stringify(this.res));
-                console.log(json);
+              case 13:
+                // console.log(this.res);
+                json = JSON.parse(JSON.stringify(this.res)); // console.log(json);
 
-              case 17:
+              case 14:
                 axios({
                   method: 'get',
                   url: '/send-message',
@@ -2268,13 +2280,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     from_user: _this.user.name,
                     time: time,
                     content: _this.message,
-                    position: tutor_my
+                    position: tutor_my,
+                    images_path: response.data.paths
                   });
 
+                  console.log(response.data.paths);
                   _this.message = "";
+                  _this.filesFinish = [];
+                  _this.res = [];
+                  json = "";
+                  _this.files = [];
+                  _this.isDNone = true;
                 });
 
-              case 18:
+              case 15:
               case "end":
                 return _context.stop();
             }
@@ -2377,10 +2396,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.finish(19);
 
               case 27:
-                console.log(this.res); // let r = this.res;
-                // this.resFull(r);
-
-              case 28:
               case "end":
                 return _context2.stop();
             }
@@ -54531,52 +54546,54 @@ var render = function() {
             { staticClass: "message_list" },
             _vm._l(_vm.dataMessages, function(iter) {
               return _c("li", { key: iter.from_user }, [
-                _c("div", { staticClass: "message_box d-flex" }, [
-                  _c("div", { staticClass: "message_icon" }, [
-                    _c("a", { attrs: { href: "#" } }, [
-                      _vm._v(_vm._s(iter.position))
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "message_info" }, [
-                    _c("div", { staticClass: "message_name_time d-flex" }, [
-                      _c("div", { staticClass: "message_name bottom_line" }, [
-                        _c("a", { attrs: { href: "#" } }, [
-                          _vm._v(_vm._s(iter.from_user))
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          staticClass: "message_time bottom_line",
-                          attrs: { "data-hint": "" + iter.full_time }
-                        },
-                        [
-                          _vm._v(
-                            "\n                    " +
-                              _vm._s(iter.time) +
-                              "\n                  "
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("div", { attrs: { id: "hint" } })
+                _c("div", { staticClass: "message_box" }, [
+                  _c("div", { staticClass: "message_not_img d-flex" }, [
+                    _c("div", { staticClass: "message_icon" }, [
+                      _c("a", { attrs: { href: "#" } }, [
+                        _vm._v(_vm._s(iter.position))
+                      ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "message_cont" }, [
-                      _vm._v(
-                        "\n                  " +
-                          _vm._s(iter.content) +
-                          "\n                "
-                      )
+                    _c("div", { staticClass: "message_info" }, [
+                      _c("div", { staticClass: "message_name_time d-flex" }, [
+                        _c("div", { staticClass: "message_name bottom_line" }, [
+                          _c("a", { attrs: { href: "#" } }, [
+                            _vm._v(_vm._s(iter.from_user))
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          {
+                            staticClass: "message_time bottom_line",
+                            attrs: { "data-hint": "" + iter.full_time }
+                          },
+                          [
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(iter.time) +
+                                "\n                  "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("div", { attrs: { id: "hint" } })
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "message_cont" }, [
+                        _vm._v(
+                          "\n                  " +
+                            _vm._s(iter.content) +
+                            "\n                "
+                        )
+                      ])
                     ])
                   ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "images_box" }, [
                     _c(
                       "ul",
-                      { staticClass: "images_list" },
+                      { staticClass: "images_list d-flex" },
                       _vm._l(iter.images_path, function(img) {
                         return _c("li", [
                           _c("div", { staticClass: "image_box" }, [
@@ -54617,48 +54634,70 @@ var render = function() {
           _vm._v(" "),
           _c("div", { staticClass: "row upload_lists" }, [
             _c("div", { staticClass: "col-lg-6 upload_list" }, [
-              _c("h5", { staticClass: "text-center" }, [
-                _vm._v("Файлы в очереди(" + _vm._s(_vm.filesOrder.length) + ")")
-              ]),
+              _c(
+                "div",
+                { staticClass: "upload_label_box justify-content-between" },
+                [
+                  _c("div", { staticClass: "upload_label" }, [
+                    _vm._v(
+                      "\n                Очередь(" +
+                        _vm._s(_vm.filesOrder.length) +
+                        ")\n              "
+                    )
+                  ])
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "ul",
-                { staticClass: "list-group" },
+                { staticClass: "list-group upload_ul" },
                 _vm._l(_vm.filesOrder, function(file) {
-                  return _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v(
-                      "\n                " +
-                        _vm._s(file.name) +
-                        " : " +
-                        _vm._s(file.type) +
-                        "\n              "
-                    )
-                  ])
+                  return _c(
+                    "li",
+                    { staticClass: "list-group-item upload_li" },
+                    [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(file.name) +
+                          "\n              "
+                      )
+                    ]
+                  )
                 }),
                 0
               )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-lg-6 upload_list" }, [
-              _c("h5", { staticClass: "text-center" }, [
-                _vm._v(
-                  "Загруженные файлы(" + _vm._s(_vm.filesFinish.length) + ")"
-                )
-              ]),
+              _c(
+                "div",
+                { staticClass: "upload_label_box justify-content-between" },
+                [
+                  _c("div", { staticClass: "upload_label" }, [
+                    _vm._v(
+                      "\n                Загруженные(" +
+                        _vm._s(_vm.filesFinish.length) +
+                        ")\n              "
+                    )
+                  ])
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "ul",
-                { staticClass: "list-group" },
+                { staticClass: "list-group upload_ul" },
                 _vm._l(_vm.filesFinish, function(file) {
-                  return _c("li", { staticClass: "list-group-item" }, [
-                    _vm._v(
-                      "\n                " +
-                        _vm._s(file.name) +
-                        " : " +
-                        _vm._s(file.type) +
-                        "\n              "
-                    )
-                  ])
+                  return _c(
+                    "li",
+                    { staticClass: "list-group-item upload_li" },
+                    [
+                      _vm._v(
+                        "\n                " +
+                          _vm._s(file.name) +
+                          "\n              "
+                      )
+                    ]
+                  )
                 }),
                 0
               )
@@ -67647,6 +67686,9 @@ container.scrollTop = scrollHeight; // $('#smile').click(function(){
 
 $('#upload_icon').click(function () {
   $('#upload').click();
+});
+$('#upload_icon').click(function () {
+  $('.upload_wrap').css('display', 'block');
 });
 
 /***/ }),

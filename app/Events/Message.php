@@ -10,6 +10,7 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 // use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use App\Image;
 
 class Message implements ShouldBroadcast
 {
@@ -23,6 +24,11 @@ class Message implements ShouldBroadcast
      */
     public function __construct($data)
     {
+        if($data['result']){
+          $image = new Image();
+          $data['result'] = $image->getPath($data['result']);
+        }
+        
         $this->message = $data;
     }
 

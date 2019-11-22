@@ -10,7 +10,8 @@
           <div class="messages_box" >
             <ul class="message_list">
               <li v-for="iter in dataMessages" v-bind:key="iter.from_user">
-                <div class="message_box d-flex">
+                <div class="message_box">
+                  <div class="message_not_img d-flex">
                   <div class="message_icon">
                     <a href="#">{{iter.position}}</a>
                   </div>
@@ -28,8 +29,9 @@
                       {{iter.content}}
                     </div>
                   </div>
+                  </div>
                   <div class="images_box">
-                    <ul class="images_list">
+                    <ul class="images_list d-flex">
                       <li v-for="img in iter.images_path">
                         <div class="image_box">
                           <img :src="`${img.path}`" alt="">
@@ -55,18 +57,28 @@
             </div>
             <div class="row upload_lists">
               <div class="col-lg-6 upload_list">
-                <h5 class="text-center">Файлы в очереди({{ filesOrder.length }})</h5>
-                <ul class="list-group">
-                  <li class="list-group-item" v-for="file in filesOrder">
-                    {{ file.name }} : {{ file.type }}
+                <div class="upload_label_box justify-content-between">
+                  <div class="upload_label">
+                    Очередь({{ filesOrder.length }})
+                  </div>
+                </div>
+                <!-- <h5 class="text-center">Файлы в очереди({{ filesOrder.length }})</h5> -->
+                <ul class="list-group upload_ul">
+                  <li class="list-group-item upload_li" v-for="file in filesOrder">
+                    {{ file.name }}
                   </li>
                 </ul>
               </div>
               <div class="col-lg-6 upload_list">
-                <h5 class="text-center">Загруженные файлы({{ filesFinish.length }})</h5>
-                <ul class="list-group">
-                  <li class="list-group-item" v-for="file in filesFinish">
-                    {{ file.name }} : {{ file.type }}
+                <div class="upload_label_box justify-content-between">
+                  <div class="upload_label">
+                    Загруженные({{ filesFinish.length }})
+                  </div>
+                </div>
+                <!-- <h5 class="text-center">Загруженные файлы({{ filesFinish.length }})</h5> -->
+                <ul class="list-group upload_ul">
+                  <li class="list-group-item upload_li" v-for="file in filesFinish">
+                    {{ file.name }}
                   </li>
                 </ul>
               </div>
@@ -120,6 +132,7 @@
             relationship: "",
             res: [],
             res_finish: "",
+            isDNone: false,
           }
         },
 
@@ -159,7 +172,8 @@
                 time: data.message.time,
                 content: data.message.message,
                 position: tutor_message,
-                full_time: data.message.full_time
+                full_time: data.message.full_time,
+                images_path: data.message.result,
               });
 
             }
@@ -194,12 +208,12 @@
             this.relationship = full_time + "f" + this.user.id.toString() + "t" + this.stud.id.toString();
 
             let json = "";
-            console.log("Length " + this.files.length.toString());
+            // console.log("Length " + this.files.length.toString());
             if(this.files.length){
               await this.fileInputChange();
-              console.log(this.res);
+              // console.log(this.res);
               json = JSON.parse(JSON.stringify(this.res));
-              console.log(json);
+              // console.log(json);
             }
 
             axios({
@@ -223,9 +237,17 @@
               {from_user: this.user.name,
               time: time,
               content: this.message,
-              position: tutor_my}
+              position: tutor_my,
+              images_path: response.data.paths,
+            }
               );
+              console.log(response.data.paths)
               this.message = "";
+              this.filesFinish = [];
+              this.res = [];
+              json = "";
+              this.files = [];
+              this.isDNone = true;
             });
           },
 
@@ -261,7 +283,7 @@
                 await this.uploadFile(item);
               }
 
-              console.log(this.res);
+              // console.log(this.res);
 
               // let r = this.res;
               // this.resFull(r);

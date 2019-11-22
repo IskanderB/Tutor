@@ -39,35 +39,54 @@
   float: none;
   margin-top: 1px;
 }
-.chat_box .messages_box .message_list li .message_box .message_icon {
+.chat_box .messages_box .message_list li .message_box .message_not_img .message_icon {
   min-width: 33px;
 }
-.chat_box .messages_box .message_list li .message_box .message_icon a {
+.chat_box .messages_box .message_list li .message_box .message_not_img .message_icon a {
   font-size: 45px;
   font-family: 'Fredoka One', cursive;
   transition: 0.5s;
 }
-.chat_box .messages_box .message_list li .message_box .message_icon:hover a {
+.chat_box .messages_box .message_list li .message_box .message_not_img .message_icon:hover a {
   transition: 0.5s;
   color: #989a99;
 }
-.chat_box .messages_box .message_list li .message_box .message_info {
+.chat_box .messages_box .message_list li .message_box .message_not_img .message_info {
   margin-left: 10px;
   margin-top: 12px;
 }
-.chat_box .messages_box .message_list li .message_box .message_info .message_name_time {
+.chat_box .messages_box .message_list li .message_box .message_not_img .message_info .message_name_time {
   font-size: 14px;
 }
-.chat_box .messages_box .message_list li .message_box .message_info .message_name_time .message_name {
+.chat_box .messages_box .message_list li .message_box .message_not_img .message_info .message_name_time .message_name {
   font-weight: 700;
   margin-right: 10px;
 }
-.chat_box .messages_box .message_list li .message_box .message_info .message_name_time .message_time {
+.chat_box .messages_box .message_list li .message_box .message_not_img .message_info .message_name_time .message_time {
   cursor: pointer;
   color: #989a99;
 }
-.chat_box .messages_box .message_list li .message_box .message_info .message_name_time .bottom_line:hover {
+.chat_box .messages_box .message_list li .message_box .message_not_img .message_info .message_name_time .bottom_line:hover {
   text-decoration: underline;
+}
+.chat_box .messages_box .message_list li .message_box .images_box {
+  max-width: 400px;
+}
+.chat_box .messages_box .message_list li .message_box .images_box .images_list {
+  max-width: 400px;
+  display: block;
+  flex-wrap: wrap;
+}
+.chat_box .messages_box .message_list li .message_box .images_box .images_list li .image_box {
+  max-width: 200px;
+  max-height: 100px;
+  display: block;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+.chat_box .messages_box .message_list li .message_box .images_box .images_list li .image_box img {
+  max-width: 200px;
+  max-height: 100px;
 }
 .send_box {
   margin-top: 20px;
@@ -122,6 +141,7 @@
 }
 .upload_wrap {
   margin-top: 10px;
+  display: none;
 }
 .upload_wrap .upload_box {
   margin: auto;
@@ -131,4 +151,24 @@
 }
 .upload_wrap .upload_box .progress {
   height: 20px;
+  margin-bottom: 10px;
+}
+.upload_wrap .upload_box .upload_lists .upload_list .upload_label_box {
+  background-color: #e4e7e5;
+  border-radius: 10px;
+  justify-content: center;
+  margin-bottom: 10px;
+  overflow-x: hidden;
+}
+.upload_wrap .upload_box .upload_lists .upload_list .upload_label_box .upload_label {
+  display: block;
+  max-width: 85%;
+  margin: auto;
+  float: none;
+  text-align: center;
+}
+.upload_wrap .upload_box .upload_lists .upload_list .upload_ul .upload_li {
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 0 0 0 0;
 }

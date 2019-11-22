@@ -15,17 +15,20 @@ class ChatController extends Controller
       //dd("test2");
       //event(new Message($request->input('message')));
       $message_id = $chat->appendChat($request);
-      $out = new \Symfony\Component\Console\Output\ConsoleOutput();
-      $out->writeln($request->result);
+
+      Message::dispatch($request->all());
+
       if($request->result){
-        $image->messageOwn([
+        $paths = $image->messageOwn([
           'message_id' => $message_id,
           'images_id' => $request->result,
         ]);
+        return json_encode(['paths' => $paths]);
       }
-      Message::dispatch($request->all());
+      // $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+      // $out->writeln($paths);
       // $users = User::select('email', 'id')->where('id', '!=', Auth::id())->get();
       // $user = Auth::user();
-      return $request->all();
+
     }
 }
