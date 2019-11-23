@@ -2133,6 +2133,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2150,7 +2164,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       relationship: "",
       res: [],
       res_finish: "",
-      isDNone: false
+      isDNone: "none"
     };
   },
   props: ['stud', 'user', 'messagesfromdb'],
@@ -2290,7 +2304,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this.res = [];
                   json = "";
                   _this.files = [];
-                  _this.isDNone = true;
+                  _this.isDNone = "none";
                 });
 
               case 15:
@@ -2457,6 +2471,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     fileInputRemove: function fileInputRemove(event) {
       this.files = Array.from(event.target.files);
       this.filesOrder = this.files.slice();
+      this.isDNone = "block";
     },
     resFull: function resFull(a) {
       this.res_finish = a;
@@ -54596,11 +54611,33 @@ var render = function() {
                       { staticClass: "images_list d-flex" },
                       _vm._l(iter.images_path, function(img) {
                         return _c("li", [
-                          _c("div", { staticClass: "image_box" }, [
-                            _c("img", {
-                              attrs: { src: "" + img.path, alt: "" }
-                            })
-                          ])
+                          img.type === "jpeg"
+                            ? _c("div", { staticClass: "image_box" }, [
+                                _c("img", {
+                                  attrs: { src: "" + img.path, alt: "" }
+                                })
+                              ])
+                            : img.type === "png"
+                            ? _c("div", { staticClass: "image_box" }, [
+                                _c("img", {
+                                  attrs: { src: "" + img.path, alt: "" }
+                                })
+                              ])
+                            : img.type === "gif"
+                            ? _c("div", { staticClass: "image_box" }, [
+                                _c("img", {
+                                  attrs: { src: "" + img.path, alt: "" }
+                                })
+                              ])
+                            : _c("div", { staticClass: "file_box" }, [
+                                _c("div", { staticClass: "file_content" }, [
+                                  _vm._v(
+                                    "\n                        " +
+                                      _vm._s(img.name) +
+                                      "\n                      "
+                                  )
+                                ])
+                              ])
                         ])
                       }),
                       0
@@ -54614,97 +54651,104 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "upload_wrap justify-content-center" }, [
-        _c("div", { staticClass: "upload_box" }, [
-          _c("div", { staticClass: "progress" }, [
-            _c(
-              "div",
-              {
-                staticClass: "progress-bar",
-                style: { width: _vm.fileProgress + "%" },
-                attrs: { role: "progressbar" }
-              },
-              [
-                _vm._v(
-                  "\n            " + _vm._s(_vm.fileCurrent) + "%\n          "
-                )
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row upload_lists" }, [
-            _c("div", { staticClass: "col-lg-6 upload_list" }, [
+      _c(
+        "div",
+        {
+          staticClass: "upload_wrap justify-content-center",
+          style: { display: _vm.isDNone }
+        },
+        [
+          _c("div", { staticClass: "upload_box" }, [
+            _c("div", { staticClass: "progress" }, [
               _c(
                 "div",
-                { staticClass: "upload_label_box justify-content-between" },
+                {
+                  staticClass: "progress-bar",
+                  style: { width: _vm.fileProgress + "%" },
+                  attrs: { role: "progressbar" }
+                },
                 [
-                  _c("div", { staticClass: "upload_label" }, [
-                    _vm._v(
-                      "\n                Очередь(" +
-                        _vm._s(_vm.filesOrder.length) +
-                        ")\n              "
-                    )
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "ul",
-                { staticClass: "list-group upload_ul" },
-                _vm._l(_vm.filesOrder, function(file) {
-                  return _c(
-                    "li",
-                    { staticClass: "list-group-item upload_li" },
-                    [
-                      _vm._v(
-                        "\n                " +
-                          _vm._s(file.name) +
-                          "\n              "
-                      )
-                    ]
+                  _vm._v(
+                    "\n            " + _vm._s(_vm.fileCurrent) + "%\n          "
                   )
-                }),
-                0
+                ]
               )
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-lg-6 upload_list" }, [
-              _c(
-                "div",
-                { staticClass: "upload_label_box justify-content-between" },
-                [
-                  _c("div", { staticClass: "upload_label" }, [
-                    _vm._v(
-                      "\n                Загруженные(" +
-                        _vm._s(_vm.filesFinish.length) +
-                        ")\n              "
-                    )
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "ul",
-                { staticClass: "list-group upload_ul" },
-                _vm._l(_vm.filesFinish, function(file) {
-                  return _c(
-                    "li",
-                    { staticClass: "list-group-item upload_li" },
-                    [
+            _c("div", { staticClass: "row upload_lists" }, [
+              _c("div", { staticClass: "col-lg-6 upload_list" }, [
+                _c(
+                  "div",
+                  { staticClass: "upload_label_box justify-content-between" },
+                  [
+                    _c("div", { staticClass: "upload_label" }, [
                       _vm._v(
-                        "\n                " +
-                          _vm._s(file.name) +
-                          "\n              "
+                        "\n                Очередь(" +
+                          _vm._s(_vm.filesOrder.length) +
+                          ")\n              "
                       )
-                    ]
-                  )
-                }),
-                0
-              )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  { staticClass: "list-group upload_ul" },
+                  _vm._l(_vm.filesOrder, function(file) {
+                    return _c(
+                      "li",
+                      { staticClass: "list-group-item upload_li" },
+                      [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(file.name) +
+                            "\n              "
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-lg-6 upload_list" }, [
+                _c(
+                  "div",
+                  { staticClass: "upload_label_box justify-content-between" },
+                  [
+                    _c("div", { staticClass: "upload_label" }, [
+                      _vm._v(
+                        "\n                Загруженные(" +
+                          _vm._s(_vm.filesFinish.length) +
+                          ")\n              "
+                      )
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "ul",
+                  { staticClass: "list-group upload_ul" },
+                  _vm._l(_vm.filesFinish, function(file) {
+                    return _c(
+                      "li",
+                      { staticClass: "list-group-item upload_li" },
+                      [
+                        _vm._v(
+                          "\n                " +
+                            _vm._s(file.name) +
+                            "\n              "
+                        )
+                      ]
+                    )
+                  }),
+                  0
+                )
+              ])
             ])
           ])
-        ])
-      ]),
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "send_box d-flex" }, [
         _c("div", { staticClass: "button_box" }, [
@@ -67686,10 +67730,9 @@ container.scrollTop = scrollHeight; // $('#smile').click(function(){
 
 $('#upload_icon').click(function () {
   $('#upload').click();
-});
-$('#upload_icon').click(function () {
-  $('.upload_wrap').css('display', 'block');
-});
+}); // $('#upload_icon').click(function(){
+//   $('.upload_wrap').css('display', 'block');
+// });
 
 /***/ }),
 

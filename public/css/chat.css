@@ -88,6 +88,20 @@
   max-width: 200px;
   max-height: 100px;
 }
+.chat_box .messages_box .message_list li .message_box .images_box .images_list li .file_box {
+  min-width: 400px;
+}
+.chat_box .messages_box .message_list li .message_box .images_box .images_list li .file_box .file_content {
+  display: inline-block;
+  background-color: #e4e7e5;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  overflow-x: hidden;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  padding: 5px 5px 5px 5px;
+  min-width: 200px;
+}
 .send_box {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -141,7 +155,6 @@
 }
 .upload_wrap {
   margin-top: 10px;
-  display: none;
 }
 .upload_wrap .upload_box {
   margin: auto;

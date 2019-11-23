@@ -11,10 +11,18 @@ class Image extends Model
 
     public function create($data)
     {
+      if($data['type'] != 'jpeg' and $data['type'] != 'png' and $data['type'] != 'gif'){
+        $name = $data['name'];
+      }
+      else {
+        $name = 'Image';
+      }
 
       $res = $this->insertGetId([
         'path' => asset('storage/'. $data['path']),
         'relationship' => $data['relationship'],
+        'type' => $data['type'],
+        'name' => $name,
       ]);
 
       return $res;
@@ -35,7 +43,7 @@ class Image extends Model
 
     public function getPath($images_id)
     {
-      $paths = $this->select('path')->whereIn('id', $images_id)->get();
+      $paths = $this->select('path', 'type', 'name')->whereIn('id', $images_id)->get();
       return $paths;
     }
 

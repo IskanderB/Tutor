@@ -46,6 +46,6 @@ $('#upload_icon').click(function(){
     $('#upload').click();
 });
 
-$('#upload_icon').click(function(){
-  $('.upload_wrap').css('display', 'block');
-});
+// $('#upload_icon').click(function(){
+//   $('.upload_wrap').css('display', 'block');
+// });

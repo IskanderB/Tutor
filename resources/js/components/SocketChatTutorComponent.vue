@@ -33,22 +33,34 @@
                   <div class="images_box">
                     <ul class="images_list d-flex">
                       <li v-for="img in iter.images_path">
-                        <div class="image_box">
+                        <div class="image_box" v-if="img.type === 'jpeg'">
                           <img :src="`${img.path}`" alt="">
-                          <!-- <img src="" alt="" class="image_chat"> -->
                         </div>
+
+                        <div class="image_box" v-else-if="img.type === 'png'">
+                          <img :src="`${img.path}`" alt="">
+                        </div>
+
+                        <div class="image_box" v-else-if="img.type === 'gif'">
+                          <img :src="`${img.path}`" alt="">
+                        </div>
+
+                        <div class="file_box" v-else>
+                          <div class="file_content">
+                            {{img.name}}
+                          </div>
+                        </div>
+
                       </li>
                     </ul>
                   </div>
                 </div>
               </li>
-              <!-- <li v-for="a in dataMessages">{{a}}</li> -->
-              <!-- {{ dataMessages.join('\n') }} -->
             </ul>
           </div>
         </div>
 
-        <div class="upload_wrap justify-content-center">
+        <div class="upload_wrap justify-content-center" :style="{display: isDNone}">
           <div class="upload_box">
             <div class="progress">
               <div class="progress-bar" role="progressbar" :style="{width: fileProgress + '%'}">
@@ -114,6 +126,8 @@
     </div>
 </template>
 
+
+
 <script>
   import { Picker } from 'emoji-mart-vue'
     export default {
@@ -132,7 +146,7 @@
             relationship: "",
             res: [],
             res_finish: "",
-            isDNone: false,
+            isDNone: "none",
           }
         },
 
@@ -247,7 +261,7 @@
               this.res = [];
               json = "";
               this.files = [];
-              this.isDNone = true;
+              this.isDNone = "none";
             });
           },
 
@@ -312,6 +326,7 @@
             fileInputRemove(event) {
               this.files = Array.from(event.target.files);
               this.filesOrder = this.files.slice();
+              this.isDNone = "block";
             },
 
             resFull(a) {
