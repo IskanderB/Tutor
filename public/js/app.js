@@ -2276,7 +2276,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 14:
                 axios({
-                  method: 'get',
+                  method: 'post',
                   url: '/send-message',
                   params: {
                     channels: this.usersSelect,
@@ -2298,7 +2298,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     images_path: response.data.paths
                   });
 
-                  console.log(response.data.paths);
                   _this.message = "";
                   _this.filesFinish = [];
                   _this.res = [];
@@ -67714,14 +67713,16 @@ $('div[data-hint]').on({
       left: e.pageX
     });
   }
-}); // var container = this.$el.querySelector("#messages_box");
+}); // var container = this.$el.querySelector(".messages_box");
 // container.scrollTop = container.scrollHeight;
+//
 // var messageDisplay = vueContent.$refs.messageDisplay;
 // messageDisplay.scrollTop = messageDisplay.scrollHeight;
 
 var container = document.querySelector(".messages_box");
-var scrollHeight = container.scrollHeight;
-container.scrollTop = scrollHeight; // $('#smile').click(function(){
+container.scrollTop = container.scrollHeight; // var scrollHeight = container.scrollHeight;
+// container.scrollTop  = scrollHeight;
+// $('#smile').click(function(){
 //
 //     var smiley = this.textContent;
 //     $('#description').val($('#description').val()+smiley);

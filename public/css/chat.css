@@ -34,6 +34,7 @@
   min-height: 493px;
   max-height: 493px;
   overflow-y: scroll;
+  overflow-x: hidden;
   display: block;
   margin: auto;
   float: none;

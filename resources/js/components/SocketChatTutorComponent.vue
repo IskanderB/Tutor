@@ -231,7 +231,7 @@
             }
 
             axios({
-              method: 'get',
+              method: 'post',
               url: '/send-message',
               params: {
                  channels: this.usersSelect,
@@ -255,7 +255,6 @@
               images_path: response.data.paths,
             }
               );
-              console.log(response.data.paths)
               this.message = "";
               this.filesFinish = [];
               this.res = [];

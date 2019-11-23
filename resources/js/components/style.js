@@ -25,15 +25,16 @@ $('div[data-hint]').on({
     }
 });
 
-// var container = this.$el.querySelector("#messages_box");
+// var container = this.$el.querySelector(".messages_box");
 // container.scrollTop = container.scrollHeight;
-
+//
 // var messageDisplay = vueContent.$refs.messageDisplay;
 // messageDisplay.scrollTop = messageDisplay.scrollHeight;
 
 var container = document.querySelector(".messages_box");
-var scrollHeight = container.scrollHeight;
-container.scrollTop  = scrollHeight;
+container.scrollTop = container.scrollHeight;
+// var scrollHeight = container.scrollHeight;
+// container.scrollTop  = scrollHeight;
 
 // $('#smile').click(function(){
 //
