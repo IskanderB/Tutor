@@ -36,3 +36,4 @@ const app = new Vue({
 
 require('./components/style.js');
 require('./components/jquery.scrollbar.min.js');
+require('magnific-popup');

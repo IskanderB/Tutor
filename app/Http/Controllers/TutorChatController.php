@@ -61,6 +61,7 @@ class TutorChatController extends Controller
         $images_path = Image::select('path', 'type', 'name')->where('relationship', $value->id)->get();
 
         $messagesFromDB[] = array(
+          'id_message' => $value->id,
           'from_user' => $from_user,
           'content' => $value->content,
           'time' => $value->created_at->format("H:i"),

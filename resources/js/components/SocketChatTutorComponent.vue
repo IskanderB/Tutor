@@ -9,6 +9,13 @@
         <div class="chat_box">
           <div class="messages_box" >
             <ul class="message_list">
+              <li>
+                <div class="more_mes_box">
+                  <div class="more_mes_cont" @click="moreMessages">
+                    Больше сообщений
+                  </div>
+                </div>
+              </li>
               <li v-for="iter in dataMessages" v-bind:key="iter.from_user">
                 <div class="message_box">
                   <div class="message_not_img d-flex">
@@ -34,15 +41,15 @@
                     <ul class="images_list d-flex">
                       <li v-for="img in iter.images_path">
                         <div class="image_box" v-if="img.type === 'jpeg'">
-                          <img :src="`${img.path}`" alt="">
+                        <a :href="`${img.path}`"><img :src="`${img.path}`" alt="" class="image_chat"></a>
                         </div>
 
                         <div class="image_box" v-else-if="img.type === 'png'">
-                          <img :src="`${img.path}`" alt="">
+                          <a :href="`${img.path}`"><img :src="`${img.path}`" alt="" class="image_chat"></a>
                         </div>
 
                         <div class="image_box" v-else-if="img.type === 'gif'">
-                          <img :src="`${img.path}`" alt="">
+                          <a :href="`${img.path}`"><img :src="`${img.path}`" alt="" class="image_chat"></a>
                         </div>
 
                         <div class="file_box" v-else>
@@ -129,7 +136,9 @@
 
 
 <script>
-  import { Picker } from 'emoji-mart-vue'
+  import { Picker } from 'emoji-mart-vue';
+  import $ from 'jquery';
+  import 'magnific-popup';
     export default {
         data: function() {
           return {
@@ -332,12 +341,25 @@
               this.res_finish = a;
             },
 
+            popupForUpdate() {
+              $('.image_box').magnificPopup({
+                delegate: 'a',
+                type: 'image'
+              });
+            },
+
+            moreMessages() {
+              console.log(this.messagesfromdb[0].id_message);
+              
+            },
+
           },
 
 
 
         updated() {
           this.scrollToEnd();
+          this.popupForUpdate();
         }
     }
 </script>

@@ -50,6 +50,18 @@
     // padding-bottom: 40px;
 
     .message_list{
+      li:first-child{
+        .more_mes_box{
+          text-align: center;
+          .more_mes_cont{
+            color: blue;
+            cursor: pointer;
+            display: inline-block;
+            margin: auto;
+            float: none;
+          }
+        }
+      }
       li{
         .message_box{
           .message_not_img{
@@ -96,8 +108,10 @@
               flex-wrap: wrap;
               li{
                 .image_box{
-                  max-width: 200px;
+                  max-width: 150px;
                   max-height: 100px;
+                  min-width: 150px;
+                  min-height: 100px;
                   display: block;
                   margin-right: 5px;
                   margin-bottom: 5px;

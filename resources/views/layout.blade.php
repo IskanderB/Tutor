@@ -8,6 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
    <title>Tutor</title>
    <link rel="shortcut icon" href="{{URL::asset('images/title.png')}}" type="image/x-icon">
+   <link rel="stylesheet" href="{{URL::asset('css/magnific-popup.css')}}">
    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"

@@ -1,3 +1,6 @@
+// $(document).ready(function() {
+
+
 var textarea = document.querySelector('textarea');
 
 textarea.addEventListener('keyup', function(){
@@ -31,8 +34,10 @@ $('div[data-hint]').on({
 // var messageDisplay = vueContent.$refs.messageDisplay;
 // messageDisplay.scrollTop = messageDisplay.scrollHeight;
 
-var container = document.querySelector(".messages_box");
-container.scrollTop = container.scrollHeight;
+// var container = document.querySelector(".messages_box");
+//
+// container.scrollTop = container.scrollHeight;
+
 // var scrollHeight = container.scrollHeight;
 // container.scrollTop  = scrollHeight;
 
@@ -50,3 +55,11 @@ $('#upload_icon').click(function(){
 // $('#upload_icon').click(function(){
 //   $('.upload_wrap').css('display', 'block');
 // });
+
+$(document).ready(function() {
+  $('.image_box').magnificPopup({
+    delegate: 'a',
+    type: 'image'
+  });
+
+});

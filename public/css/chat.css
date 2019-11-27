@@ -40,6 +40,16 @@
   float: none;
   margin-top: 1px;
 }
+.chat_box .messages_box .message_list li:first-child .more_mes_box {
+  text-align: center;
+}
+.chat_box .messages_box .message_list li:first-child .more_mes_box .more_mes_cont {
+  color: blue;
+  cursor: pointer;
+  display: inline-block;
+  margin: auto;
+  float: none;
+}
 .chat_box .messages_box .message_list li .message_box .message_not_img .message_icon {
   min-width: 33px;
 }
@@ -79,8 +89,10 @@
   flex-wrap: wrap;
 }
 .chat_box .messages_box .message_list li .message_box .images_box .images_list li .image_box {
-  max-width: 200px;
+  max-width: 150px;
   max-height: 100px;
+  min-width: 150px;
+  min-height: 100px;
   display: block;
   margin-right: 5px;
   margin-bottom: 5px;
