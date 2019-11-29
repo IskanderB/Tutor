@@ -43,7 +43,7 @@ Route::get('/tutoraccount', 'UserAccountController@studList')->name('tutoraccoun
 
 Route::post('/image/upload', 'ImageController@upload')->name('image.upload')->middleware(['auth', 'confirmed']);
 
-
+Route::get('/more-messages', 'ChatController@moreMessages')->name('more-messages')->middleware(['auth', 'confirmed']);
 // Route::post('messages', function(Illuminate\Http\Request $request){
 //   App\Events\Message::dispatch($request->input('body'))
 // });

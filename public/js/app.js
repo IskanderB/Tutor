@@ -2158,6 +2158,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -2495,7 +2500,44 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       });
     },
     moreMessages: function moreMessages() {
-      console.log(this.messagesfromdb[0].id_message);
+      var _this3 = this;
+
+      console.log(this.dataMessages[0].id_message);
+      axios({
+        method: 'get',
+        url: '/more-messages',
+        params: {
+          border_message_id: this.dataMessages[0].id_message,
+          studid: this.stud.id
+        }
+      }).then(function (response) {
+        // console.log('response');
+        // console.log(response.data);
+        var _iteratorNormalCompletion3 = true;
+        var _didIteratorError3 = false;
+        var _iteratorError3 = undefined;
+
+        try {
+          for (var _iterator3 = response.data[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+            var iter = _step3.value;
+
+            _this3.dataMessages.unshift(iter);
+          }
+        } catch (err) {
+          _didIteratorError3 = true;
+          _iteratorError3 = err;
+        } finally {
+          try {
+            if (!_iteratorNormalCompletion3 && _iterator3["return"] != null) {
+              _iterator3["return"]();
+            }
+          } finally {
+            if (_didIteratorError3) {
+              throw _iteratorError3;
+            }
+          }
+        }
+      });
     }
   },
   updated: function updated() {
@@ -56450,20 +56492,27 @@ var render = function() {
             { staticClass: "message_list" },
             [
               _c("li", [
-                _c("div", { staticClass: "more_mes_box" }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "more_mes_cont",
-                      on: { click: _vm.moreMessages }
-                    },
-                    [
-                      _vm._v(
-                        "\n                Больше сообщений\n              "
+                _vm.messagesfromdb[0].id_message > 30 &&
+                _vm.dataMessages[0].id_message > 1
+                  ? _c("div", { staticClass: "more_mes_box" }, [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "more_mes_cont",
+                          on: { click: _vm.moreMessages }
+                        },
+                        [
+                          _vm._v(
+                            "\n                Больше сообщений:" +
+                              _vm._s(_vm.messagesfromdb[0].id_message) +
+                              ":" +
+                              _vm._s(_vm.dataMessages[0].id_message) +
+                              "\n              "
+                          )
+                        ]
                       )
-                    ]
-                  )
-                ])
+                    ])
+                  : _vm._e()
               ]),
               _vm._v(" "),
               _vm._l(_vm.dataMessages, function(iter) {
@@ -56551,10 +56600,10 @@ var render = function() {
                                 ])
                               : _c("div", { staticClass: "file_box" }, [
                                   _c("div", { staticClass: "file_content" }, [
-                                    _vm._v(
-                                      "\n                        " +
-                                        _vm._s(img.name) +
-                                        "\n                      "
+                                    _c(
+                                      "a",
+                                      { attrs: { href: "" + img.path } },
+                                      [_vm._v(_vm._s(img.name))]
                                     )
                                   ])
                                 ])
@@ -69155,14 +69204,15 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************************!*\
   !*** ./resources/js/components/SocketChatTutorComponent.vue ***!
   \**************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SocketChatTutorComponent_vue_vue_type_template_id_240b731d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SocketChatTutorComponent.vue?vue&type=template&id=240b731d& */ "./resources/js/components/SocketChatTutorComponent.vue?vue&type=template&id=240b731d&");
 /* harmony import */ var _SocketChatTutorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SocketChatTutorComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/SocketChatTutorComponent.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _SocketChatTutorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _SocketChatTutorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -69192,7 +69242,7 @@ component.options.__file = "resources/js/components/SocketChatTutorComponent.vue
 /*!***************************************************************************************!*\
   !*** ./resources/js/components/SocketChatTutorComponent.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************/
-/*! exports provided: default */
+/*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

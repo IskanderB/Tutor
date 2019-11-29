@@ -10,11 +10,16 @@
           <div class="messages_box" >
             <ul class="message_list">
               <li>
-                <div class="more_mes_box">
+                <div class="more_mes_box" v-if="messagesfromdb[0].id_message > 30 && dataMessages[0].id_message > 1">
+                  <div class="more_mes_cont" @click="moreMessages">
+                    Больше сообщений:{{messagesfromdb[0].id_message}}:{{dataMessages[0].id_message}}
+                  </div>
+                </div>
+                <!-- <div class="more_mes_box" v-else="dataMessages[0] > 1">
                   <div class="more_mes_cont" @click="moreMessages">
                     Больше сообщений
                   </div>
-                </div>
+                </div> -->
               </li>
               <li v-for="iter in dataMessages" v-bind:key="iter.from_user">
                 <div class="message_box">
@@ -54,7 +59,7 @@
 
                         <div class="file_box" v-else>
                           <div class="file_content">
-                            {{img.name}}
+                            <a :href="`${img.path}`">{{img.name}}</a>
                           </div>
                         </div>
 
@@ -349,8 +354,23 @@
             },
 
             moreMessages() {
-              console.log(this.messagesfromdb[0].id_message);
-              
+              console.log(this.dataMessages[0].id_message);
+              axios({
+                method: 'get',
+                url: '/more-messages',
+                params: {
+                  border_message_id: this.dataMessages[0].id_message,
+                  studid: this.stud.id,
+                 },
+              })
+
+              .then((response) => {
+                // console.log('response');
+                // console.log(response.data);
+                for (let iter of response.data) {
+                    this.dataMessages.unshift(iter);
+                }
+              });
             },
 
           },
