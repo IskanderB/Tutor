@@ -2163,6 +2163,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -2182,7 +2184,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       relationship: "",
       res: [],
       res_finish: "",
-      isDNone: "none"
+      isDNone: "none",
+      is_more_mes: true
     };
   },
   props: ['stud', 'user', 'messagesfromdb'],
@@ -2502,7 +2505,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     moreMessages: function moreMessages() {
       var _this3 = this;
 
-      console.log(this.dataMessages[0].id_message);
       axios({
         method: 'get',
         url: '/more-messages',
@@ -2511,8 +2513,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           studid: this.stud.id
         }
       }).then(function (response) {
-        // console.log('response');
-        // console.log(response.data);
+        if (response.data.length < 30) {
+          _this3.is_more_mes = false;
+        }
+
         var _iteratorNormalCompletion3 = true;
         var _didIteratorError3 = false;
         var _iteratorError3 = undefined;
@@ -56492,8 +56496,7 @@ var render = function() {
             { staticClass: "message_list" },
             [
               _c("li", [
-                _vm.messagesfromdb[0].id_message > 30 &&
-                _vm.dataMessages[0].id_message > 1
+                _vm.dataMessages.length >= 30 && _vm.is_more_mes
                   ? _c("div", { staticClass: "more_mes_box" }, [
                       _c(
                         "div",
@@ -56503,11 +56506,7 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                Больше сообщений:" +
-                              _vm._s(_vm.messagesfromdb[0].id_message) +
-                              ":" +
-                              _vm._s(_vm.dataMessages[0].id_message) +
-                              "\n              "
+                            "\n                Больше сообщений\n              "
                           )
                         ]
                       )
@@ -56599,12 +56598,14 @@ var render = function() {
                                   ])
                                 ])
                               : _c("div", { staticClass: "file_box" }, [
-                                  _c("div", { staticClass: "file_content" }, [
-                                    _c(
-                                      "a",
-                                      { attrs: { href: "" + img.path } },
-                                      [_vm._v(_vm._s(img.name))]
-                                    )
+                                  _c("a", { attrs: { href: "" + img.path } }, [
+                                    _c("div", { staticClass: "file_content" }, [
+                                      _vm._v(
+                                        "\n                          " +
+                                          _vm._s(img.name) +
+                                          "\n                        "
+                                      )
+                                    ])
                                   ])
                                 ])
                           ])
@@ -69204,15 +69205,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!**************************************************************!*\
   !*** ./resources/js/components/SocketChatTutorComponent.vue ***!
   \**************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _SocketChatTutorComponent_vue_vue_type_template_id_240b731d___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SocketChatTutorComponent.vue?vue&type=template&id=240b731d& */ "./resources/js/components/SocketChatTutorComponent.vue?vue&type=template&id=240b731d&");
 /* harmony import */ var _SocketChatTutorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SocketChatTutorComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/SocketChatTutorComponent.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _SocketChatTutorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _SocketChatTutorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -69242,7 +69242,7 @@ component.options.__file = "resources/js/components/SocketChatTutorComponent.vue
 /*!***************************************************************************************!*\
   !*** ./resources/js/components/SocketChatTutorComponent.vue?vue&type=script&lang=js& ***!
   \***************************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -69693,10 +69693,9 @@ $('div[data-hint]').on({
 //
 // var messageDisplay = vueContent.$refs.messageDisplay;
 // messageDisplay.scrollTop = messageDisplay.scrollHeight;
-// var container = document.querySelector(".messages_box");
-//
-// container.scrollTop = container.scrollHeight;
-// var scrollHeight = container.scrollHeight;
+
+var container = document.querySelector(".messages_box");
+container.scrollTop = container.scrollHeight; // var scrollHeight = container.scrollHeight;
 // container.scrollTop  = scrollHeight;
 // $('#smile').click(function(){
 //

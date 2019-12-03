@@ -50,6 +50,15 @@
   margin: auto;
   float: none;
 }
+.chat_box .messages_box .message_list li {
+  width: inherit;
+}
+.chat_box .messages_box .message_list li .message_box {
+  width: inherit;
+}
+.chat_box .messages_box .message_list li .message_box .message_not_img {
+  width: inherit;
+}
 .chat_box .messages_box .message_list li .message_box .message_not_img .message_icon {
   min-width: 33px;
 }
@@ -65,6 +74,7 @@
 .chat_box .messages_box .message_list li .message_box .message_not_img .message_info {
   margin-left: 10px;
   margin-top: 12px;
+  max-width: 85%;
 }
 .chat_box .messages_box .message_list li .message_box .message_not_img .message_info .message_name_time {
   font-size: 14px;
@@ -79,6 +89,9 @@
 }
 .chat_box .messages_box .message_list li .message_box .message_not_img .message_info .message_name_time .bottom_line:hover {
   text-decoration: underline;
+}
+.chat_box .messages_box .message_list li .message_box .message_not_img .message_info .message_cont {
+  word-wrap: break-word;
 }
 .chat_box .messages_box .message_list li .message_box .images_box {
   max-width: 400px;
@@ -104,7 +117,7 @@
 .chat_box .messages_box .message_list li .message_box .images_box .images_list li .file_box {
   min-width: 400px;
 }
-.chat_box .messages_box .message_list li .message_box .images_box .images_list li .file_box .file_content {
+.chat_box .messages_box .message_list li .message_box .images_box .images_list li .file_box a .file_content {
   display: inline-block;
   background-color: #e4e7e5;
   border-radius: 10px;

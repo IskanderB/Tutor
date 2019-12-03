@@ -1,0 +1,21 @@
+.tasks_box {
+  min-height: 250px;
+}
+.card .card-body .tasks_box {
+  min-height: 250px;
+}
+.card .card-body .task_form .textarea_box {
+  width: 100%;
+}
+.card .card-body .task_form .textarea_box textarea {
+  width: inherit;
+  height: 70px;
+  overflow: hidden;
+  border-radius: 3px;
+}
+.card .card-body .task_form .input_file_box {
+  margin-bottom: 5px;
+}
+.card .card-body .task_form .input_time_box {
+  margin-bottom: 5px;
+}

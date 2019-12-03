@@ -34,9 +34,9 @@ $('div[data-hint]').on({
 // var messageDisplay = vueContent.$refs.messageDisplay;
 // messageDisplay.scrollTop = messageDisplay.scrollHeight;
 
-// var container = document.querySelector(".messages_box");
-//
-// container.scrollTop = container.scrollHeight;
+var container = document.querySelector(".messages_box");
+
+container.scrollTop = container.scrollHeight;
 
 // var scrollHeight = container.scrollHeight;
 // container.scrollTop  = scrollHeight;

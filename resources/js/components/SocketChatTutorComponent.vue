@@ -10,9 +10,9 @@
           <div class="messages_box" >
             <ul class="message_list">
               <li>
-                <div class="more_mes_box" v-if="messagesfromdb[0].id_message > 30 && dataMessages[0].id_message > 1">
+                <div class="more_mes_box" v-if="dataMessages.length >= 30 && is_more_mes">
                   <div class="more_mes_cont" @click="moreMessages">
-                    Больше сообщений:{{messagesfromdb[0].id_message}}:{{dataMessages[0].id_message}}
+                    Больше сообщений
                   </div>
                 </div>
                 <!-- <div class="more_mes_box" v-else="dataMessages[0] > 1">
@@ -58,9 +58,11 @@
                         </div>
 
                         <div class="file_box" v-else>
-                          <div class="file_content">
-                            <a :href="`${img.path}`">{{img.name}}</a>
-                          </div>
+                          <a :href="`${img.path}`">
+                            <div class="file_content">
+                              {{img.name}}
+                            </div>
+                          </a>
                         </div>
 
                       </li>
@@ -161,6 +163,7 @@
             res: [],
             res_finish: "",
             isDNone: "none",
+            is_more_mes: true,
           }
         },
 
@@ -203,6 +206,7 @@
                 full_time: data.message.full_time,
                 images_path: data.message.result,
               });
+
 
             }
 
@@ -275,7 +279,9 @@
               json = "";
               this.files = [];
               this.isDNone = "none";
+
             });
+
           },
 
           scrollToEnd: function() {
@@ -354,7 +360,6 @@
             },
 
             moreMessages() {
-              console.log(this.dataMessages[0].id_message);
               axios({
                 method: 'get',
                 url: '/more-messages',
@@ -365,8 +370,10 @@
               })
 
               .then((response) => {
-                // console.log('response');
-                // console.log(response.data);
+
+                if (response.data.length < 30){
+                  this.is_more_mes = false;
+                }
                 for (let iter of response.data) {
                     this.dataMessages.unshift(iter);
                 }

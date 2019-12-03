@@ -63,8 +63,11 @@
         }
       }
       li{
+        width: inherit;
         .message_box{
+          width: inherit;
           .message_not_img{
+            width: inherit;
             .message_icon{
               min-width: 33px;
               a{
@@ -80,6 +83,7 @@
             .message_info{
               margin-left: 10px;
               margin-top: 12px;
+              max-width: 85%;
               .message_name_time{
                 font-size: 14px;
                 .message_name{
@@ -95,7 +99,8 @@
                 }
               }
               .message_cont{
-
+                // max-width: 20%;
+                word-wrap: break-word;
               }
             }
           }
@@ -122,16 +127,18 @@
                 }
                 .file_box{
                   min-width: 400px;
-                  .file_content{
-                    display: inline-block;
-                    background-color: @gray;
-                    border-radius: 10px;
-                    margin-bottom: 10px;
-                    overflow-x:hidden;
-                    margin-right: 5px;
-                    margin-bottom: 5px;
-                    padding: 5px 5px 5px 5px;
-                    min-width: 200px;
+                  a{
+                    .file_content{
+                      display: inline-block;
+                      background-color: @gray;
+                      border-radius: 10px;
+                      margin-bottom: 10px;
+                      overflow-x:hidden;
+                      margin-right: 5px;
+                      margin-bottom: 5px;
+                      padding: 5px 5px 5px 5px;
+                      min-width: 200px;
+                    }
                   }
                 }
               }

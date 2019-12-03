@@ -54,7 +54,7 @@
 
               <li class="menu__item">
                 <div>
-                  <a href="#">Материалы</a>
+                  <a href="/tasks/2">Материалы</a>
                 </div>
               </li>
 
