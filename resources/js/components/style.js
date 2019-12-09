@@ -33,10 +33,15 @@ $('div[data-hint]').on({
 //
 // var messageDisplay = vueContent.$refs.messageDisplay;
 // messageDisplay.scrollTop = messageDisplay.scrollHeight;
+try{
+  var container = document.querySelector(".messages_box");
 
-var container = document.querySelector(".messages_box");
+  container.scrollTop = container.scrollHeight;
+}
+catch (e) {
 
-container.scrollTop = container.scrollHeight;
+}
+
 
 // var scrollHeight = container.scrollHeight;
 // container.scrollTop  = scrollHeight;
@@ -63,3 +68,12 @@ $(document).ready(function() {
   });
 
 });
+
+try{
+  var container2 = document.querySelector("#tasks_box");
+  var scrollHeight2 = container2.scrollHeight;
+  container2.scrollTop  = scrollHeight2;
+}
+catch (e) {
+
+}

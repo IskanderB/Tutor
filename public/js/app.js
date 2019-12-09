@@ -69694,8 +69694,10 @@ $('div[data-hint]').on({
 // var messageDisplay = vueContent.$refs.messageDisplay;
 // messageDisplay.scrollTop = messageDisplay.scrollHeight;
 
-var container = document.querySelector(".messages_box");
-container.scrollTop = container.scrollHeight; // var scrollHeight = container.scrollHeight;
+try {
+  var container = document.querySelector(".messages_box");
+  container.scrollTop = container.scrollHeight;
+} catch (e) {} // var scrollHeight = container.scrollHeight;
 // container.scrollTop  = scrollHeight;
 // $('#smile').click(function(){
 //
@@ -69703,6 +69705,7 @@ container.scrollTop = container.scrollHeight; // var scrollHeight = container.sc
 //     $('#description').val($('#description').val()+smiley);
 //     console.log($('#description').val());
 // });
+
 
 $('#upload_icon').click(function () {
   $('#upload').click();
@@ -69716,6 +69719,12 @@ $(document).ready(function () {
     type: 'image'
   });
 });
+
+try {
+  var container2 = document.querySelector("#tasks_box");
+  var scrollHeight2 = container2.scrollHeight;
+  container2.scrollTop = scrollHeight2;
+} catch (e) {}
 
 /***/ }),
 

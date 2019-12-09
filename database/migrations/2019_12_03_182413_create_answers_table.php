@@ -20,6 +20,9 @@ class CreateAnswersTable extends Migration
             $table->integer('from_user')->nullable();
             $table->integer('to_user')->nullable();
             $table->string('content')->nullable();
+            $table->integer('relationship')->nullable();
+            $table->boolean('check')->nullable();
+            $table->string('mark')->nullable();
         });
     }
 

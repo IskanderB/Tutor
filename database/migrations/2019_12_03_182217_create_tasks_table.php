@@ -21,6 +21,10 @@ class CreateTasksTable extends Migration
             $table->integer('to_user')->nullable();
             $table->string('content')->nullable();
             $table->string('time_limit')->nullable();
+            $table->string('name')->nullable();
+            $table->boolean('check')->nullable();
+            $table->string('mark')->nullable();
+            $table->integer('number')->nullable();
         });
     }
 

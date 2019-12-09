@@ -1,8 +1,48 @@
-.tasks_box {
-  min-height: 250px;
-}
+/* Vars color */
 .card .card-body .tasks_box {
   min-height: 250px;
+  max-height: 350px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin-bottom: 20px;
+}
+.card .card-body .tasks_box .tasks_list li .task_box {
+  padding: 10px 10px 10px 10px;
+  border: 1px solid #989a99;
+  border-radius: 7px;
+  margin-bottom: 10px;
+}
+.card .card-body .tasks_box .tasks_list li .task_box .task_name {
+  justify-content: space-between;
+}
+.card .card-body .tasks_box .tasks_list li .task_box .task_name .name_and_new .new_task {
+  height: 22px;
+  padding-right: 6px;
+  padding-left: 6px;
+  background-color: #bd00bd;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 800;
+  color: white;
+  margin-left: 5px;
+  margin-top: 3px;
+}
+.card .card-body .tasks_box .tasks_list li .task_box .task_name .edit_icon {
+  color: #989a99;
+  cursor: pointer;
+}
+.card .card-body .tasks_box .tasks_list li .task_box .task_time_limit {
+  color: #989a99;
+}
+.card .card-body .tasks_box .tasks_list li .task_box .open_icon_box {
+  justify-content: flex-end;
+}
+.card .card-body .tasks_box .tasks_list li .task_box .open_icon_box .open_icon {
+  display: inline-block;
+  font-size: 25px;
+  height: 25px;
+  color: #989a99;
+  cursor: pointer;
 }
 .card .card-body .task_form .textarea_box {
   width: 100%;
@@ -16,6 +56,18 @@
 .card .card-body .task_form .input_file_box {
   margin-bottom: 5px;
 }
+.card .card-body .task_form .input_name_box {
+  margin-bottom: 5px;
+}
+.card .card-body .task_form .input_name_box input {
+  width: 100%;
+}
 .card .card-body .task_form .input_time_box {
   margin-bottom: 5px;
+  justify-content: space-between;
+}
+.card .card-body .task_form .input_time_box .input_time_text {
+  display: inline-block;
+  height: 22px;
+  margin-top: 7px;
 }
