@@ -6,21 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class File_answers extends Model
 {
-  public function create($data)
+  public function create($test)
   {
-    if($data['type'] != 'jpeg' and $data['type'] != 'png' and $data['type'] != 'gif'){
-      $name = $data['name'];
-    }
-    else {
-      $name = 'Image';
-    }
+    foreach ($test as $data) {
+      if($data['type'] != 'jpeg' and $data['type'] != 'png' and $data['type'] != 'gif'){
+        $name = $data['name'];
+      }
+      else {
+        $name = 'Image';
+      }
 
-    $this->insertGetId([
-      'path' => asset('storage/'. $data['path']),
-      'relationship' => $data['relationship'],
-      'type' => $data['type'],
-      'name' => $name,
-    ]);
+      $this->insertGetId([
+        'path' => asset('storage/'. $data['path']),
+        'relationship' => $data['relationship'],
+        'type' => $data['type'],
+        'name' => $name,
+      ]);
+    }
 
   }
 }

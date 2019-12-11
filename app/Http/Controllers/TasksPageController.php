@@ -115,14 +115,25 @@ class TasksPageController extends Controller
     {
       if($task->check){
         return [
-          [$task, File_tasks::select()->where('relationship', $task->id)->get()],
-          [$answer = Answers::select()->where('relationship', $task->id)->get(), File_answers::select()->where('relationship', $answer[0]->id)->get()],
+            'task' =>  [
+              'task_cont' =>  $task,
+              'task_files' =>  File_tasks::select()->where('relationship', $task->id)->get()
+            ],
+            'answer' =>  [
+              'answer_cont' =>  $answer = Answers::select()->where('relationship', $task->id)->get(),
+              'answer_files' =>  File_answers::select()->where('relationship', $answer[0]->id)->get()
+            ],
         ];
       }
       else{
         return [
-          [$task, File_tasks::select()->where('relationship', $task->id)->get()],
-          [$answer = Answers::select()->where('relationship', $task->id)->get()],
+            'task' =>  [
+              'task_cont' =>  $task,
+              'task_files' =>  File_tasks::select()->where('relationship', $task->id)->get()
+            ],
+            'answer' =>  [
+              'answer_cont' =>  $answer = Answers::select()->where('relationship', $task->id)->get(),
+            ],
         ];
       }
     }

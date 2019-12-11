@@ -13,8 +13,8 @@
               <div class="task_box">
                 <div class="task_name d-flex">
                   <div class="name_and_new d-flex">
-                    <h5>{{$task[0][0]->name}}(№{{$task[0][0]->id}})</h5>
-                    @if(!$task[0][0]->check)
+                    <h5>{{$task['task']['task_cont']->name}}(№{{$task['task']['task_cont']->id}})</h5>
+                    @if(!$task['task']['task_cont']->check)
                     <div class="new_task">
                       new
                     </div>
@@ -28,43 +28,71 @@
                 </div>
 
                 <div class="task_time_limit">
-                  Выполнить к {{$task[0][0]->time_limit}}
+                  Выполнить к {{$task['task']['task_cont']->time_limit}}
                 </div>
 
+                @if(strlen($task['task']['task_cont']->content) <= 250)
                 <div class="task_text">
-                  {{$task[0][0]->content}}
+                  {{$task['task']['task_cont']->content}}
+                  <!-- {{strlen($task['task']['task_cont']->content)}} -->
                 </div>
+                @else
+                <div class="task_text">
+                  {{substr($task['task']['task_cont']->content, 0, 250)}}
+                  <span class="points">...</span>
+                  <span class="last_cont">{{substr($task['task']['task_cont']->content, 251)}}</span>
+                  <!-- {{strlen($task['task']['task_cont']->content)}} -->
+                  <!-- {{mb_strimwidth($task['task']['task_cont']->content, 0, 150, "...")}} -->
+                </div>
+                @endif
+
 
                  <div class="task_files_box">
+                   @if(isset($task['task']['task_files'][0]->path))
                    <ul class="files_list d-flex">
+                     @foreach ($task['task']['task_files'] as $file)
                      <li>
+                       @if($file->name == 'Image')
                        <div class="image_box">
-                       <a href=""><img src="@if(isset($task[0][1][0]->path)){{$task[0][1][0]->path}}@endif" alt="" class="image_task"></a>
+                       <a href="{{$file->path}}"><img src="{{$file->path}}" alt="" class="image_task"></a>
                        </div>
-
+                       @else
                        <div class="file_box">
-                         <a href="">
-                           <div class="file_content">
-
-                           </div>
-                         </a>
+                         <div class="file_content">
+                           <a href="{{$file->path}}">
+                           {{$file->name}}
+                           </a>
+                         </div>
                        </div>
+                       @endif
                      </li>
+                     @endforeach
                    </ul>
+                   @endif
                  </div>
 
-                <!-- <div class="open_icon_box d-flex">
+                <div class="open_icon_box d-flex open_icon_down_js">
                   <div class="open_icon">
-                    <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                    <div class="open_icon_down">
+                      <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                    </div>
                   </div>
-                </div> -->
+                </div>
+
+                <div class="open_icon_box d-flex open_icon_up_js">
+                  <div class="open_icon">
+                    <div class="open_icon_up">
+                      <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
               </div>
             </li>
-            @if($task[0][0]->check)
+            @if($task['task']['task_cont']->check)
             <li>
               <div class="task_box">
                 <div class="task_name d-flex">
-                  <h5>Ответ к заданию(№{{$task[1][0][0]->relationship}})</h5>
+                  <h5>Ответ к заданию(№{{$task['answer']['answer_cont'][0]->relationship}})</h5>
                   @if(!$is_tutor)
                   <div class="edit_icon">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
@@ -73,18 +101,52 @@
                 </div>
 
                 <div class="task_time_limit">
-                  Отправлен {{$task[1][0][0]->created_at->format("Y-m-d H:i")}}
+                  Отправлен {{$task['answer']['answer_cont'][0]->created_at->format("Y-m-d H:i")}}
                 </div>
 
                 <div class="task_text">
-                  {{$task[1][0][0]->content}}
+                  {{$task['answer']['answer_cont'][0]->content}}
                 </div>
 
-                <!-- <div class="open_icon_box d-flex">
-                  <div class="open_icon">
-                    <i class="fa fa-angle-double-down" aria-hidden="true"></i>
-                  </div>
-                </div> -->
+                @if(isset($task['answer']['answer_files'][0]->path))
+                 <div class="task_files_box">
+                   <ul class="files_list d-flex">
+                     @foreach ($task['answer']['answer_files'] as $file)
+                     <li>
+                       @if($file->name == 'Image')
+                       <div class="image_box">
+                       <a href="{{$file->path}}"><img src="{{$file->path}}" alt="" class="image_task"></a>
+                       </div>
+                       @else
+                       <div class="file_box">
+                         <div class="file_content">
+                           <a href="{{$file->path}}">
+                           {{$file->name}}
+                           </a>
+                         </div>
+                       </div>
+                       @endif
+                     </li>
+                     @endforeach
+                   </ul>
+                 </div>
+                 @endif
+
+                 <div class="open_icon_box d-flex open_icon_down_js">
+                   <div class="open_icon">
+                     <div class="open_icon_down">
+                       <i class="fa fa-angle-double-down" aria-hidden="true"></i>
+                     </div>
+                   </div>
+                 </div>
+
+                 <div class="open_icon_box d-flex open_icon_up_js">
+                   <div class="open_icon">
+                     <div class="open_icon_up">
+                       <i class="fa fa-angle-double-up" aria-hidden="true"></i>
+                     </div>
+                   </div>
+                 </div>
               </div>
             </li>
             @endif

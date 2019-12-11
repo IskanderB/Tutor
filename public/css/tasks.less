@@ -27,6 +27,10 @@
             .task_name{
               justify-content: space-between;
               .name_and_new{
+                h5{
+                  max-width: 371px;
+                  flex-wrap: wrap;
+                }
                 .new_task{
                   height: 22px;
                   padding-right: 6px;
@@ -49,16 +53,67 @@
               color: @superb_gray;
             }
             .task_text{
-
+              .last_cont{
+                display: none;
+              }
             }
             .open_icon_box{
               justify-content: flex-end;
               .open_icon{
                 display: inline-block;
                 font-size: 25px;
-                height: 25px;
+                max-height: 25px;
                 color: @superb_gray;
                 cursor: pointer;
+                .open_icon_down{
+
+                }
+                .open_icon_up{
+                  display: none;
+                }
+              }
+            }
+            .task_files_box{
+              display: none;
+              .files_list{
+                max-width: 471px;
+                display: block;
+                flex-wrap: wrap;
+                li{
+                  .image_box{
+                    max-width: 200px;
+                    max-height: 100px;
+                    min-width: 200px;
+                    min-height: 100px;
+                    margin-right: 5px;
+                    margin-bottom: 5px;
+                    a{
+                      max-width: inherit;
+                      max-height: inherit;
+                      img{
+                        max-width: inherit;
+                        max-height: inherit;
+                      }
+                    }
+                  }
+                  .file_box{
+                    min-width: 400px;
+                    .file_content{
+                      display: inline-block;
+                      background-color: @gray;
+                      border-radius: 10px;
+                      overflow-x:hidden;
+                      margin-right: 5px;
+                      padding: 5px 5px 5px 5px;
+                      min-width: 200px;
+                      a{
+                        display: block;
+                        height: 100%;
+                        width: 100%;
+                      }
+                    }
+                  }
+                }
               }
             }
           }

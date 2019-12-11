@@ -77,3 +77,53 @@ try{
 catch (e) {
 
 }
+
+// $('.open_icon_down').click(function(event){
+//     let parent = event.target.parentNode.querySelector('.task_box');
+//     console.log(event.target.parentNode);
+// });
+
+let down = document.getElementsByClassName("open_icon_down_js");
+for (let i = 0; i < down.length; i++) {
+  down[i].addEventListener("click", function() {
+    let panel = this.parentNode;
+    // let oo = panel.getElementsByClassName("task_text");
+    // panel.style.display = 'none';
+    if(panel.childNodes[4].childNodes[1])
+    panel.childNodes[4].childNodes[1].style.display = 'none';
+
+    if(panel.childNodes[4].childNodes[3])
+    panel.childNodes[4].childNodes[3].style.display = 'block';
+
+    panel.childNodes[6].style.display = 'block';
+
+    // panel.childNodes[8].style.display = 'none';
+    panel.childNodes[8].childNodes[0].childNodes[0].style.display = 'none';
+    panel.childNodes[10].childNodes[0].childNodes[0].style.display = 'block';
+
+    console.log(panel.childNodes);
+  });
+}
+
+
+let up = document.getElementsByClassName("open_icon_up_js");
+for (let i = 0; i < up.length; i++) {
+  up[i].addEventListener("click", function() {
+    let panel = this.parentNode;
+    // let oo = panel.getElementsByClassName("task_text");
+    // panel.style.display = 'none';
+    if(panel.childNodes[4].childNodes[1])
+    panel.childNodes[4].childNodes[1].style.display = 'block';
+
+    if(panel.childNodes[4].childNodes[3])
+    panel.childNodes[4].childNodes[3].style.display = 'none';
+
+    panel.childNodes[6].style.display = 'none';
+
+    // panel.childNodes[8].style.display = 'none';
+    panel.childNodes[8].childNodes[0].childNodes[0].style.display = 'block';
+    panel.childNodes[10].childNodes[0].childNodes[0].style.display = 'none';
+
+    console.log(panel.childNodes);
+  });
+}
