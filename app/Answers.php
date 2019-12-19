@@ -24,4 +24,15 @@ class Answers extends Model
     $task = new Tasks();
     $task->checked($number);
   }
+
+  public function updateAnswer($data)
+  {
+    $this->where('id', $data['answer_id'])->update([
+      'content' => $data['content'],
+      'from_user' => $data['from_user'],
+      'to_user' => $data['to_user'],
+      'relationship' => $data['number'],
+    ]);
+
+  }
 }

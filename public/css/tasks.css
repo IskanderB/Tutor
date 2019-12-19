@@ -65,7 +65,6 @@
 .card .card-body .tasks_box .tasks_list li .task_box .task_files_box .files_list li .image_box {
   max-width: 200px;
   max-height: 100px;
-  min-width: 200px;
   min-height: 100px;
   margin-right: 5px;
   margin-bottom: 5px;
@@ -106,6 +105,23 @@
 }
 .card .card-body .task_form .input_file_box {
   margin-bottom: 5px;
+}
+.card .card-body .task_form .check_change_box {
+  display: none;
+}
+.card .card-body .task_form .input_id_box {
+  display: none;
+}
+.card .card-body .task_form .check_delet_wrap {
+  display: none;
+}
+.card .card-body .task_form .check_delet_wrap .check_delet_box {
+  margin-bottom: 5px;
+  justify-content: space-between;
+}
+.card .card-body .task_form .check_delet_wrap .check_delet_box .input_check_delet input {
+  display: block;
+  margin-top: 7px;
 }
 .card .card-body .task_form .input_name_box {
   margin-bottom: 5px;

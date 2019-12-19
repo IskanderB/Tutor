@@ -83,17 +83,19 @@ catch (e) {
 //     console.log(event.target.parentNode);
 // });
 
+//Open and close task-block
+
 let down = document.getElementsByClassName("open_icon_down_js");
 for (let i = 0; i < down.length; i++) {
   down[i].addEventListener("click", function() {
     let panel = this.parentNode;
     // let oo = panel.getElementsByClassName("task_text");
     // panel.style.display = 'none';
-    if(panel.childNodes[4].childNodes[1])
-    panel.childNodes[4].childNodes[1].style.display = 'none';
 
-    if(panel.childNodes[4].childNodes[3])
-    panel.childNodes[4].childNodes[3].style.display = 'block';
+    if(this.parentNode.childNodes[4].childNodes.length > 1){
+      panel.childNodes[4].childNodes[2].style.display = 'none';
+      panel.childNodes[4].childNodes[4].style.display = 'block';
+    }
 
     panel.childNodes[6].style.display = 'block';
 
@@ -101,7 +103,7 @@ for (let i = 0; i < down.length; i++) {
     panel.childNodes[8].childNodes[0].childNodes[0].style.display = 'none';
     panel.childNodes[10].childNodes[0].childNodes[0].style.display = 'block';
 
-    console.log(panel.childNodes);
+
   });
 }
 
@@ -112,11 +114,10 @@ for (let i = 0; i < up.length; i++) {
     let panel = this.parentNode;
     // let oo = panel.getElementsByClassName("task_text");
     // panel.style.display = 'none';
-    if(panel.childNodes[4].childNodes[1])
-    panel.childNodes[4].childNodes[1].style.display = 'block';
-
-    if(panel.childNodes[4].childNodes[3])
-    panel.childNodes[4].childNodes[3].style.display = 'none';
+    if(this.parentNode.childNodes[4].childNodes.length > 1){
+      panel.childNodes[4].childNodes[2].style.display = 'block';
+      panel.childNodes[4].childNodes[4].style.display = 'none';
+    }
 
     panel.childNodes[6].style.display = 'none';
 
@@ -124,6 +125,33 @@ for (let i = 0; i < up.length; i++) {
     panel.childNodes[8].childNodes[0].childNodes[0].style.display = 'block';
     panel.childNodes[10].childNodes[0].childNodes[0].style.display = 'none';
 
-    console.log(panel.childNodes);
   });
 }
+
+
+$(document).ready(function() {
+let edit = document.getElementsByClassName("edit_icon");
+for (let i = 0; i < edit.length; i++) {
+  edit[i].addEventListener("click", function() {
+    let panel = this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML;
+    // $('#name').val('Test');
+    console.log(panel);
+    let content;
+    if(this.parentNode.parentNode.childNodes[4].childNodes.length > 1){
+      content = this.parentNode.parentNode.childNodes[4].childNodes[0].innerHTML + this.parentNode.parentNode.childNodes[4].childNodes[4].innerHTML;
+      console.log(content);
+    }
+    else {
+      content = this.parentNode.parentNode.childNodes[4].childNodes[0].innerHTML;
+    }
+
+
+    $('#name').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].innerHTML);
+    $('#date').val(this.parentNode.parentNode.childNodes[2].childNodes[2].innerHTML);
+    $('#content').val(content);
+    $('#task_id').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML);
+    $('#check_change').click();
+    document.getElementsByClassName("check_delet_wrap")[0].style.display = 'block';
+  });
+}
+});

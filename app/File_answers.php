@@ -25,4 +25,9 @@ class File_answers extends Model
     }
 
   }
+
+  public function deleteFiles($id)
+  {
+    $this->where('relationship', $id)->delete();
+  }
 }

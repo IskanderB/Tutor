@@ -13,7 +13,8 @@
               <div class="task_box">
                 <div class="task_name d-flex">
                   <div class="name_and_new d-flex">
-                    <h5>{{$task['task']['task_cont']->name}}(№{{$task['task']['task_cont']->id}})</h5>
+                    <h5>{{$task['task']['task_cont']->name}}</h5><h5><span>(№</span><span>{{$task['task']['task_cont']->id}}</span><span>)</span></h5>
+
                     @if(!$task['task']['task_cont']->check)
                     <div class="new_task">
                       new
@@ -28,17 +29,17 @@
                 </div>
 
                 <div class="task_time_limit">
-                  Выполнить к {{$task['task']['task_cont']->time_limit}}
+                  <span>Выполнить к </span> <span>{{$task['task']['task_cont']->time_limit}}</span>
                 </div>
 
                 @if(strlen($task['task']['task_cont']->content) <= 250)
                 <div class="task_text">
-                  {{$task['task']['task_cont']->content}}
+                  <span>{{$task['task']['task_cont']->content}}</span>
                   <!-- {{strlen($task['task']['task_cont']->content)}} -->
                 </div>
                 @else
                 <div class="task_text">
-                  {{substr($task['task']['task_cont']->content, 0, 250)}}
+                  <span>{{substr($task['task']['task_cont']->content, 0, 250)}}</span>
                   <span class="points">...</span>
                   <span class="last_cont">{{substr($task['task']['task_cont']->content, 251)}}</span>
                   <!-- {{strlen($task['task']['task_cont']->content)}} -->
@@ -160,9 +161,25 @@
           <div class="col-lg-6 offset-lg-3 input_file_box">
             <input type="file" name="files[]" value="" multiple>
           </div>
+          <div class="col-lg-6 offset-lg-3 check_change_box">
+            <input type="checkbox" name="check_change" id="check_change">
+          </div>
+          <div class="check_delet_wrap" id="check_delet_wrap" >
+            <div class="col-lg-6 offset-lg-3 d-flex check_delet_box">
+              <div class="check_delet_text">
+                Удалить старые файлы
+              </div>
+              <div class="input_check_delet" id="input_check_delet">
+                <input type="checkbox" class="check_delet" id="check_delet" name="check_delet">
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 offset-lg-3 input_name_box input_id_box">
+            <input type="text" name="task_id" value="" id="task_id">
+          </div>
           @if($is_tutor)
           <div class="col-lg-6 offset-lg-3 input_name_box">
-            <input type="text" name="name" value="" placeholder="Тема...">
+            <input type="text" name="name" value="" placeholder="Тема..." id="name">
           </div>
 
           <div class="col-lg-6 offset-lg-3 input_time_box d-flex">
@@ -180,9 +197,9 @@
           @endif
           <div class="col-lg-6 offset-lg-3 textarea_box">
             @if($is_tutor)
-            <textarea name="content" rows="8" cols="80" placeholder="Комментарий к заданию..." required></textarea>
+            <textarea name="content" rows="8" cols="80" placeholder="Комментарий к заданию..." required id="content"></textarea>
             @else
-            <textarea name="content" rows="8" cols="80" placeholder="Комментарий к ответу..." required></textarea>
+            <textarea name="content" rows="8" cols="80" placeholder="Комментарий к ответу..." required id="content"></textarea>
             @endif
           </div>
 

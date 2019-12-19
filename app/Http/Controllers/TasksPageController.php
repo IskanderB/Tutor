@@ -26,10 +26,17 @@ class TasksPageController extends Controller
 
     public function upload(Request $request)
     {
+      // dd($request->check_change == "on");
       if(Auth::user()->is_tutor){
+        if($request->check_change == "on")
+        $this->updateTask($request);
+        else
         $this->uploadTask($request);
       }
       else{
+        if($request->check_change == "on")
+        $this->updateAnswer($request);
+        else
         $this->uploadAnswer($request);
       }
 
@@ -135,6 +142,60 @@ class TasksPageController extends Controller
               'answer_cont' =>  $answer = Answers::select()->where('relationship', $task->id)->get(),
             ],
         ];
+      }
+    }
+
+    public function updateTask($request)
+    {
+      $updateTask = new Tasks();
+      $updateTask->updateTask([
+        'from_user' => Auth::id(),
+        'to_user' => $request->studid,
+        'content' => $request->content,
+        'time_limit' => $request->date,
+        'name' => $request->name,
+        'task_id' => $request->task_id,
+      ]);
+
+      if($request->check_delet == "on")
+      $this->deleteFiles($request->task_id);
+
+      if($request->file('files')){
+        $this->appendFile($request, $request->task_id);
+      }
+
+    }
+
+    public function deleteFiles($id)
+    {
+      // dd("Test");
+      if(Auth::user()->is_tutor){
+        $file = new File_tasks();
+        $file->deleteFiles($id);
+      }
+      else {
+        $file = new File_answers();
+        $file->deleteFiles($id);
+      }
+
+    }
+
+    public function updateAnswer($request)
+    {
+      $answer = new Answers();
+      $answer->updateAnswer([
+        'from_user' => Auth::id(),
+        'to_user' => $request->studid,
+        'content' => $request->content,
+        'number' => $request->number,
+        'answer_id' => $request->task_id,
+      ]);
+
+      if($request->check_delet == "on")
+      $this->deleteFiles($request->task_id);
+      
+      if($request->file('files')){
+        $this->appendFile($request, $id);
       }
     }
 }

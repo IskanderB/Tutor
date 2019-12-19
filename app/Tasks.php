@@ -38,4 +38,16 @@ class Tasks extends Model
         'check' => true,
       ]);
     }
+
+    public function updateTask($data)
+    {
+      $this->where('id', $data['task_id'])->update([
+        'content' => $data['content'],
+        'from_user' => $data['from_user'],
+        'to_user' => $data['to_user'],
+        'time_limit' => $data['time_limit'],
+        'name' => $data['name'],
+      ]);
+
+    }
 }
