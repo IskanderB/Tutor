@@ -3,17 +3,30 @@
 @section('content')
   <div class="col-lg-9">
     <div class="card">
-      <div class="card-header">Редактировать данные пользователя</div>
+      <div class="card-header">Задания</div>
 
       <div class="card-body">
         <div class="col-lg-10 tasks_box offset-lg-1" id='tasks_box'>
+          @if(substr((string)count($tasks_list), -1) == "0")
+          <div class="more_task_box d-flex">
+            <div class="more_task">
+              <a href="/user/2/task/{{count($tasks_list) + 10}}">Больше заданий</a>
+            </div>
+          </div>
+          @endif
           <ul class="tasks_list">
             @foreach ($tasks_list as $task)
             <li>
               <div class="task_box">
                 <div class="task_name d-flex">
                   <div class="name_and_new d-flex">
-                    <h5>{{$task['task']['task_cont']->name}}</h5><h5><span>(№</span><span>{{$task['task']['task_cont']->id}}</span><span>)</span></h5>
+                    @if(is_null($task['task']['task_cont']->name))
+                      <h5>{{'Задание'}}</h5>
+                    @else
+                      <h5>{{$task['task']['task_cont']->name}}</h5>
+                    @endif
+
+                    <h5><span>(№</span><span>{{$task['task']['task_cont']->id}}</span><span>)</span></h5>
 
                     @if(!$task['task']['task_cont']->check)
                     <div class="new_task">
@@ -22,7 +35,7 @@
                     @endif
                   </div>
                   @if($is_tutor)
-                  <div class="edit_icon">
+                  <div class="edit_icon edit_icon_task" id="edit_icon_task">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                   </div>
                   @endif
@@ -40,8 +53,9 @@
                 @else
                 <div class="task_text">
                   <span>{{substr($task['task']['task_cont']->content, 0, 250)}}</span>
-                  <span class="points">...</span>
+                  <span class="points">{{'...'}}</span>
                   <span class="last_cont">{{substr($task['task']['task_cont']->content, 251)}}</span>
+                  <!-- {{$task['task']['task_cont']->content}} -->
                   <!-- {{strlen($task['task']['task_cont']->content)}} -->
                   <!-- {{mb_strimwidth($task['task']['task_cont']->content, 0, 150, "...")}} -->
                 </div>
@@ -93,45 +107,69 @@
             <li>
               <div class="task_box">
                 <div class="task_name d-flex">
-                  <h5>Ответ к заданию(№{{$task['answer']['answer_cont'][0]->relationship}})</h5>
+                  <div class="name_and_new d-flex">
+                    <h5>Ответ к заданию</h5><h5><span>(№</span><span>{{$task['answer']['answer_cont'][0]->relationship}}</span><span>)</span></h5>
+                  </div>
                   @if(!$is_tutor)
-                  <div class="edit_icon">
+                  <div class="edit_icon edit_icon_answer" id="edit_icon_answer">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
                   </div>
+                  @else
+                  @if(!$task['answer']['answer_cont'][0]->check)
+                  <div class="check_btn">
+                    <div class="btn btn-primary">
+                      Оценить
+                    </div>
+                  </div>
+                  @endif
                   @endif
                 </div>
 
                 <div class="task_time_limit">
-                  Отправлен {{$task['answer']['answer_cont'][0]->created_at->format("Y-m-d H:i")}}
+                  <span>Отправлен </span><span>{{$task['answer']['answer_cont'][0]->created_at->format("Y-m-d H:i")}}</span>
                 </div>
 
+                @if(strlen($task['answer']['answer_cont'][0]->content) <= 250)
                 <div class="task_text">
-                  {{$task['answer']['answer_cont'][0]->content}}
+                  <span>{{$task['answer']['answer_cont'][0]->content}}</span>
+                  <!-- {{strlen($task['task']['task_cont']->content)}} -->
                 </div>
+                @else
+                <div class="task_text">
+                  <span>{{substr($task['answer']['answer_cont'][0]->content, 0, 250)}}</span>
+                  <span class="points">...</span>
+                  <span class="last_cont">{{substr($task['answer']['answer_cont'][0]->content, 251)}}</span>
+                  <!-- {{strlen($task['task']['task_cont']->content)}} -->
+                  <!-- {{mb_strimwidth($task['task']['task_cont']->content, 0, 150, "...")}} -->
+                </div>
+                @endif
 
-                @if(isset($task['answer']['answer_files'][0]->path))
-                 <div class="task_files_box">
-                   <ul class="files_list d-flex">
-                     @foreach ($task['answer']['answer_files'] as $file)
-                     <li>
-                       @if($file->name == 'Image')
-                       <div class="image_box">
-                       <a href="{{$file->path}}"><img src="{{$file->path}}" alt="" class="image_task"></a>
-                       </div>
-                       @else
-                       <div class="file_box">
-                         <div class="file_content">
-                           <a href="{{$file->path}}">
-                           {{$file->name}}
-                           </a>
+                <!-- <div class="task_text">
+                  {{$task['answer']['answer_cont'][0]->content}}
+                </div> -->
+                <div class="task_files_box">
+                  @if(isset($task['answer']['answer_files'][0]->path))
+                     <ul class="files_list d-flex">
+                       @foreach ($task['answer']['answer_files'] as $file)
+                       <li>
+                         @if($file->name == 'Image')
+                         <div class="image_box">
+                         <a href="{{$file->path}}"><img src="{{$file->path}}" alt="" class="image_task"></a>
                          </div>
-                       </div>
-                       @endif
-                     </li>
-                     @endforeach
-                   </ul>
+                         @else
+                         <div class="file_box">
+                           <div class="file_content">
+                             <a href="{{$file->path}}">
+                             {{$file->name}}
+                             </a>
+                           </div>
+                         </div>
+                         @endif
+                       </li>
+                       @endforeach
+                     </ul>
+                   @endif
                  </div>
-                 @endif
 
                  <div class="open_icon_box d-flex open_icon_down_js">
                    <div class="open_icon">
@@ -155,7 +193,7 @@
           </ul>
         </div>
 
-        <form class="task_form" action="{{ route('task_answer.upload',  ['studid' => 2]) }}" method="POST" enctype="multipart/form-data">
+        <form class="task_form" id="task_form" action="{{ route('task_answer.upload',  ['studid' => 2]) }}" method="POST" enctype="multipart/form-data">
             @csrf
 
           <div class="col-lg-6 offset-lg-3 input_file_box">
@@ -192,7 +230,7 @@
           </div>
           @else
           <div class="col-lg-6 offset-lg-3 input_name_box">
-            <input type="text" name="number" value="" placeholder="Номер задания...">
+            <input type="text" name="number" placeholder="Номер задания..." id="number">
           </div>
           @endif
           <div class="col-lg-6 offset-lg-3 textarea_box">
@@ -217,6 +255,48 @@
 
             </div>
           </div>
+        </form>
+
+        <form class="task_form " action="/append/comment" method="POST" enctype="multipart/form-data" id="comment_form">
+            @csrf
+
+            <div class="input_time d-none">
+              <input type="text" class="form-control" id="task_id_com" name="task_id_com">
+            </div>
+            <div class="" id="" >
+              <div class="col-lg-6 offset-lg-3 d-flex justify-content-between">
+                <div class="">
+                  Проверено
+                </div>
+                <div class="" id="">
+                  <input type="checkbox" class="" id="" name="check">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-6 offset-lg-3 input_time_box d-flex">
+              <div class="input_time_text">
+                Оценка
+              </div>
+              <div class="input_time">
+                <input type="text" class="form-control" id="grade" name="grade">
+              </div>
+            </div>
+
+            <div class="col-lg-6 offset-lg-3 textarea_box">
+              <textarea name="comment" rows="8" cols="80" placeholder="Комментарий к оценке..." id="comment"></textarea>
+            </div>
+
+            <div class="col-lg-6 offset-lg-3 justify-content-start registration_btn">
+              <div class="btn_box_edit">
+                <div class="">
+                  <button type="submit" class="btn btn-primary">
+                    Отправить оценку
+                  </button>
+                </div>
+
+              </div>
+            </div>
         </form>
       </div>
     </div>

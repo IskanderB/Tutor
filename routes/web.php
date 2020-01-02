@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', 'HomePageController@index')->name('/');
 
 Route::get('/registration', 'RegistrationPageController@index')->middleware('guest');
@@ -45,9 +46,15 @@ Route::post('/image/upload', 'ImageController@upload')->name('image.upload')->mi
 
 Route::get('/more-messages', 'ChatController@moreMessages')->name('more-messages')->middleware(['auth', 'confirmed']);
 
-Route::get('/tasks/{studid}', 'TasksPageController@index')->name('tasks')->middleware(['auth', 'confirmed']);
+Route::get('/user/{studid}/task/{quantity}', 'TasksPageController@index')->name('tasks')->middleware(['auth', 'confirmed']);
 
 Route::post('/task_answer/upload', 'TasksPageController@upload')->name('task_answer.upload')->middleware(['auth', 'confirmed']);
+
+Route::get('/append/friend/{friend_id}', 'FriendsController@append')->name('append-friend')->middleware(['auth', 'confirmed']);
+
+Route::get('/delete/friend/{friend_id}', 'FriendsController@delete')->name('delete-friend')->middleware(['auth', 'confirmed']);
+
+Route::post('/append/comment', 'CommentsController@append')->name('append-comment')->middleware(['auth', 'confirmed']);
 // Route::post('messages', function(Illuminate\Http\Request $request){
 //   App\Events\Message::dispatch($request->input('body'))
 // });

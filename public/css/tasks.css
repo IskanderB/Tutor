@@ -1,10 +1,28 @@
 /* Vars color */
+#task_form {
+  display: block;
+}
+#comment_form {
+  display: none;
+}
 .card .card-body .tasks_box {
   min-height: 250px;
   max-height: 350px;
   overflow-y: scroll;
   overflow-x: hidden;
   margin-bottom: 20px;
+}
+.card .card-body .tasks_box .more_task_box {
+  justify-content: center;
+}
+.card .card-body .tasks_box .more_task_box .more_task {
+  display: inline-block;
+  float: none;
+  margin: auto;
+  color: blue;
+}
+.card .card-body .tasks_box .more_task_box .more_task a {
+  color: inherit;
 }
 .card .card-body .tasks_box .tasks_list li .task_box {
   padding: 10px 10px 10px 10px;
@@ -14,6 +32,9 @@
 }
 .card .card-body .tasks_box .tasks_list li .task_box .task_name {
   justify-content: space-between;
+}
+.card .card-body .tasks_box .tasks_list li .task_box .task_name .check_btn {
+  cursor: pointer;
 }
 .card .card-body .tasks_box .tasks_list li .task_box .task_name .name_and_new h5 {
   max-width: 371px;
@@ -137,4 +158,15 @@
   display: inline-block;
   height: 22px;
   margin-top: 7px;
+}
+.tasks_box::-webkit-scrollbar {
+  width: 10px;
+}
+.tasks_box::-webkit-scrollbar-track {
+  background-color: white;
+}
+.tasks_box::-webkit-scrollbar-thumb {
+  height: 50px;
+  background-color: #989a99;
+  border-radius: 5px;
 }

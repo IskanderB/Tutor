@@ -24,7 +24,7 @@
 .left_move_reg {
   margin-left: -6px;
 }
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 768px) {
   .card .card-body .registration_form .left_move_reg {
     margin-left: -14px;
   }

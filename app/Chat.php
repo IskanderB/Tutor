@@ -17,4 +17,5 @@ class Chat extends Model
 
     return $id;
   }
+
 }

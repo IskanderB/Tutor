@@ -1,0 +1,87 @@
+/* Vars color */
+@white: #F7FAF8;
+@gray: #E4E7E5;
+@superb_gray: #989A99;
+
+.container{
+  .users_wrap{
+    min-height: 100px;
+    .users_box{
+      max-height: 450px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      .users_list{
+        li{
+          .li_box{
+            margin-top: 5px;
+            .user{
+              cursor: pointer;
+              justify-content: space-between;
+              // background-color: @gray;
+              border-radius: 30px;
+              transition: 0.5s;
+              .user_wrap{
+                .user_icon{
+                  min-width: 33px;
+                  font-size: 45px;
+                  font-family: 'Fredoka One', cursive;
+                  // transition: 0.5s;
+                  margin-right: 15px;
+                  margin-left: 10px;
+                }
+                .user_name_wrap{
+                  .user_name{
+                    display: inline-block;
+                    margin-top: 22px;
+                    // transition: 0.5s;
+                  }
+                }
+              }
+              .app_friend{
+                margin-right: 20px;
+                margin-top: 14px;
+                .app_friend_btn{
+                  display: none;
+                }
+              }
+            }
+            .user:hover{
+              background-color: @gray;
+              transition: 0.5s;
+              color: @superb_gray;
+              .app_friend{
+                .app_friend_btn{
+                  display: block;
+                }
+              }
+            }
+            .user_buttons{
+              display: none;
+              margin-top: 5px;
+              margin-left: 15px;
+              .user_btn{
+                display: inline-block;
+                padding: 0 7px 0 7px;
+                a{
+                  padding: inherit;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  .all_users_wrap{
+
+  }
+  .pers_users_wrap{
+
+  }
+}
+
+.users_box::-webkit-scrollbar { width: 10px;}
+//.chat_box::-webkit-scrollbar-button {  background-color: #666; }
+.users_box::-webkit-scrollbar-track {  background-color: white;}
+// ::-webkit-scrollbar-track-piece { background-color: #ffffff;}
+.users_box::-webkit-scrollbar-thumb { height: 50px; background-color: @superb_gray; border-radius: 5px;}

@@ -7,8 +7,16 @@
   <div class="icons">
 
     <ul class="d-flex icons_ul">
-      <li> <a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a> </li>
-      <li> <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a> </li>
+      <li>
+        <div class="icon_box">
+          <a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a>
+        </div>
+      </li>
+      <li>
+        <div class="icon_box">
+          <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+        </div>
+      </li>
     </ul>
 
   </div>

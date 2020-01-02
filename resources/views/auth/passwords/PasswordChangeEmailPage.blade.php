@@ -12,7 +12,7 @@
           @csrf
 
           @if (session('status'))
-          <div class="offset-lg-3 col-lg-8">
+          <div class="offset-lg-3 col-lg-8 col-md-8 offset-md-3">
             <div class="alert alert-success left_move_reg" role="alert">
                 <!--{{ session('status') }}-->
                 Мы отправили ссылку для сброса пароля на ваш email!
@@ -21,7 +21,7 @@
 
           @endif
 
-        <div class="password_ch_label offset-lg-3 col-lg-8">
+        <div class="password_ch_label offset-lg-3 col-lg-8 col-md-8 offset-md-3">
           <div class="left_move_reg">
             <h5>Введите ваш email</h5>
             <div class="text">
@@ -31,8 +31,8 @@
         </div>
 
         <div class="form-group row">
-          <label for="full_name" class="col-lg-3 col-form-label text-md-right">Email</label>
-          <div class="col-lg-6">
+          <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right">Email</label>
+          <div class="col-lg-6 col-md-8">
             <input type="email" id="email" class="form-control" name="email" value="{{ Auth::user()->email ?? ''}}">
           </div>
         </div>
@@ -45,7 +45,7 @@
             </div>
         @enderror
 
-        <div class="col-lg-6 offset-lg-3 justify-content-start registration_btn">
+        <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-3 justify-content-start registration_btn">
           <div class="">
             <button type="submit" class="btn btn-primary left_move_reg">
             Отправить ссылку

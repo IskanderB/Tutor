@@ -1,6 +1,17 @@
 // $(document).ready(function() {
 
 
+$(document).ready(function() {
+  $('#menu_bar').click(function() {
+    if($('#menu_header')[0].style.display == 'block')
+    $('#menu_header')[0].style.display = 'none';
+    else
+    $('#menu_header')[0].style.display = 'block';
+    // console.log($('#test')[0]);
+  });
+});
+
+try{
 var textarea = document.querySelector('textarea');
 
 textarea.addEventListener('keyup', function(){
@@ -8,7 +19,10 @@ textarea.addEventListener('keyup', function(){
     this.style.height = this.scrollHeight + "px";
   }
 });
+}
+catch (e) {
 
+}
 // jQuery(document).ready(function(){
 //   jQuery('.scrollbar-inner').scrollbar();
 // });
@@ -101,6 +115,7 @@ for (let i = 0; i < down.length; i++) {
 
     // panel.childNodes[8].style.display = 'none';
     panel.childNodes[8].childNodes[0].childNodes[0].style.display = 'none';
+    // console.log(panel.childNodes);
     panel.childNodes[10].childNodes[0].childNodes[0].style.display = 'block';
 
 
@@ -130,12 +145,42 @@ for (let i = 0; i < up.length; i++) {
 
 
 $(document).ready(function() {
-let edit = document.getElementsByClassName("edit_icon");
-for (let i = 0; i < edit.length; i++) {
-  edit[i].addEventListener("click", function() {
-    let panel = this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML;
-    // $('#name').val('Test');
-    console.log(panel);
+let edit = document.getElementsByClassName("edit_icon_task");
+for (let j = 0; j < edit.length; j++) {
+  edit[j].addEventListener("click", function() {
+    // let panel = this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML;
+    // // $('#name').val('Test');
+    // console.log(panel);
+    // console.log(this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[1].innerHTML);
+    let content;
+    if(this.parentNode.parentNode.childNodes[4].childNodes.length > 1){
+      content = this.parentNode.parentNode.childNodes[4].childNodes[0].innerHTML + this.parentNode.parentNode.childNodes[4].childNodes[4].innerHTML;
+      // console.log(content);
+    }
+    else {
+      content = this.parentNode.parentNode.childNodes[4].childNodes[0].innerHTML;
+    }
+
+    // console.log(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[2].childNodes[1].innerHTML);
+    // $('#number').val(this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[1].innerHTML);
+    $('#name').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].innerHTML);
+    $('#date').val(this.parentNode.parentNode.childNodes[2].childNodes[2].innerHTML);
+    $('#content').val(content);
+    $('#task_id').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[2].childNodes[1].innerHTML);
+    $('#check_change').click();
+    document.getElementsByClassName("check_delet_wrap")[0].style.display = 'block';
+  });
+}
+});
+
+$(document).ready(function() {
+let edit2 = document.getElementsByClassName("edit_icon_answer");
+for (let j = 0; j < edit2.length; j++) {
+  edit2[j].addEventListener("click", function() {
+    // let panel = this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML;
+    // // $('#name').val('Test');
+    // console.log(panel);
+    // console.log(this.parentNode.parentNode.childNodes[0].childNodes[1].childNodes[1].innerHTML);
     let content;
     if(this.parentNode.parentNode.childNodes[4].childNodes.length > 1){
       content = this.parentNode.parentNode.childNodes[4].childNodes[0].innerHTML + this.parentNode.parentNode.childNodes[4].childNodes[4].innerHTML;
@@ -145,13 +190,66 @@ for (let i = 0; i < edit.length; i++) {
       content = this.parentNode.parentNode.childNodes[4].childNodes[0].innerHTML;
     }
 
-
-    $('#name').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].innerHTML);
-    $('#date').val(this.parentNode.parentNode.childNodes[2].childNodes[2].innerHTML);
+    // console.log(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML);
+    $('#number').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML);
+    // $('#name').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].innerHTML);
+    // $('#date').val(this.parentNode.parentNode.childNodes[2].childNodes[2].innerHTML);
     $('#content').val(content);
-    $('#task_id').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML);
+    // $('#task_id').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML);
     $('#check_change').click();
     document.getElementsByClassName("check_delet_wrap")[0].style.display = 'block';
   });
 }
+});
+
+$(document).ready(function() {
+  let btn = document.getElementsByClassName("li_all_users_box");
+  for (let j = 0; j < btn.length; j++) {
+    btn[j].addEventListener("click", function() {
+      // console.log(this.childNodes[2]);
+      if(this.childNodes[2].style.display == 'block')
+      this.childNodes[2].style.display = 'none';
+      else
+      this.childNodes[2].style.display = 'block';
+      // this.childNodes[0].style.display = 'block';
+    });
+
+    // btn[j].addEventListener("mouseover", function() {
+    //   // console.log(this.childNodes[2]);
+    //   this.childNodes[2].style.display = 'block';
+    //   // this.childNodes[0].style.display = 'block';
+    // });
+    // btn[j].addEventListener("mouseout", function() {
+    //   // console.log(this.childNodes[2]);
+    //   this.childNodes[2].style.display = 'none';
+    //   // this.childNodes[0].style.display = 'block';
+    // });
+  }
+  // console.log(btn);
+});
+
+$(document).ready(function() {
+  let check_btn = document.getElementsByClassName("check_btn");
+  for (let j = 0; j < check_btn.length; j++) {
+    check_btn[j].addEventListener("click", function() {
+      // console.log(this.parentNode.childNodes[0].childNodes[1].childNodes[1].innerHTML);
+      // this.childNodes[0].style.display = 'block';
+      $('#task_form')[0].style.display = 'none';
+      $('#comment_form')[0].style.display = 'block';
+      $('#task_id_com').val(this.parentNode.childNodes[0].childNodes[1].childNodes[1].innerHTML);
+
+    });
+
+    // btn[j].addEventListener("mouseover", function() {
+    //   // console.log(this.childNodes[2]);
+    //   this.childNodes[2].style.display = 'block';
+    //   // this.childNodes[0].style.display = 'block';
+    // });
+    // btn[j].addEventListener("mouseout", function() {
+    //   // console.log(this.childNodes[2]);
+    //   this.childNodes[2].style.display = 'none';
+    //   // this.childNodes[0].style.display = 'block';
+    // });
+  }
+  // console.log(btn);
 });

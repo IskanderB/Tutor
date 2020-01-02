@@ -15,12 +15,13 @@ class TasksPageController extends Controller
 
     public function index(Request $request)
     {
-
-      // dd($tasksAndAnswers);
+      $count = new Tasks();
+      // dd(count($this->getLastTasks($request)));
       return view('UserAccount.tasksPage', [
         'checkAccountPage' => true,
-        'tasks_list' =>   $this->getLastTasks($request),
+        'tasks_list' => $this->getLastTasks($request),
         'is_tutor' => Auth::user()->is_tutor,
+        'count_new' => $count->countTask(),
       ]);
     }
 
@@ -40,7 +41,7 @@ class TasksPageController extends Controller
         $this->uploadAnswer($request);
       }
 
-      return redirect()->route('tasks', ['studid' => 2]);
+      return redirect()->back();
     }
 
     public function uploadTask($request)
@@ -104,7 +105,7 @@ class TasksPageController extends Controller
       $tasks_db = $task->getLastTasks([
         'from_user' => Auth::id(),
         'to_user' => $request->studid,
-        'quantity' => 10,
+        'quantity' => $request->quantity,
       ]);
       $tasksAndAnswers = [];
       foreach ($tasks_db as $value) {
@@ -182,20 +183,25 @@ class TasksPageController extends Controller
 
     public function updateAnswer($request)
     {
+      // dd($request->request);
       $answer = new Answers();
-      $answer->updateAnswer([
+      $id = $answer->updateAnswer([
         'from_user' => Auth::id(),
         'to_user' => $request->studid,
         'content' => $request->content,
         'number' => $request->number,
-        'answer_id' => $request->task_id,
       ]);
 
       if($request->check_delet == "on")
-      $this->deleteFiles($request->task_id);
-      
+      $this->deleteFiles($id);
+
       if($request->file('files')){
         $this->appendFile($request, $id);
       }
+    }
+
+    public function getAnswer($relationship)
+    {
+      
     }
 }

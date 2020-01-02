@@ -3,6 +3,7 @@
 @import "myAccount.css" screen;
 @import "chat.css" screen;
 @import "tasks.css" screen;
+@import "accountPage.css" screen;
 /* Vars color */
 /* Specification */
 body {
@@ -63,13 +64,16 @@ header .container .row nav .menu .menu__item {
   border-radius: 25px;
   transition: 0.5s;
 }
-header .container .row nav .menu .menu__item div {
-  margin: 23px 27px;
+header .container .row nav .menu .menu__item a {
+  padding: 23px 27px;
+  display: block;
+  height: 100%;
 }
-header .container .row nav .menu .menu__item div a {
+header .container .row nav .menu .menu__item a div {
   font-size: 18px;
   transition: 0.3s;
   color: #000;
+  height: 100%;
 }
 header .container .row nav .menu .menu__item:hover {
   transition: 0.7s;
@@ -127,9 +131,21 @@ header .container .row nav .menu .menu__item:hover a {
 .content_self .icons .icons_ul {
   justify-content: center;
 }
-.content_self .icons .icons_ul .fa {
+.content_self .icons .icons_ul li .icon_box {
   margin-left: 25px;
   margin-right: 25px;
+}
+.content_self .icons .icons_ul li .icon_box a {
+  height: 40px;
+  display: inline-block;
+  transition: 0.5s;
+}
+.content_self .icons .icons_ul li .icon_box a i {
+  display: block;
+}
+.content_self .icons .icons_ul li .icon_box a:hover {
+  color: #989a99;
+  transition: 0.5s;
 }
 .content_self .form_entrance form a.btn_registration {
   float: right;
@@ -199,18 +215,27 @@ header .container .row nav .menu .menu__item:hover a {
 }
 .footer .logo_footer {
   font-size: 28px;
-  color: #989a99;
   margin-top: 12px;
 }
-.footer .logo_footer .logo_text {
-  margin-left: 10px;
+.footer .logo_footer .logo_footer_wrap {
+  display: inline-block;
+  float: none;
+  margin: auto;
 }
-.footer .logo_footer .logo_text a {
+.footer .logo_footer .logo_footer_wrap a {
+  display: inline-block;
   font-family: 'Fredoka One', cursive;
   color: #989a99;
+  transition: 0.7s;
 }
-.footer .logo_footer .fa {
-  color: #989a99;
+.footer .logo_footer .logo_footer_wrap a .logo_footer_box i {
+  margin-right: 5px;
+  display: inline-block;
+  margin-top: 7px;
+}
+.footer .logo_footer .logo_footer_wrap a:hover {
+  color: inherit;
+  transition: 0.7s;
 }
 .footer .menu_footer nav {
   height: 100%;
@@ -223,10 +248,11 @@ header .container .row nav .menu .menu__item:hover a {
   border-radius: 25px;
   transition: 0.5s;
 }
-.footer .menu_footer nav .menu .menu__item div {
-  margin: 23px 27px;
+.footer .menu_footer nav .menu .menu__item a {
+  padding: 23px 27px;
+  display: block;
 }
-.footer .menu_footer nav .menu .menu__item div a {
+.footer .menu_footer nav .menu .menu__item a div {
   font-size: 14px;
   transition: 0.3s;
   color: #000;
@@ -252,7 +278,16 @@ header .container .row nav .menu .menu__item:hover a {
   margin-left: 25px;
 }
 .footer .icons_footer ul li a {
+  transition: 0.7s;
   color: #989a99;
+  display: inline-block;
+}
+.footer .icons_footer ul li a i {
+  display: block;
+}
+.footer .icons_footer ul li a:hover {
+  transition: 0.7s;
+  color: inherit;
 }
 @media screen and (max-width: 1200px) {
   .content_self {
@@ -293,7 +328,7 @@ header .container .row nav .menu .menu__item:hover a {
     margin-top: 35px;
   }
   .footer .logo_footer {
-    justify-content: center;
+    text-align: center;
   }
   .footer .icons_footer ul.icons_footer_ul {
     float: none;
@@ -324,28 +359,37 @@ header .container .row nav .menu .menu__item:hover a {
   .header .logo .menu_bar {
     display: block;
   }
-  .header nav {
+  .header .menu_header {
     display: none;
   }
-  .header nav .menu {
+  .header .menu_header .menu {
     flex-direction: column;
   }
-  .header nav .menu li {
+  .header .menu_header .menu .menu__item {
     text-align: center;
-    max-height: 50px;
+    height: 50px;
   }
-  .footer nav .menu {
+  .header .menu_header .menu .menu__item a {
+    padding: 0;
+  }
+  .footer .menu_footer nav .menu {
     flex-direction: column;
   }
-  .footer nav .menu li {
+  .footer .menu_footer nav .menu .menu__item {
     text-align: center;
-    max-height: 30px;
+    height: 30px;
+  }
+  .footer .menu_footer nav .menu .menu__item a {
+    padding: 0;
+  }
+  .footer .menu_footer nav .menu .menu__item a div {
+    margin-top: 5px;
   }
   .footer .icons_footer {
-    margin-top: 20px;
+    margin-top: 10px;
   }
   .footer .logo_footer {
-    margin-bottom: -10px;
+    margin-bottom: 10px;
   }
   .sitebar {
     display: inline-flex;

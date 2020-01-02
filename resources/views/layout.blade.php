@@ -43,37 +43,39 @@
           </div>
         </div>-->
 
-        <div class="col-lg-7 ml-auto">
-          <nav id="menu_header">
+        <div class="col-lg-8 ml-auto col-xl-7">
+          <nav id="menu_header" class="menu_header">
             <ul class="menu d-flex justify-content-center">
               <li class="menu__item">
-                <div>
-                  <a href="/">Главная страница</a>
-                </div>
+                <a href="/">
+                  <div>
+                    Главная страница
+                  </div>
+                </a>
               </li>
 
               <li class="menu__item">
-                <div>
-                  <a href="/tasks/2">Материалы</a>
-                </div>
+                <a href="#">
+                  <div>
+                    Материалы
+                  </div>
+                </a>
               </li>
 
               <li class="menu__item">
-                <div>
-                  <a href="#">Отзывы</a>
-                </div>
+                <a href="#">
+                  <div>
+                    Отзывы
+                  </div>
+                </a>
               </li>
 
               <li class="menu__item">
-                <div>
-                  <a href="
-                  @if(Auth::user()['is_tutor'])
-                  /tutoraccount
-                  @else
-                  /myaccount/tutorchatroom/1
-                  @endif
-                  ">Мой аккаунт</a>
-                </div>
+                <a href="/tutoraccount">
+                  <div>
+                    Мой аккаунт
+                  </div>
+                </a>
               </li>
             </ul>
           </nav>
@@ -137,46 +139,54 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-2">
-          <div class="logo_footer d-flex">
-            <a href="/"> <i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
-            <div class="logo_text">
-              <a href="/">Tutor</a>
+          <div class="logo_footer">
+            <div class="logo_footer_wrap">
+              <a href="#">
+                <div class="d-flex logo_footer_box">
+                  <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                  <div class="logo_text">
+                    Tutor
+                  </div>
+                </div>
+              </a>
             </div>
           </div>
 
         </div>
 
-        <div class="col-lg-6 menu_footer">
+        <div class="col-lg-7 menu_footer col-xl-6">
           <nav>
             <ul class="menu d-flex justify-content-center">
               <li class="menu__item">
-                <div>
-                  <a href="/">Главная страница</a>
-                </div>
+                <a href="/">
+                  <div>
+                    Главная страница
+                  </div>
+                </a>
               </li>
 
               <li class="menu__item">
-                <div>
-                  <a href="#">Материалы</a>
-                </div>
+                <a href="#">
+                  <div>
+                    Материалы
+                  </div>
+                </a>
               </li>
 
               <li class="menu__item">
-                <div>
-                  <a href="#">Отзывы</a>
-                </div>
+                <a href="#">
+                  <div>
+                    Отзывы
+                  </div>
+                </a>
               </li>
 
               <li class="menu__item">
-                <div>
-                  <a href="
-                  @if(Auth::user()['is_tutor'])
-                  /tutoraccount
-                  @else
-                  /myaccount/tutorchatroom/1
-                  @endif
-                  ">Мой аккаунт</a>
-                </div>
+                <a href="/tutoraccount">
+                  <div>
+                    Мой аккаунт
+                  </div>
+                </a>
               </li>
             </ul>
           </nav>
@@ -184,7 +194,7 @@
 
 
 
-        <div class="col-lg-4 ">
+        <div class="col-lg-3 col-xl-4">
           <div class="icons_footer">
             <ul class="d-flex justify-content-center icons_footer_ul">
               <li> <a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a> </li>

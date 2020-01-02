@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use App\Answers;
 
 class Tasks extends Model
 {
@@ -49,5 +51,23 @@ class Tasks extends Model
         'name' => $data['name'],
       ]);
 
+    }
+
+    public function countTask()
+    {
+      if(Auth::check()){
+        if(!Auth::user()->is_tutor)
+        $count = $this->where([
+            ['to_user', Auth::id()],
+            ['check', null],
+          ])->count();
+
+        else{
+          $answer_check = new Answers();
+          $count = $answer_check->countAnswer();
+        }
+      }
+      else return false;
+        return $count;
     }
 }

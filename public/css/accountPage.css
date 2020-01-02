@@ -1,0 +1,67 @@
+/* Vars color */
+.container .users_wrap {
+  min-height: 100px;
+}
+.container .users_wrap .users_box {
+  max-height: 450px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.container .users_wrap .users_box .users_list li .li_box {
+  margin-top: 5px;
+}
+.container .users_wrap .users_box .users_list li .li_box .user {
+  cursor: pointer;
+  justify-content: space-between;
+  border-radius: 30px;
+  transition: 0.5s;
+}
+.container .users_wrap .users_box .users_list li .li_box .user .user_wrap .user_icon {
+  min-width: 33px;
+  font-size: 45px;
+  font-family: 'Fredoka One', cursive;
+  margin-right: 15px;
+  margin-left: 10px;
+}
+.container .users_wrap .users_box .users_list li .li_box .user .user_wrap .user_name_wrap .user_name {
+  display: inline-block;
+  margin-top: 22px;
+}
+.container .users_wrap .users_box .users_list li .li_box .user .app_friend {
+  margin-right: 20px;
+  margin-top: 14px;
+}
+.container .users_wrap .users_box .users_list li .li_box .user .app_friend .app_friend_btn {
+  display: none;
+}
+.container .users_wrap .users_box .users_list li .li_box .user:hover {
+  background-color: #e4e7e5;
+  transition: 0.5s;
+  color: #989a99;
+}
+.container .users_wrap .users_box .users_list li .li_box .user:hover .app_friend .app_friend_btn {
+  display: block;
+}
+.container .users_wrap .users_box .users_list li .li_box .user_buttons {
+  display: none;
+  margin-top: 5px;
+  margin-left: 15px;
+}
+.container .users_wrap .users_box .users_list li .li_box .user_buttons .user_btn {
+  display: inline-block;
+  padding: 0 7px 0 7px;
+}
+.container .users_wrap .users_box .users_list li .li_box .user_buttons .user_btn a {
+  padding: inherit;
+}
+.users_box::-webkit-scrollbar {
+  width: 10px;
+}
+.users_box::-webkit-scrollbar-track {
+  background-color: white;
+}
+.users_box::-webkit-scrollbar-thumb {
+  height: 50px;
+  background-color: #989a99;
+  border-radius: 5px;
+}

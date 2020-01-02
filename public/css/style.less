@@ -8,6 +8,8 @@
 @import "myAccount.css" screen;
 @import "chat.css" screen;
 @import "tasks.css" screen;
+@import "accountPage.css" screen;
+
 body {
     font-family: 'PT Sans', sans-serif;
     background-color: @white;
@@ -66,12 +68,16 @@ header{
             height: 100%;
             border-radius: 25px;
             transition: 0.5s;
-            div{
-              margin: 23px 27px;
-              a{
+            // padding: 23px 27px;
+            a{
+              padding: 23px 27px;
+              display: block;
+              height: 100%;
+              div{
                 font-size: 18px;
                 transition: 0.3s;
                 color: #000;
+                height: 100%;
               }
             }
           }
@@ -154,9 +160,24 @@ header{
     font-size: 40px;
       .icons_ul{
         justify-content: center;
-        .fa{
-          margin-left: 25px;
-          margin-right: 25px;
+        li{
+          .icon_box{
+            margin-left: 25px;
+            margin-right: 25px;
+            a{
+              height: 40px;
+              display: inline-block;
+              transition: 0.5s;
+              // margin-top: 10px;
+              i{
+                display: block;
+              }
+            }
+            a:hover{
+              color: @superb_gray;
+              transition: 0.5s;
+            }
+          }
         }
       }
   }
@@ -165,6 +186,11 @@ header{
     form{
       a.btn_registration{
         float: right;
+      }
+      .form-check{
+        .form-check-input{
+
+        }
       }
     }
 
@@ -243,17 +269,28 @@ header{
   margin-bottom: 30px;
   .logo_footer{
     font-size: 28px;
-    color: @superb_gray;
     margin-top: 12px;
-    .logo_text{
-      margin-left: 10px;
+    .logo_footer_wrap{
+      display: inline-block;
+      float: none;
+      margin: auto;
       a{
+        display: inline-block;
         font-family: 'Fredoka One', cursive;
         color: @superb_gray;
+        transition: 0.7s;
+        .logo_footer_box{
+          i{
+            margin-right: 5px;
+            display: inline-block;
+            margin-top: 7px;
+          }
+        }
       }
-    }
-    .fa{
-      color: @superb_gray;
+      a:hover{
+        color: inherit;
+        transition: 0.7s;
+      }
     }
   }
 
@@ -266,9 +303,10 @@ header{
           height: 100%;
           border-radius: 25px;
           transition: 0.5s;
-          div{
-            margin: 23px 27px;
-            a{
+          a{
+            padding: 23px 27px;
+            display: block;
+            div{
               font-size: 14px;
               transition: 0.3s;
               color: #000;
@@ -300,7 +338,16 @@ header{
         }
         li{
           a{
+            transition: 0.7s;
             color: @superb_gray;
+            display: inline-block;
+            i{
+              display: block;
+            }
+          }
+          a:hover{
+            transition: 0.7s;
+            color: inherit;
           }
         }
       }
@@ -366,7 +413,11 @@ header{
 
   .footer{
     .logo_footer{
-      justify-content: center;
+      // justify-content: center;
+      text-align: center;
+      .logo_footer_wrap{
+
+      }
     }
 
     .icons_footer{
@@ -405,35 +456,49 @@ header{
       }
     }
 
-    nav{
+    .menu_header{
       display: none;
       .menu{
         flex-direction: column;
-        li{
+        .menu__item{
           text-align: center;
-          max-height: 50px;
+          height: 50px;
+          a{
+            padding: 0;
+            div{
+
+            }
+          }
         }
       }
     }
   }
 
   .footer{
-    nav{
-      .menu{
-        flex-direction: column;
-        li{
-          text-align: center;
-          max-height: 30px;
+    .menu_footer{
+      nav{
+        .menu{
+          flex-direction: column;
+          .menu__item{
+            text-align: center;
+            height: 30px;
+            a{
+              padding: 0;
+              div{
+                margin-top: 5px;
+              }
+            }
+          }
         }
       }
     }
 
     .icons_footer{
-      margin-top: 20px;
+      margin-top: 10px;
     }
 
     .logo_footer{
-      margin-bottom: -10px;
+      margin-bottom: 10px;
     }
   }
   .sitebar{

@@ -7,6 +7,7 @@ use App\User;
 use App\Chat;
 use App\Image;
 use Illuminate\Support\Facades\Auth;
+use App\Tasks;
 
 
 class TutorChatController extends Controller
@@ -77,11 +78,13 @@ class TutorChatController extends Controller
       // $stud = $request->studid;
 
       $user = Auth::user();
+      $count = new Tasks();
       return view('UserAccount.tutorChatRoom', [
         'checkAccountPage' => $checkAccountPage,
         'user' => $user,
         'stud' => $stud[0],
         'messagesFromDB' => json_encode(array_reverse($messagesFromDB)),
+        'count_new' => $count->countTask(),
         // 'images_path' => json_encode($images_path),
     ]);
     }
