@@ -1,57 +1,81 @@
 /* Vars color */
-.container .users_wrap {
+.account_box {
+  display: flex;
+}
+.account_box .users_wrap {
   min-height: 100px;
 }
-.container .users_wrap .users_box {
+.account_box .users_wrap .users_box {
   max-height: 450px;
   overflow-y: scroll;
   overflow-x: hidden;
 }
-.container .users_wrap .users_box .users_list li .li_box {
+.account_box .users_wrap .users_box .users_list li .li_box {
   margin-top: 5px;
 }
-.container .users_wrap .users_box .users_list li .li_box .user {
+.account_box .users_wrap .users_box .users_list li .li_box .user {
   cursor: pointer;
   justify-content: space-between;
+  display: flex;
   border-radius: 30px;
   transition: 0.5s;
 }
-.container .users_wrap .users_box .users_list li .li_box .user .user_wrap .user_icon {
-  min-width: 33px;
+.account_box .users_wrap .users_box .users_list li .li_box .user .user_wrap {
+  min-width: 90%;
+  max-width: 90%;
+}
+.account_box .users_wrap .users_box .users_list li .li_box .user .user_wrap .user_icon {
+  min-width: 10%;
   font-size: 45px;
   font-family: 'Fredoka One', cursive;
   margin-right: 15px;
   margin-left: 10px;
 }
-.container .users_wrap .users_box .users_list li .li_box .user .user_wrap .user_name_wrap .user_name {
-  display: inline-block;
+.account_box .users_wrap .users_box .users_list li .li_box .user .user_wrap .user_name_wrap {
+  min-width: 90%;
+  max-width: 90%;
+}
+.account_box .users_wrap .users_box .users_list li .li_box .user .user_wrap .user_name_wrap .user_name {
+  height: 50%;
   margin-top: 22px;
 }
-.container .users_wrap .users_box .users_list li .li_box .user .app_friend {
+.account_box .users_wrap .users_box .users_list li .li_box .user .app_friend {
   margin-right: 20px;
   margin-top: 14px;
+  min-width: 10%;
+  max-width: 10%;
 }
-.container .users_wrap .users_box .users_list li .li_box .user .app_friend .app_friend_btn {
-  display: none;
+.account_box .users_wrap .users_box .users_list li .li_box .user .app_friend .app_friend_btn {
+  float: right;
+  margin-right: 15px;
+  height: 100%;
 }
-.container .users_wrap .users_box .users_list li .li_box .user:hover {
+.account_box .users_wrap .users_box .users_list li .li_box .user .app_friend .app_friend_btn a i {
+  font-size: 16px;
+  margin-top: 13px;
+  color: #007BFF;
+}
+.account_box .users_wrap .users_box .users_list li .li_box .user .app_friend .app_friend_btn a i:hover {
+  color: #005DC0;
+}
+.account_box .users_wrap .users_box .users_list li .li_box .user:hover {
   background-color: #e4e7e5;
   transition: 0.5s;
   color: #989a99;
 }
-.container .users_wrap .users_box .users_list li .li_box .user:hover .app_friend .app_friend_btn {
-  display: block;
+.account_box .users_wrap .users_box .users_list li .li_box .user:hover .app_friend .app_friend_btn {
+  display: inline-block;
 }
-.container .users_wrap .users_box .users_list li .li_box .user_buttons {
+.account_box .users_wrap .users_box .users_list li .li_box .user_buttons {
   display: none;
   margin-top: 5px;
   margin-left: 15px;
 }
-.container .users_wrap .users_box .users_list li .li_box .user_buttons .user_btn {
+.account_box .users_wrap .users_box .users_list li .li_box .user_buttons .user_btn {
   display: inline-block;
   padding: 0 7px 0 7px;
 }
-.container .users_wrap .users_box .users_list li .li_box .user_buttons .user_btn a {
+.account_box .users_wrap .users_box .users_list li .li_box .user_buttons .user_btn a {
   padding: inherit;
 }
 .users_box::-webkit-scrollbar {
@@ -64,4 +88,67 @@
   height: 50px;
   background-color: #989a99;
   border-radius: 5px;
+}
+@media screen and (max-width: 768px) {
+  .account_box {
+    display: block;
+  }
+  .account_box .all_users_wrap {
+    margin-bottom: 30px;
+  }
+}
+@media screen and (max-width: 370px) {
+  .account_box .users_wrap .users_box .users_list li .li_box .user {
+    flex-direction: column;
+    background-color: #e4e7e5;
+  }
+  .account_box .users_wrap .users_box .users_list li .li_box .user .app_friend {
+    min-width: 100%;
+    max-width: 100%;
+    text-align: center;
+    margin-top: 0px;
+  }
+  .account_box .users_wrap .users_box .users_list li .li_box .user .app_friend .app_friend_btn {
+    margin: auto;
+    float: none;
+    height: 25px;
+  }
+  .account_box .users_wrap .users_box .users_list li .li_box .user .app_friend .app_friend_btn a i {
+    margin-top: 0px;
+  }
+  .account_box .users_wrap .users_box .users_list li .li_box .user .user_wrap {
+    display: block;
+    width: 100%;
+    min-width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    flex-direction: column;
+  }
+  .account_box .users_wrap .users_box .users_list li .li_box .user .user_wrap .user_icon {
+    margin: auto;
+    float: none;
+    text-align: center;
+    height: 50px;
+  }
+  .account_box .users_wrap .users_box .users_list li .li_box .user .user_wrap .user_name_wrap {
+    width: 100%;
+    margin: auto;
+    float: none;
+  }
+  .account_box .users_wrap .users_box .users_list li .li_box .user .user_wrap .user_name_wrap .user_name {
+    width: 100%;
+    margin: auto;
+    float: none;
+    text-align: center;
+  }
+  .account_box .users_wrap .users_box .users_list li .li_box .user_buttons {
+    margin: 0;
+    margin-top: 5px;
+    justify-content: space-between;
+    text-align: center;
+  }
+  .account_box .users_wrap .users_box .users_list li .li_box .user_buttons .user_btn {
+    float: none;
+    margin: auto;
+  }
 }

@@ -36,8 +36,11 @@
 .card .card-body .tasks_box .tasks_list li .task_box .task_name .check_btn {
   cursor: pointer;
 }
+.card .card-body .tasks_box .tasks_list li .task_box .task_name .name_and_new {
+  width: 90%;
+}
 .card .card-body .tasks_box .tasks_list li .task_box .task_name .name_and_new h5 {
-  max-width: 371px;
+  max-width: 70%;
   flex-wrap: wrap;
 }
 .card .card-body .tasks_box .tasks_list li .task_box .task_name .name_and_new .new_task {
@@ -79,9 +82,11 @@
   display: none;
 }
 .card .card-body .tasks_box .tasks_list li .task_box .task_files_box .files_list {
-  max-width: 471px;
   display: block;
   flex-wrap: wrap;
+}
+.card .card-body .tasks_box .tasks_list li .task_box .task_files_box .files_list li {
+  width: 100%;
 }
 .card .card-body .tasks_box .tasks_list li .task_box .task_files_box .files_list li .image_box {
   max-width: 200px;
@@ -99,7 +104,8 @@
   max-height: inherit;
 }
 .card .card-body .tasks_box .tasks_list li .task_box .task_files_box .files_list li .file_box {
-  min-width: 400px;
+  min-width: 100%;
+  max-width: 100%;
 }
 .card .card-body .tasks_box .tasks_list li .task_box .task_files_box .files_list li .file_box .file_content {
   display: inline-block;
@@ -108,7 +114,7 @@
   overflow-x: hidden;
   margin-right: 5px;
   padding: 5px 5px 5px 5px;
-  min-width: 200px;
+  max-width: inherit;
 }
 .card .card-body .tasks_box .tasks_list li .task_box .task_files_box .files_list li .file_box .file_content a {
   display: block;
@@ -153,6 +159,7 @@
 .card .card-body .task_form .input_time_box {
   margin-bottom: 5px;
   justify-content: space-between;
+  display: flex;
 }
 .card .card-body .task_form .input_time_box .input_time_text {
   display: inline-block;
@@ -169,4 +176,45 @@
   height: 50px;
   background-color: #989a99;
   border-radius: 5px;
+}
+@media screen and (max-width: 460px) {
+  .card .card-body .tasks_box .tasks_list li .task_box .task_name {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 400px) {
+  .card .card-body .tasks_box .tasks_list li .task_box .task_name .name_and_new {
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+    display: block;
+  }
+  .card .card-body .tasks_box .tasks_list li .task_box .task_name .name_and_new .new_task {
+    width: 35px;
+    margin-left: 0px;
+  }
+  .card .card-body .tasks_box .tasks_list li .task_box .task_name .name_and_new h5 {
+    width: 100%;
+    max-width: 100%;
+  }
+  .card .card-body .task_form .input_time_box {
+    flex-direction: column;
+    margin-top: 0px;
+  }
+  .card .card-body .task_form .input_time_box .input_time_text {
+    margin-top: 0;
+  }
+}
+@media screen and (max-width: 370px) {
+  .card .card-body .tasks_box {
+    margin-bottom: 5px;
+  }
+  .card .card-body .task_form .input_file_box input {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 340px) {
+  .card .card-body .tasks_box .tasks_list li .task_box {
+    padding: 3px 3px 3px 3px;
+  }
 }

@@ -108,13 +108,10 @@
               <div class="task_box">
                 <div class="task_name d-flex">
                   <div class="name_and_new d-flex">
-                    <h5>Ответ к заданию</h5><h5><span>(№</span><span>{{$task['answer']['answer_cont'][0]->relationship}}</span><span>)</span></h5>
+                    <h5>Ответ к заданию</h5>
+                    <h5><span>(№</span><span>{{$task['answer']['answer_cont'][0]->relationship}}</span><span>)</span></h5>
                   </div>
-                  @if(!$is_tutor)
-                  <div class="edit_icon edit_icon_answer" id="edit_icon_answer">
-                    <i class="fa fa-pencil" aria-hidden="true"></i>
-                  </div>
-                  @else
+                  @if($is_tutor)
                   @if(!$task['answer']['answer_cont'][0]->check)
                   <div class="check_btn">
                     <div class="btn btn-primary">
@@ -122,6 +119,10 @@
                     </div>
                   </div>
                   @endif
+                  @else
+                  <div class="edit_icon edit_icon_answer" id="edit_icon_answer">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </div>
                   @endif
                 </div>
 
@@ -193,6 +194,8 @@
           </ul>
         </div>
 
+        <hr/>
+
         <form class="task_form" id="task_form" action="{{ route('task_answer.upload',  ['studid' => 2]) }}" method="POST" enctype="multipart/form-data">
             @csrf
 
@@ -220,7 +223,7 @@
             <input type="text" name="name" value="" placeholder="Тема..." id="name">
           </div>
 
-          <div class="col-lg-6 offset-lg-3 input_time_box d-flex">
+          <div class="col-lg-6 offset-lg-3 input_time_box">
             <div class="input_time_text">
               Выполнить к:
             </div>
@@ -276,7 +279,7 @@
 
             <div class="col-lg-6 offset-lg-3 input_time_box d-flex">
               <div class="input_time_text">
-                Оценка
+                Оценка:
               </div>
               <div class="input_time">
                 <input type="text" class="form-control" id="grade" name="grade">

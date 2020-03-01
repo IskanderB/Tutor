@@ -1,7 +1,9 @@
 <div class="user_info">
   <div class="user_name user_center">
     <a href="/tutoraccount">
-      <h5><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{Auth::user()->name}}</h5>
+      <div class="user_name_box">
+        <h5><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{Auth::user()->name}}</h5>
+      </div>
     </a>
   </div>
 

@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="col-lg-9">
-  <div class="container col-lg-12 d-flex">
+  <div class="container col-lg-12 account_box">
 
 
   <!-- <?php foreach ($users as $value ): ?>
     <a href="/myaccount/tutorchatroom/{{$value->id}}"> <p>{{$value->email}}</p> </a>
   <?php endforeach; ?> -->
 
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6 col-sm-12">
       <div class="all_users_wrap users_wrap card">
         <div class="card-header">Все пользователи</div>
         <div class="card-body users_box">
@@ -37,9 +37,12 @@
                   </div>
 
                   <div class="app_friend">
-                    <div class="app_friend_btn">
-                      <a href="/append/friend/{{$user->id}}" class="btn btn-primary">Добавить</a>
+                    <div class="app_friend_btn app_friend_btn_plus">
+                      <a href="/append/friend/{{$user->id}}" class="">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                      </a>
                     </div>
+
                   </div>
                 </div>
 
@@ -63,7 +66,7 @@
       </div>
     </div>
 
-    <div class="col-lg-6">
+    <div class="col-lg-6 col-md-6">
       <div class="pers_users_wrap users_wrap card">
         <div class="card-header">Друзья</div>
         <div class="card-body users_box">
@@ -71,7 +74,7 @@
             @foreach($friends as $friend)
             <li>
               <div class="li_all_users_box li_box">
-                <div class="user d-flex">
+                <div class="user">
                   <div class="user_wrap d-flex">
                     @if($friend->is_tutor)
                     <div class="user_icon">
@@ -92,7 +95,9 @@
 
                   <div class="app_friend">
                     <div class="app_friend_btn">
-                      <a href="/delete/friend/{{$friend->id}}" class="btn btn-primary">Удалить</a>
+                      <a href="/delete/friend/{{$friend->id}}" class="">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                      </a>
                     </div>
                   </div>
                 </div>

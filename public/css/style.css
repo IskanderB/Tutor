@@ -101,10 +101,13 @@ header .container .row nav .menu .menu__item:hover a {
 .content_self .user_info .user_name {
   padding-top: 20px;
 }
-.content_self .user_info .user_name h5 {
+.content_self .user_info .user_name a .user_name_box {
+  display: inline-block;
+}
+.content_self .user_info .user_name a .user_name_box h5 {
   transition: 0.5s;
 }
-.content_self .user_info .user_name h5:hover {
+.content_self .user_info .user_name a .user_name_box h5:hover {
   color: #989a99;
   transition: 0.5s;
 }

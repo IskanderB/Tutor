@@ -13,11 +13,14 @@
   border-radius: 30px;
   margin-bottom: 20px;
 }
-.user_info_full .user_if_list li:first-child .li_box h5 {
-  margin: auto;
+.user_info_full .user_if_list li:first-child .li_box a .user_name_box {
+  display: inline-block;
+  margin-top: 3px;
+}
+.user_info_full .user_if_list li:first-child .li_box a .user_name_box h5 {
   transition: 0.5s;
 }
-.user_info_full .user_if_list li:first-child .li_box h5:hover {
+.user_info_full .user_if_list li:first-child .li_box a .user_name_box h5:hover {
   color: #989a99;
   transition: 0.5s;
 }

@@ -3,7 +3,10 @@
     <li>
       <div class="li_box">
         <a href="/tutoraccount">
-          <h5><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{Auth::user()->name}}</h5></a>
+          <div class="user_name_box">
+            <h5><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{Auth::user()->name}}</h5>
+          </div>
+        </a>
       </div>
     </li>
 

@@ -3,7 +3,8 @@
 @gray: #E4E7E5;
 @superb_gray: #989A99;
 
-.container{
+.account_box{
+  display: flex;
   .users_wrap{
     min-height: 100px;
     .users_box{
@@ -17,12 +18,15 @@
             .user{
               cursor: pointer;
               justify-content: space-between;
+              display: flex;
               // background-color: @gray;
               border-radius: 30px;
               transition: 0.5s;
               .user_wrap{
+                min-width: 90%;
+                max-width: 90%;
                 .user_icon{
-                  min-width: 33px;
+                  min-width: 10%;
                   font-size: 45px;
                   font-family: 'Fredoka One', cursive;
                   // transition: 0.5s;
@@ -30,8 +34,13 @@
                   margin-left: 10px;
                 }
                 .user_name_wrap{
+                  min-width: 90%;
+                  max-width: 90%;
+                  // overflow: hidden;
+                  // word-wrap: break-word;
                   .user_name{
-                    display: inline-block;
+                    height: 50%;
+                    // display: inline-block;
                     margin-top: 22px;
                     // transition: 0.5s;
                   }
@@ -40,9 +49,31 @@
               .app_friend{
                 margin-right: 20px;
                 margin-top: 14px;
+                min-width: 10%;
+                max-width: 10%;
+                // justify-content: center;
                 .app_friend_btn{
-                  display: none;
+                  // display: none;
+                  float: right;
+                  margin-right: 15px;
+                  height: 100%;
+                  a{
+                    i{
+                       font-size: 16px;
+                       margin-top: 13px;
+                       color: #007BFF;
+                    }
+                    i:hover{
+                      color: #005DC0;
+                    }
+                  }
                 }
+                // .app_friend_btn_plus{
+                //   a{
+                //     font-size: 28px;
+                //     display: inline-block;
+                //   }
+                // }
               }
             }
             .user:hover{
@@ -51,7 +82,7 @@
               color: @superb_gray;
               .app_friend{
                 .app_friend_btn{
-                  display: block;
+                  display: inline-block;
                 }
               }
             }
@@ -85,3 +116,123 @@
 .users_box::-webkit-scrollbar-track {  background-color: white;}
 // ::-webkit-scrollbar-track-piece { background-color: #ffffff;}
 .users_box::-webkit-scrollbar-thumb { height: 50px; background-color: @superb_gray; border-radius: 5px;}
+
+@media screen and (max-width: 768px){
+  .account_box{
+    display: block;
+    .all_users_wrap{
+      margin-bottom: 30px;
+    }
+  }
+}
+
+// @media screen and (max-width: 425px){
+//   .account_box{
+//     .users_wrap{
+//       .users_box{
+//         .users_list{
+//           li{
+//             .li_box{
+//               .user{
+//                 // justify-content: center;
+//                 flex-direction: column;
+//                 .app_friend{
+//                   min-width: 100%;
+//                   max-width: 100%;
+//                   // margin-left: 20px;
+//                   margin-top: 0px;
+//                   // display: inline-block;
+//                   // justify-content: center;
+//                   .app_friend_btn{
+//
+//                     // display: inline-block;
+//                     margin-left: 20px;
+//                     margin-bottom: 20px;
+//                     float: none;
+//                   }
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+@media screen and (max-width: 370px){
+  .account_box{
+    .users_wrap{
+      .users_box{
+        .users_list{
+          li{
+            .li_box{
+              .user{
+                // justify-content: center;
+                flex-direction: column;
+                background-color: @gray;
+                .app_friend{
+                  min-width: 100%;
+                  max-width: 100%;
+                  // display: inline-block;
+                  // justify-content: center;
+                  text-align: center;
+                  // margin-bottom: 10px;
+                  margin-top: 0px;
+                  .app_friend_btn{
+                    // display: inline-block;
+                    margin: auto;
+                    float: none;
+                    height: 25px;
+                    a{
+                      i{
+                        margin-top: 0px;
+                      }
+                    }
+                  }
+                }
+                .user_wrap{
+                  // margin: auto;
+                  display: block;
+                  // float: none;
+                  width: 100%;
+                  min-width: 100%;
+                  max-width: 100%;
+                  justify-content: center;
+                  flex-direction: column;
+                  .user_icon{
+                    margin: auto;
+                    float: none;
+                    text-align: center;
+                    height: 50px;
+                  }
+                  .user_name_wrap{
+                    width: 100%;
+                    margin: auto;
+                    float: none;
+                    .user_name{
+                      width: 100%;
+                      margin: auto;
+                      float: none;
+                      text-align: center;
+                    }
+                  }
+                }
+              }
+              .user_buttons{
+                margin: 0;
+                margin-top: 5px;
+                justify-content: space-between;
+                text-align: center;
+                .user_btn{
+                  float: none;
+                  margin: auto;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

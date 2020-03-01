@@ -32,10 +32,12 @@
                       <div class="message_name bottom_line">
                         <a href="#">{{iter.from_user}}</a>
                       </div>
-                      <div class="message_time bottom_line" :data-hint="`${iter.full_time}`">
-                        {{iter.time}}
+                      <div class="message_time d-flex">
+                        <div class="message_short_time bottom_line" :data-hint="`${iter.full_time}`">
+                          {{iter.time}}
+                        </div>
+                        <div id="hint" class="message_full_time">{{iter.full_time}}</div>
                       </div>
-                      <div id="hint"></div>
                     </div>
                     <div class="message_cont">
                       {{iter.content}}

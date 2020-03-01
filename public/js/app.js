@@ -2165,6 +2165,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
 
 
 
@@ -56536,22 +56538,31 @@ var render = function() {
                             ]
                           ),
                           _vm._v(" "),
-                          _c(
-                            "div",
-                            {
-                              staticClass: "message_time bottom_line",
-                              attrs: { "data-hint": "" + iter.full_time }
-                            },
-                            [
-                              _vm._v(
-                                "\n                    " +
-                                  _vm._s(iter.time) +
-                                  "\n                  "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", { attrs: { id: "hint" } })
+                          _c("div", { staticClass: "message_time d-flex" }, [
+                            _c(
+                              "div",
+                              {
+                                staticClass: "message_short_time bottom_line",
+                                attrs: { "data-hint": "" + iter.full_time }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                      " +
+                                    _vm._s(iter.time) +
+                                    "\n                    "
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              {
+                                staticClass: "message_full_time",
+                                attrs: { id: "hint" }
+                              },
+                              [_vm._v(_vm._s(iter.full_time))]
+                            )
+                          ])
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "message_cont" }, [
@@ -69681,27 +69692,24 @@ try {
 //   jQuery('.scrollbar-inner').scrollbar();
 // });
 // $(".messages_box").scrollTop($(".messages_box")[0].scrollHeight);
-
-
-var hint = $('#hint');
-$('div[data-hint]').on({
-  mouseenter: function mouseenter() {
-    hint.text($(this).data('hint')).show();
-  },
-  mouseleave: function mouseleave() {
-    hint.hide();
-  },
-  mousemove: function mousemove(e) {
-    hint.css({
-      top: e.pageY,
-      left: e.pageX
-    });
-  }
-}); // var container = this.$el.querySelector(".messages_box");
+// var hint = $('#hint');
+// $('div[data-hint]').on({
+//     mouseenter: function(){
+//         hint.text($(this).data('hint')).show();
+//     },
+//     mouseleave: function(){
+//         hint.hide();
+//     },
+//     mousemove: function(e){
+//         hint.css({top: e.pageY, left: e.pageX});
+//     }
+// });
+// var container = this.$el.querySelector(".messages_box");
 // container.scrollTop = container.scrollHeight;
 //
 // var messageDisplay = vueContent.$refs.messageDisplay;
 // messageDisplay.scrollTop = messageDisplay.scrollHeight;
+
 
 try {
   var container = document.querySelector(".messages_box");
@@ -69823,10 +69831,11 @@ $(document).ready(function () {
         console.log(content);
       } else {
         content = this.parentNode.parentNode.childNodes[4].childNodes[0].innerHTML;
-      } // console.log(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML);
+      } // console.log(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[2].childNodes[1].innerHTML);
+      // console.log(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML);
 
 
-      $('#number').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML); // $('#name').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].innerHTML);
+      $('#number').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[2].childNodes[1].innerHTML); // $('#name').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].innerHTML);
       // $('#date').val(this.parentNode.parentNode.childNodes[2].childNodes[2].innerHTML);
 
       $('#content').val(content); // $('#task_id').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML);

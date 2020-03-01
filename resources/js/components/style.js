@@ -29,18 +29,18 @@ catch (e) {
 
 // $(".messages_box").scrollTop($(".messages_box")[0].scrollHeight);
 
-var hint = $('#hint');
-$('div[data-hint]').on({
-    mouseenter: function(){
-        hint.text($(this).data('hint')).show();
-    },
-    mouseleave: function(){
-        hint.hide();
-    },
-    mousemove: function(e){
-        hint.css({top: e.pageY, left: e.pageX});
-    }
-});
+// var hint = $('#hint');
+// $('div[data-hint]').on({
+//     mouseenter: function(){
+//         hint.text($(this).data('hint')).show();
+//     },
+//     mouseleave: function(){
+//         hint.hide();
+//     },
+//     mousemove: function(e){
+//         hint.css({top: e.pageY, left: e.pageX});
+//     }
+// });
 
 // var container = this.$el.querySelector(".messages_box");
 // container.scrollTop = container.scrollHeight;
@@ -189,9 +189,10 @@ for (let j = 0; j < edit2.length; j++) {
     else {
       content = this.parentNode.parentNode.childNodes[4].childNodes[0].innerHTML;
     }
-
+    // console.log(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[2].childNodes[1].innerHTML);
     // console.log(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML);
-    $('#number').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[1].childNodes[1].innerHTML);
+
+    $('#number').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[2].childNodes[1].innerHTML);
     // $('#name').val(this.parentNode.parentNode.childNodes[0].childNodes[0].childNodes[0].innerHTML);
     // $('#date').val(this.parentNode.parentNode.childNodes[2].childNodes[2].innerHTML);
     $('#content').val(content);

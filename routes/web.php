@@ -14,7 +14,7 @@
 
 Route::get('/', 'HomePageController@index')->name('/');
 
-Route::get('/registration', 'RegistrationPageController@index')->middleware('guest');
+Route::get('/registration', 'RegistrationPageController@index')->name('registration')->middleware('guest');
 
 Auth::routes();
 
