@@ -2167,6 +2167,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -2491,9 +2492,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return uploadFile;
     }(),
     fileInputRemove: function fileInputRemove(event) {
-      this.files = Array.from(event.target.files);
-      this.filesOrder = this.files.slice();
-      this.isDNone = "block";
+      if (event.target.files.length <= 10) {
+        this.files = Array.from(event.target.files);
+        this.filesOrder = this.files.slice();
+        this.isDNone = "block";
+      }
     },
     resFull: function resFull(a) {
       this.res_finish = a;
@@ -56767,7 +56770,8 @@ var render = function() {
               name: "description",
               placeholder: "Наберите сообщение",
               id: "description",
-              autofocus: ""
+              autofocus: "",
+              maxlength: "3000"
             },
             domProps: { value: _vm.message },
             on: {
@@ -69874,7 +69878,8 @@ $(document).ready(function () {
       // this.childNodes[0].style.display = 'block';
       $('#task_form')[0].style.display = 'none';
       $('#comment_form')[0].style.display = 'block';
-      $('#task_id_com').val(this.parentNode.childNodes[0].childNodes[1].childNodes[1].innerHTML);
+      $('#task_id_com').val(this.parentNode.childNodes[0].childNodes[2].childNodes[1].innerHTML);
+      $('#check_check').attr('checked', true);
     }); // btn[j].addEventListener("mouseover", function() {
     //   // console.log(this.childNodes[2]);
     //   this.childNodes[2].style.display = 'block';
@@ -69887,6 +69892,18 @@ $(document).ready(function () {
     // });
   } // console.log(btn);
 
+});
+$("#upload").on("change", function () {
+  if ($("#upload")[0].files.length > 10) {
+    alert("Вы не можете загружать более 10 файлов");
+    $(this).val(false);
+  }
+});
+$("#t_files").on("change", function () {
+  if ($("#t_files")[0].files.length > 20) {
+    alert("Вы не можете загружать более 20 файлов");
+    $(this).val('');
+  }
 });
 
 /***/ }),

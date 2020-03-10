@@ -19,7 +19,7 @@ class CreateChatTable extends Migration
             $table->timestamp('updated_at')->useCurrent();
             $table->integer('from_user')->nullable();
             $table->integer('to_user')->nullable();
-            $table->string('content')->nullable();
+            $table->text('content', 3000)->nullable();
             $table->string('relationship')->nullable();
         });
     }

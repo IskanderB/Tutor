@@ -16,6 +16,12 @@ class ChatController extends Controller
     {
       //dd("test2");
       //event(new Message($request->input('message')));
+      // $out = new \Symfony\Component\Console\Output\ConsoleOutput();
+      // $out->writeln(strlen($request->message));
+      if(strlen($request->message) > 3){
+        die();
+      }
+
       $message_id = $chat->appendChat($request);
 
       Message::dispatch($request->all());

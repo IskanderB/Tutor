@@ -120,7 +120,8 @@
             <input type="file" name="image" value="" id="upload" multiple="" @change="fileInputRemove">
           </div>
           <div class="input_box col-lg-11">
-            <textarea type="text" class="form-control" name="description" placeholder="Наберите сообщение" v-model="message" id="description" autofocus></textarea>
+            <textarea type="text" class="form-control" name="description" placeholder="Наберите сообщение" v-model="message" id="description" autofocus
+              maxlength="3000"></textarea>
           </div>
           <div class="button_box">
             <i class="fa fa-smile-o" aria-hidden="true" @click="toggleEmo"></i>
@@ -345,9 +346,11 @@
             },
 
             fileInputRemove(event) {
-              this.files = Array.from(event.target.files);
-              this.filesOrder = this.files.slice();
-              this.isDNone = "block";
+              if(event.target.files.length <= 10){
+                this.files = Array.from(event.target.files);
+                this.filesOrder = this.files.slice();
+                this.isDNone = "block";
+              }
             },
 
             resFull(a) {

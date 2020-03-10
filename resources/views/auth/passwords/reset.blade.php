@@ -13,14 +13,6 @@
 
         <input type="hidden" name="token" value="{{ $token }}">
 
-        <div class="password_ch_label offset-lg-3 col-lg-8">
-          <div class="left_move_reg">
-            <h5>Введите ваш email</h5>
-            <div class="text">
-              На него будет оправлено письмо со ссылкой для сброса пароля
-            </div>
-          </div>
-        </div>
 
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Email</label>
@@ -40,7 +32,7 @@
         <div class="form-group row">
           <label for="full_name" class="col-lg-3 col-form-label text-md-right">Новый пароль</label>
           <div class="col-lg-6">
-            <input type="password" id="password" class="form-control" name="password" value="" required autocomplete="new-password">
+            <input type="password" id="password" class="form-control" name="password" value="" required autocomplete="new-password"  maxlength="32"  minlength="8">
           </div>
         </div>
 
@@ -53,9 +45,9 @@
         @enderror
 
         <div class="form-group row">
-          <label for="full_name" class="col-lg-3 col-form-label text-md-right">Новый пароль</label>
+          <label for="full_name" class="col-lg-3 col-form-label text-md-right">Пароль ещё раз</label>
           <div class="col-lg-6">
-            <input type="password" id="password-confirm" class="form-control" name="password_confirmation" value="" required autocomplete="new-password">
+            <input type="password" id="password-confirm" class="form-control" name="password_confirmation" value="" required autocomplete="new-password"  maxlength="32"  minlength="8">
           </div>
         </div>
 

@@ -237,8 +237,8 @@ $(document).ready(function() {
       // this.childNodes[0].style.display = 'block';
       $('#task_form')[0].style.display = 'none';
       $('#comment_form')[0].style.display = 'block';
-      $('#task_id_com').val(this.parentNode.childNodes[0].childNodes[1].childNodes[1].innerHTML);
-
+      $('#task_id_com').val(this.parentNode.childNodes[0].childNodes[2].childNodes[1].innerHTML);
+      $('#check_check').attr('checked', true);
     });
 
     // btn[j].addEventListener("mouseover", function() {
@@ -253,4 +253,19 @@ $(document).ready(function() {
     // });
   }
   // console.log(btn);
+});
+
+
+$("#upload").on("change", function() {
+    if ($("#upload")[0].files.length > 10) {
+        alert("Вы не можете загружать более 10 файлов");
+        $(this).val(false);
+    }
+});
+
+$("#t_files").on("change", function() {
+    if ($("#t_files")[0].files.length > 20) {
+        alert("Вы не можете загружать более 20 файлов");
+        $(this).val('');
+    }
 });

@@ -19,56 +19,56 @@
           <div class="form-group row">
             <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right">Номер телефона</label>
             <div class="col-lg-6 col-md-8">
-              <input type="text" id="number_phone" class="form-control" name="number_phone" value="{{Auth::user()->number_phone}}">
+              <input type="text" id="number_phone" class="form-control" name="number_phone" value="{{Auth::user()->number_phone}}" maxlength="30">
             </div>
           </div>
 
           <div class="form-group row">
             <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right">ФИО</label>
             <div class="col-lg-6 col-md-8">
-              <input type="text" id="full_name" class="form-control" name="full_name" value="{{ Auth::user()->full_name }}">
+              <input type="text" id="full_name" class="form-control" name="full_name" value="{{ Auth::user()->full_name }}" maxlength="50">
             </div>
           </div>
 
           <div class="form-group row">
             <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right">Адрес</label>
             <div class="col-lg-6 col-md-8">
-              <input type="text" id="full_name" class="form-control" name="address" value="{{ Auth::user()->address }}">
+              <input type="text" id="full_name" class="form-control" name="address" value="{{ Auth::user()->address }}" maxlength="140">
             </div>
           </div>
 
           <div class="form-group row">
             <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right">Номер школы</label>
             <div class="col-lg-6 col-md-8">
-              <input type="text" id="full_name" class="form-control" name="number_school" value="{{ Auth::user()->number_school }}">
+              <input type="text" id="full_name" class="form-control" name="number_school" value="{{ Auth::user()->number_school }}" maxlength="30">
             </div>
           </div>
 
           <div class="form-group row">
             <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right">Класс</label>
             <div class="col-lg-6 col-md-8">
-              <input type="text" id="full_name" class="form-control" name="number_class" value="{{ Auth::user()->number_class }}">
+              <input type="text" id="full_name" class="form-control" name="number_class" value="{{ Auth::user()->number_class }}" maxlength="10">
             </div>
           </div>
 
           <div class="form-group row">
             <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right">Предмет(ы)</label>
             <div class="col-lg-6 col-md-8">
-              <input type="text" id="full_name" class="form-control" name="subject" value="{{ Auth::user()->subject }}">
+              <input type="text" id="full_name" class="form-control" name="subject" value="{{ Auth::user()->subject }}"  maxlength="40">
             </div>
           </div>
 
           <div class="form-group row">
             <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right">Оценка по предмету(ам)</label>
             <div class="col-lg-6 col-md-8">
-              <input type="text" id="full_name" class="form-control" name="mark" value="{{ Auth::user()->mark }}">
+              <input type="text" id="full_name" class="form-control" name="mark" value="{{ Auth::user()->mark }}"  maxlength="50">
             </div>
           </div>
 
           <div class="form-group row">
             <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right">Цель занятий</label>
             <div class="col-lg-6 col-md-8">
-              <input type="text" id="full_name" class="form-control" name="goal" value="{{ Auth::user()->goal }}">
+              <input type="text" id="full_name" class="form-control" name="goal" value="{{ Auth::user()->goal }}"  maxlength="200">
             </div>
           </div>
 

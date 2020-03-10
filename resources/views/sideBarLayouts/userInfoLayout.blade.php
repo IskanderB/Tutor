@@ -15,7 +15,7 @@
         @else
         <span>Задания</span>
         @endif
-        <span class="badge badge-primary badge-pill">{{$count_new}}</span>
+        <span class="badge badge-primary badge-pill">{{$count_new ?? ''}}</span>
       </li>
     </ul>
 

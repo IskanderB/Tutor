@@ -60,9 +60,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:10', 'min:6'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:8', 'max:32', 'confirmed'],
+            'number_phone' => ['max:30'],
+            'full_name' => ['max:50'],
+            'address' => ['max:140'],
+            'number_school' => ['max:30'],
+            'number_class' => ['max:10'],
+            'subject' => ['max:40'],
+            'mark' => ['max:50'],
+            'goal' => ['max:200'],
         ]);
     }
 
@@ -79,6 +87,7 @@ class RegisterController extends Controller
      //   Mail::to($email)->send(new EmailConfirmation($user, $token));
      // }
 
+
     protected function create(array $data)
     {
       foreach($data as $key => $value)
@@ -88,7 +97,6 @@ class RegisterController extends Controller
                $data[$key] = 'Не заполнено';
             }
         }
-
 
 
         return User::create([
@@ -107,6 +115,8 @@ class RegisterController extends Controller
 
 
     }
+
+
 
 
 

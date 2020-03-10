@@ -19,9 +19,9 @@ class CreateTasksTable extends Migration
             $table->timestamp('updated_at')->useCurrent();
             $table->integer('from_user')->nullable();
             $table->integer('to_user')->nullable();
-            $table->string('content')->nullable();
+            $table->text('content', 4000)->nullable();
             $table->string('time_limit')->nullable();
-            $table->string('name')->nullable();
+            $table->string('name', 130)->nullable();
             $table->boolean('check')->nullable();
             $table->string('mark')->nullable();
             $table->integer('number')->nullable();

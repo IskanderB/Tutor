@@ -200,7 +200,7 @@
             @csrf
 
           <div class="col-lg-6 offset-lg-3 input_file_box">
-            <input type="file" name="files[]" value="" multiple>
+            <input type="file" name="files[]" value="" multiple id="t_files">
           </div>
           <div class="col-lg-6 offset-lg-3 check_change_box">
             <input type="checkbox" name="check_change" id="check_change">
@@ -220,7 +220,7 @@
           </div>
           @if($is_tutor)
           <div class="col-lg-6 offset-lg-3 input_name_box">
-            <input type="text" name="name" value="" placeholder="Тема..." id="name">
+            <input type="text" name="name" value="" placeholder="Тема..." id="name" maxlength="130">
           </div>
 
           <div class="col-lg-6 offset-lg-3 input_time_box">
@@ -233,14 +233,14 @@
           </div>
           @else
           <div class="col-lg-6 offset-lg-3 input_name_box">
-            <input type="text" name="number" placeholder="Номер задания..." id="number">
+            <input type="text" name="number" placeholder="Номер задания..." id="number"  maxlength="11">
           </div>
           @endif
           <div class="col-lg-6 offset-lg-3 textarea_box">
             @if($is_tutor)
-            <textarea name="content" rows="8" cols="80" placeholder="Комментарий к заданию..." required id="content"></textarea>
+            <textarea name="content" rows="8" cols="80" placeholder="Комментарий к заданию..." required id="content" maxlength="4000"></textarea>
             @else
-            <textarea name="content" rows="8" cols="80" placeholder="Комментарий к ответу..." required id="content"></textarea>
+            <textarea name="content" rows="8" cols="80" placeholder="Комментарий к ответу..." required id="content" maxlength="4000"></textarea>
             @endif
           </div>
 
@@ -272,7 +272,7 @@
                   Проверено
                 </div>
                 <div class="" id="">
-                  <input type="checkbox" class="" id="" name="check">
+                  <input type="checkbox" class="" id="check_check" name="check">
                 </div>
               </div>
             </div>
@@ -282,12 +282,12 @@
                 Оценка:
               </div>
               <div class="input_time">
-                <input type="text" class="form-control" id="grade" name="grade">
+                <input type="text" class="form-control" id="grade" name="grade" maxlength="10">
               </div>
             </div>
 
             <div class="col-lg-6 offset-lg-3 textarea_box">
-              <textarea name="comment" rows="8" cols="80" placeholder="Комментарий к оценке..." id="comment"></textarea>
+              <textarea name="comment" rows="8" cols="80" placeholder="Комментарий к оценке..." id="comment" maxlength="1000"></textarea>
             </div>
 
             <div class="col-lg-6 offset-lg-3 justify-content-start registration_btn">

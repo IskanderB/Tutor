@@ -17,8 +17,8 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamps();
             $table->integer('relationship')->nullable();
-            $table->string('grade')->nullable();
-            $table->text('comment')->nullable();
+            $table->string('grade', 10)->nullable();
+            $table->text('comment', 1000)->nullable();
         });
     }
 

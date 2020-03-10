@@ -46,6 +46,7 @@ class TasksPageController extends Controller
 
     public function uploadTask($request)
     {
+      if(!$this->checkLengthTask($request)) die('Упс(');
       $task = new Tasks();
       $id = $task->create([
         'from_user' => Auth::id(),
@@ -62,6 +63,7 @@ class TasksPageController extends Controller
 
     public function uploadAnswer($request)
     {
+      if(!$this->checkLengthAnswer($request)) die('Упс(');
       $answer = new Answers();
       $id = $answer->create([
         'from_user' => Auth::id(),
@@ -148,6 +150,7 @@ class TasksPageController extends Controller
 
     public function updateTask($request)
     {
+      if(!$this->checkLengthTask($request)) die('Упс(');
       $updateTask = new Tasks();
       $updateTask->updateTask([
         'from_user' => Auth::id(),
@@ -183,7 +186,7 @@ class TasksPageController extends Controller
 
     public function updateAnswer($request)
     {
-      // dd($request->request);
+      if(!$this->checkLengthAnswer($request)) die('Упс(');
       $answer = new Answers();
       $id = $answer->updateAnswer([
         'from_user' => Auth::id(),
@@ -202,6 +205,42 @@ class TasksPageController extends Controller
 
     public function getAnswer($relationship)
     {
-      
+
+    }
+
+    public function checkLengthTask($request)
+    {
+      $lengths = [
+        'name' => 130,
+        'content' => 4000,
+      ];
+      foreach ($lengths as $key => $value) {
+        if(strlen($request[$key]) > $value) return false;
+      }
+      if(count($request->file('files')) > 20) return false;
+      return true;
+    }
+
+    public function checkLengthAnswer($request)
+    {
+      $lengths = [
+        'number' => 9999999999,
+        'content' => 4000,
+      ];
+      if($request['number'] > $lengths['number']) return false;
+      if(strlen($request['content']) > $lengths['content']) return false;
+      if(count($request->file('files')) > 20) return false;
+      return true;
+    }
+
+    public function checkLengthCheck($request)
+    {
+      $lengths = [
+        'grade' => 1,
+        'comment' => 1000,
+      ];
+      if(strlen($request['grade']) > $lengths['grade']) return false;
+      if(strlen($request['comment']) > $lengths['comment']) return false;
+      return true;
     }
 }

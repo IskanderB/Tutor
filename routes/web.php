@@ -18,6 +18,8 @@ Route::get('/registration', 'RegistrationPageController@index')->name('registrat
 
 Auth::routes();
 
+Route::post('/checkLenghtRegister', 'CheckLenghtRegisterController@checkLength')->name('checkLenghtRegister');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/myaccount', 'UserAccountController@index')->middleware(['auth', 'confirmed']);

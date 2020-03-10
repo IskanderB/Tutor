@@ -17,9 +17,9 @@ class CreateFileAnswersTable extends Migration
             $table->bigIncrements('id');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
-            $table->string('name')->nullable();
+            $table->string('name', 250)->nullable();
             $table->string('path')->nullable();
-            $table->string('type')->nullable();
+            $table->string('type', 100)->nullable();
             $table->string('relationship')->nullable();
         });
     }
