@@ -30,7 +30,11 @@
     <li>
       <div class="li_box d-flex justify-content-between">
         <div class="info_key">
-          {{Auth::user()->email}}
+          <!-- {{Auth::user()->email}} -->
+          {{mb_substr(Auth::user()->email, 0, 21)}}
+          @if(strlen(Auth::user()->email) > 21)
+          {{'...'}}
+          @endif
         </div>
 
         <div class="info_content">
@@ -42,7 +46,26 @@
     <li>
       <div class="li_box d-flex justify-content-between">
         <div class="info_key">
-          {{Auth::user()->number_phone}}
+          Номер
+        </div>
+
+        <div class="info_content">
+          {{mb_substr(Auth::user()->number_phone, 0, 11)}}
+          @if(strlen(Auth::user()->number_phone) > 11)
+          {{'...'}}
+          @endif
+        </div>
+      </div>
+    </li>
+
+    <li>
+      <div class="li_box d-flex justify-content-between">
+        <div class="info_key">
+        <!-- {{Auth::user()->full_name}} -->
+        {{mb_substr(Auth::user()->full_name, 0, 20)}}
+        @if(strlen(Auth::user()->full_name) > 20)
+        {{'...'}}
+        @endif
         </div>
 
         <div class="info_content">
@@ -54,11 +77,15 @@
     <li>
       <div class="li_box d-flex justify-content-between">
         <div class="info_key">
-        {{Auth::user()->full_name}}
+          Адрес
         </div>
 
         <div class="info_content">
-
+          {{mb_substr(Auth::user()->address, 0, 12)}}
+          @if(strlen(Auth::user()->address) > 12)
+          {{'...'}}
+          @endif
+          <!-- {{Auth::user()->address}} -->
         </div>
       </div>
     </li>
@@ -66,23 +93,15 @@
     <li>
       <div class="li_box d-flex justify-content-between">
         <div class="info_key">
-          {{Auth::user()->address}}
+          Школа
         </div>
 
         <div class="info_content">
-
-        </div>
-      </div>
-    </li>
-
-    <li>
-      <div class="li_box d-flex justify-content-between">
-        <div class="info_key">
-          Школа №
-        </div>
-
-        <div class="info_content">
-          {{Auth::user()->number_school}}
+          <!-- {{Auth::user()->number_school}} -->
+          {{mb_substr(Auth::user()->number_school, 0, 10)}}
+          @if(strlen(Auth::user()->number_school) > 10)
+          {{'...'}}
+          @endif
         </div>
       </div>
     </li>
@@ -102,11 +121,15 @@
     <li>
       <div class="li_box d-flex justify-content-between">
         <div class="info_key">
-          Оценка по предмету
+          Оценка
         </div>
 
         <div class="info_content">
-          {{Auth::user()->mark}}
+          <!-- {{Auth::user()->mark}} -->
+          {{mb_substr(Auth::user()->mark, 0, 12)}}
+          @if(strlen(Auth::user()->mark) > 12)
+          {{'...'}}
+          @endif
         </div>
       </div>
     </li>
@@ -114,11 +137,15 @@
     <li>
       <div class="li_box d-flex justify-content-between">
         <div class="info_key">
-          {{Auth::user()->subject}}
+          Предметы
         </div>
 
         <div class="info_content">
-
+          <!-- {{Auth::user()->subject}} -->
+          {{mb_substr(Auth::user()->subject, 0, 9)}}
+          @if(strlen(Auth::user()->subject) > 9)
+          {{'...'}}
+          @endif
         </div>
       </div>
     </li>
@@ -126,11 +153,15 @@
     <li>
       <div class="li_box d-flex justify-content-between">
         <div class="info_key">
-          {{Auth::user()->goal}}
+          Цель
         </div>
 
         <div class="info_content">
-
+          <!-- {{Auth::user()->goal}} -->
+          {{mb_substr(Auth::user()->goal, 0, 12)}}
+          @if(strlen(Auth::user()->goal) > 12)
+          {{'...'}}
+          @endif
         </div>
       </div>
     </li>

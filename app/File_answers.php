@@ -30,4 +30,13 @@ class File_answers extends Model
   {
     $this->where('relationship', $id)->delete();
   }
+
+  public function getFiles($ids)
+  {
+    $files = \DB::select("SELECT * FROM (SELECT T.relationship, T.name, T.path, T.type FROM file_tasks T
+     GROUP BY T.relationship, T.name, T.path, T.type) F
+    WHERE relationship IN (".implode(',', $ids).")");
+
+    return $files;
+  }
 }

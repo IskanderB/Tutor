@@ -25,7 +25,6 @@ class UserAccountController extends Controller
   public function studList()
   {
     $users = User::select('name', 'id', 'is_tutor')->where('id', '!=', Auth::id())->get();
-
     $checkAccountPage = true;
     $count = new Tasks();
     return view('UserAccount.tutorAccount', [

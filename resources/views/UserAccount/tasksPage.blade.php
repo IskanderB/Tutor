@@ -10,7 +10,7 @@
           @if(substr((string)count($tasks_list), -1) == "0")
           <div class="more_task_box d-flex">
             <div class="more_task">
-              <a href="/user/2/task/{{count($tasks_list) + 10}}">Больше заданий</a>
+              <a href="/user/{{$studid}}/task/{{count($tasks_list) + 10}}">Больше заданий</a>
             </div>
           </div>
           @endif
@@ -20,15 +20,20 @@
               <div class="task_box">
                 <div class="task_name d-flex">
                   <div class="name_and_new d-flex">
-                    @if(is_null($task['task']['task_cont']->name))
+                    @if(is_null($task['task']['task_cont']['name']))
                       <h5>{{'Задание'}}</h5>
                     @else
-                      <h5>{{$task['task']['task_cont']->name}}</h5>
+                      <h5>
+                        {{mb_substr($task['task']['task_cont']['name'], 0, 27)}}
+                        @if(strlen($task['task']['task_cont']['name']) > 27)
+                        {{'...'}}
+                        @endif
+                      </h5>
                     @endif
 
-                    <h5><span>(№</span><span>{{$task['task']['task_cont']->id}}</span><span>)</span></h5>
+                    <h5><span>(№</span><span>{{$task['task']['task_cont']['id']}}</span><span>)</span></h5>
 
-                    @if(!$task['task']['task_cont']->check)
+                    @if(!$task['task']['task_cont']['check'])
                     <div class="new_task">
                       new
                     </div>
@@ -42,22 +47,19 @@
                 </div>
 
                 <div class="task_time_limit">
-                  <span>Выполнить к </span> <span>{{$task['task']['task_cont']->time_limit}}</span>
+                  <span>Выполнить к </span> <span>{{$task['task']['task_cont']['time_limit']}}</span>
                 </div>
 
-                @if(strlen($task['task']['task_cont']->content) <= 250)
+                @if(strlen($task['task']['task_cont']['content']) <= 250)
                 <div class="task_text">
-                  <span>{{$task['task']['task_cont']->content}}</span>
-                  <!-- {{strlen($task['task']['task_cont']->content)}} -->
+                  <span>{{$task['task']['task_cont']['content']}}</span>
                 </div>
                 @else
                 <div class="task_text">
-                  <span>{{substr($task['task']['task_cont']->content, 0, 250)}}</span>
+                  <span>{{substr($task['task']['task_cont']['content'], 0, 250)}}</span>
                   <span class="points">{{'...'}}</span>
-                  <span class="last_cont">{{substr($task['task']['task_cont']->content, 251)}}</span>
-                  <!-- {{$task['task']['task_cont']->content}} -->
-                  <!-- {{strlen($task['task']['task_cont']->content)}} -->
-                  <!-- {{mb_strimwidth($task['task']['task_cont']->content, 0, 150, "...")}} -->
+                  <span class="last_cont">{{substr($task['task']['task_cont']['content'], 251)}}</span>
+
                 </div>
                 @endif
 
@@ -103,16 +105,16 @@
                 </div>
               </div>
             </li>
-            @if($task['task']['task_cont']->check)
+            @if($task['task']['task_cont']['check'])
             <li>
               <div class="task_box">
                 <div class="task_name d-flex">
                   <div class="name_and_new d-flex">
                     <h5>Ответ к заданию</h5>
-                    <h5><span>(№</span><span>{{$task['answer']['answer_cont'][0]->relationship}}</span><span>)</span></h5>
+                    <h5><span>(№</span><span>{{$task['answer']['answer_cont']['relationship']}}</span><span>)</span></h5>
                   </div>
                   @if($is_tutor)
-                  @if(!$task['answer']['answer_cont'][0]->check)
+                  @if(!$task['answer']['answer_cont']['check'])
                   <div class="check_btn">
                     <div class="btn btn-primary">
                       Оценить
@@ -127,29 +129,23 @@
                 </div>
 
                 <div class="task_time_limit">
-                  <span>Отправлен </span><span>{{$task['answer']['answer_cont'][0]->created_at->format("Y-m-d H:i")}}</span>
+                  <span>Отправлен </span><span>{{$task['answer']['answer_cont']['updated_at']->format("Y-m-d H:i")}}</span>
                 </div>
 
-                @if(strlen($task['answer']['answer_cont'][0]->content) <= 250)
+                @if(strlen($task['answer']['answer_cont']['content']) <= 250)
                 <div class="task_text">
-                  <span>{{$task['answer']['answer_cont'][0]->content}}</span>
-                  <!-- {{strlen($task['task']['task_cont']->content)}} -->
+                  <span>{{$task['answer']['answer_cont']['content']}}</span>
                 </div>
                 @else
                 <div class="task_text">
-                  <span>{{substr($task['answer']['answer_cont'][0]->content, 0, 250)}}</span>
+                  <span>{{substr($task['answer']['answer_cont']['content'], 0, 250)}}</span>
                   <span class="points">...</span>
-                  <span class="last_cont">{{substr($task['answer']['answer_cont'][0]->content, 251)}}</span>
-                  <!-- {{strlen($task['task']['task_cont']->content)}} -->
-                  <!-- {{mb_strimwidth($task['task']['task_cont']->content, 0, 150, "...")}} -->
+                  <span class="last_cont">{{substr($task['answer']['answer_cont']['content'], 251)}}</span>
                 </div>
                 @endif
 
-                <!-- <div class="task_text">
-                  {{$task['answer']['answer_cont'][0]->content}}
-                </div> -->
                 <div class="task_files_box">
-                  @if(isset($task['answer']['answer_files'][0]->path))
+                  @if(isset($task['answer']['answer_files']->path))
                      <ul class="files_list d-flex">
                        @foreach ($task['answer']['answer_files'] as $file)
                        <li>
@@ -196,7 +192,7 @@
 
         <hr/>
 
-        <form class="task_form" id="task_form" action="{{ route('task_answer.upload',  ['studid' => 2]) }}" method="POST" enctype="multipart/form-data">
+        <form class="task_form" id="task_form" action="{{ route('task_answer.upload',  ['studid' => $studid]) }}" method="POST" enctype="multipart/form-data">
             @csrf
 
           <div class="col-lg-6 offset-lg-3 input_file_box">
