@@ -10,6 +10,8 @@ class Answers extends Model
 {
   public function create($data)
   {
+    if(!$this->correctTaskId($data['number'])) return false;
+
     $id = $this->insertGetId([
       'content' => $data['content'],
       'from_user' => $data['from_user'],
@@ -18,6 +20,34 @@ class Answers extends Model
     ]);
     $this->checked($data['number']);
     return $id;
+  }
+
+  public function correctTaskId($relationship)
+  {
+
+
+    if($this->correctTypeId($relationship) and $this->isSetTaskId($relationship) and $this->correctNotDouble($relationship)) return true;
+    else return false;
+  }
+
+  public function correctTypeId($relationship)
+  {
+    $int_relationship = (int)$relationship;
+    if(gettype($int_relationship) == 'integer' and $int_relationship != 0) return true;
+    else return false;
+  }
+
+  public function isSetTaskId($relationship)
+  {
+    $task = new Tasks();
+    return $task->correctTaskId($relationship);
+  }
+
+  public function correctNotDouble($relationship)
+  {
+    $check = $this->select('id')->where('relationship', '=', $relationship)->get();
+    if(isset($check[0]->id)) return false;
+    else return true;
   }
 
   public function checked($number)

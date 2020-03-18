@@ -42,10 +42,15 @@ class TasksPageController extends Controller
       else{
         if($request->check_change == "on")
         $this->updateAnswer($request);
-        else
-        $this->uploadAnswer($request);
+        else{
+          $flag = $this->uploadAnswer($request);
+          if(!$flag) return redirect()->route('tasks',[
+            'studid' => 1,
+            'quantity' => 10,
+            'flag' => 'Error',
+          ]);
+        }
       }
-
       return redirect()->back();
     }
 
@@ -76,9 +81,13 @@ class TasksPageController extends Controller
         'content' => $request->content,
         'number' => $request->number,
       ]);
+
+      if(!$id) return false;
+
       if($request->file('files')){
         $this->appendFile($request, $id);
       }
+      return true;
     }
 
     public function appendFile($request, $id)

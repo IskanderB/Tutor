@@ -24,7 +24,7 @@ class UserAccountController extends Controller
 
   public function studList()
   {
-    $users = User::select('name', 'id', 'is_tutor')->where('id', '!=', Auth::id())->get();
+    $users = User::select('name', 'id', 'is_tutor')->where('id', '!=', Auth::id())->orderBy('name')->get();
     $checkAccountPage = true;
     $count = new Tasks();
     return view('UserAccount.tutorAccount', [
@@ -45,6 +45,6 @@ class UserAccountController extends Controller
       else
       $friends_id[] = $friend->first_id;
     }
-    return User::select('name', 'id', 'is_tutor')->whereIn('id', $friends_id)->get();
+    return User::select('name', 'id', 'is_tutor')->whereIn('id', $friends_id)->orderBy('name')->get();
   }
 }

@@ -194,7 +194,11 @@
 
         <form class="task_form" id="task_form" action="{{ route('task_answer.upload',  ['studid' => $studid]) }}" method="POST" enctype="multipart/form-data">
             @csrf
-
+            @if(isset(request()->flag))
+            <div class="errors_reg col-lg-6 offset-lg-3" role="alert">
+                <strong>{{ 'Не корректный номер задания' }}</strong>
+            </div>
+            @endif
           <div class="col-lg-6 offset-lg-3 input_file_box">
             <input type="file" name="files[]" value="" multiple id="t_files">
           </div>
@@ -212,7 +216,7 @@
             </div>
           </div>
           <div class="col-lg-6 offset-lg-3 input_name_box input_id_box">
-            <input type="text" name="task_id" value="" id="task_id">
+            <input type="text" name="task_id" value="" id="task_id" value="{{ old('task_id') }}">
           </div>
           @if($is_tutor)
           <div class="col-lg-6 offset-lg-3 input_name_box">

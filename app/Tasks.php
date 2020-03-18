@@ -156,4 +156,12 @@ class Tasks extends Model
       else return false;
         return $count;
     }
+
+    public function correctTaskId($id)
+    {
+      $check = $this->select('id')->where('id', '=', $id)->get();
+      // dd($check);
+      if(isset($check[0]->id)) return true;
+      else return false;
+    }
 }
