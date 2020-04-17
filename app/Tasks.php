@@ -32,13 +32,14 @@ class Tasks extends Model
       //     ['to_user', '=', $data['from_user']],
       //     ['from_user', '=', $data['to_user']],
       //     ])->orderBy('id', 'desc')->take($data['quantity'])->get();
-
       $tasks_db = \DB::table('tasks')
       ->Leftjoin('answers', 'tasks.id', '=', 'answers.relationship')
+      ->Leftjoin('comments', 'tasks.id', '=', 'comments.relationship')
       ->select('tasks.id as t_id', 'tasks.from_user as t_from', 'tasks.to_user as t_to', 'tasks.content as t_content',
       'tasks.time_limit as t_t_limit', 'tasks.name as t_name', 'tasks.check as t_check', 'tasks.mark as t_mark',
       'answers.updated_at as a_updated_at', 'answers.content as a_content', 'answers.check as a_check', 'answers.mark as a_mark',
-      'answers.id as a_id', 'answers.relationship as a_relationship',)
+      'answers.id as a_id', 'answers.relationship as a_relationship', 'comments.relationship as c_relationship',
+      'comments.grade as c_grade', 'comments.comment as c_comment')
       ->where([
         ['tasks.to_user', '=',  $data['from_user']],
         ['tasks.from_user', '=', $data['to_user']],
@@ -50,7 +51,7 @@ class Tasks extends Model
       ->orderBy('tasks.created_at', 'desc')
       ->take($data['quantity'])
       ->get();
-
+// dd($tasks_db);
       $result = $this->constrTasksList($tasks_db);
 
       return array_reverse($result);
@@ -90,6 +91,10 @@ class Tasks extends Model
               'relationship' => $value->a_relationship,
           ],
             'answer_files' => $this->getTaskFiles($value->a_id, $files_a),
+            'answer_comment' => [
+              'grade' => $value->c_grade,
+              'comment' => $value->c_comment,
+            ],
           ],
         ];
       }

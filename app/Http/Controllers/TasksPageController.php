@@ -16,6 +16,7 @@ class TasksPageController extends Controller
 
     public function index(Request $request)
     {
+      
       $count = new Tasks();
       // $date = date_create('2000-01-01');
       // echo date_format($date, 'Y-m-d H:i:s');
@@ -194,7 +195,7 @@ class TasksPageController extends Controller
         'to_user' => $request->studid,
         'quantity' => $request->quantity,
       ]);
-
+      // dd($tasks_db);
       return $tasks_db;
     }
 

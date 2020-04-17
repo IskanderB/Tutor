@@ -66,6 +66,17 @@
                   margin-left: 5px;
                   margin-top: 3px;
                 }
+                .checked_icon_box{
+                  height: 22px;
+                  padding-right: 6px;
+                  padding-left: 6px;
+                  // background-color: @pink;
+                  border-radius: 20px;
+                  font-size: 20px;
+                  font-weight: 800;
+                  color: @pink;
+                  margin-left: 5px;
+                }
               }
               .edit_icon{
                 color: @superb_gray;
@@ -139,6 +150,25 @@
                         width: 100%;
                       }
                     }
+                  }
+                }
+              }
+            }
+            .answer_comment{
+              display: none;
+              .answer_comment_box{
+                margin-top: 10px;
+                padding: 10px 10px 10px 10px;
+                border:1px solid @superb_gray;
+                border-radius: 7px;
+                .comment_grade{
+                  span:first-child{
+                    font-weight: bold;
+                  }
+                }
+                .comment_comment{
+                  span:first-child{
+                    font-weight: bold;
                   }
                 }
               }

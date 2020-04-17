@@ -68,7 +68,7 @@ class Answers extends Model
   public function countAnswer()
   {
     $count = $this->where([
-        ['from_user', Auth::id()],
+        ['to_user', Auth::id()],
         ['check', null],
       ])->count();
 

@@ -33,10 +33,10 @@ class File_answers extends Model
 
   public function getFiles($ids)
   {
-    $files = \DB::select("SELECT * FROM (SELECT T.relationship, T.name, T.path, T.type FROM file_tasks T
+    $files = \DB::select("SELECT * FROM (SELECT T.relationship, T.name, T.path, T.type FROM file_answers T
      GROUP BY T.relationship, T.name, T.path, T.type) F
     WHERE relationship IN (".implode(',', $ids).")");
-
+    
     return $files;
   }
 }

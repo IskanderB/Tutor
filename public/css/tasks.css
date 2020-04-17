@@ -55,6 +55,16 @@
   margin-left: 5px;
   margin-top: 3px;
 }
+.card .card-body .tasks_box .tasks_list li .task_box .task_name .name_and_new .checked_icon_box {
+  height: 22px;
+  padding-right: 6px;
+  padding-left: 6px;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 800;
+  color: #bd00bd;
+  margin-left: 5px;
+}
 .card .card-body .tasks_box .tasks_list li .task_box .task_name .edit_icon {
   color: #989a99;
   cursor: pointer;
@@ -120,6 +130,21 @@
   display: block;
   height: 100%;
   width: 100%;
+}
+.card .card-body .tasks_box .tasks_list li .task_box .answer_comment {
+  display: none;
+}
+.card .card-body .tasks_box .tasks_list li .task_box .answer_comment .answer_comment_box {
+  margin-top: 10px;
+  padding: 10px 10px 10px 10px;
+  border: 1px solid #989a99;
+  border-radius: 7px;
+}
+.card .card-body .tasks_box .tasks_list li .task_box .answer_comment .answer_comment_box .comment_grade span:first-child {
+  font-weight: bold;
+}
+.card .card-body .tasks_box .tasks_list li .task_box .answer_comment .answer_comment_box .comment_comment span:first-child {
+  font-weight: bold;
 }
 .card .card-body .task_form .textarea_box {
   width: 100%;

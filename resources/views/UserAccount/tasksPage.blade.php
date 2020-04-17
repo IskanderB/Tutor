@@ -1,5 +1,4 @@
 @extends('layout')
-
 @section('content')
   <div class="col-lg-9">
     <div class="card">
@@ -65,7 +64,7 @@
 
 
                  <div class="task_files_box">
-                   @if(isset($task['task']['task_files'][0]->path))
+                   @if(!empty($task['task']['task_files']))
                    <ul class="files_list d-flex">
                      @foreach ($task['task']['task_files'] as $file)
                      <li>
@@ -86,6 +85,10 @@
                      @endforeach
                    </ul>
                    @endif
+                 </div>
+
+                 <div class="answer_comment">
+
                  </div>
 
                 <div class="open_icon_box d-flex open_icon_down_js">
@@ -112,6 +115,12 @@
                   <div class="name_and_new d-flex">
                     <h5>Ответ к заданию</h5>
                     <h5><span>(№</span><span>{{$task['answer']['answer_cont']['relationship']}}</span><span>)</span></h5>
+
+                    @if($task['answer']['answer_cont']['check'])
+                    <div class="checked_icon_box">
+                      <i class="fa fa-check-circle" aria-hidden="true"></i>
+                    </div>
+                    @endif
                   </div>
                   @if($is_tutor)
                   @if(!$task['answer']['answer_cont']['check'])
@@ -145,7 +154,7 @@
                 @endif
 
                 <div class="task_files_box">
-                  @if(isset($task['answer']['answer_files']->path))
+                  @if(!empty($task['answer']['answer_files']))
                      <ul class="files_list d-flex">
                        @foreach ($task['answer']['answer_files'] as $file)
                        <li>
@@ -165,6 +174,26 @@
                        </li>
                        @endforeach
                      </ul>
+                   @endif
+                 </div>
+
+
+                 <div class="answer_comment">
+                   @if($task['answer']['answer_comment']['grade'] != null or $task['answer']['answer_comment']['comment'] != null)
+                   <div class="answer_comment_box">
+                     @if(isset($task['answer']['answer_comment']['grade']))
+                     <div class="comment_grade">
+                       <span>Оценка:</span>
+                       <span>{{$task['answer']['answer_comment']['grade']}}</span>
+                     </div>
+                     @endif
+                     @if(isset($task['answer']['answer_comment']['comment']))
+                     <div class="comment_comment">
+                       <span>Комментарий:</span>
+                       <span>{{$task['answer']['answer_comment']['comment']}}</span>
+                     </div>
+                     @endif
+                   </div>
                    @endif
                  </div>
 

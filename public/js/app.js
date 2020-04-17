@@ -69764,11 +69764,13 @@ for (var i = 0; i < down.length; i++) {
       panel.childNodes[4].childNodes[4].style.display = 'block';
     }
 
-    panel.childNodes[6].style.display = 'block'; // panel.childNodes[8].style.display = 'none';
+    panel.childNodes[8].style.display = 'block';
+    panel.childNodes[6].style.display = 'block'; // console.log(panel.childNodes[12]);
+    // panel.childNodes[8].style.display = 'none';
 
-    panel.childNodes[8].childNodes[0].childNodes[0].style.display = 'none'; // console.log(panel.childNodes);
+    panel.childNodes[10].childNodes[0].childNodes[0].style.display = 'none'; // console.log(panel.childNodes);
 
-    panel.childNodes[10].childNodes[0].childNodes[0].style.display = 'block';
+    panel.childNodes[12].childNodes[0].childNodes[0].style.display = 'block';
   });
 }
 
@@ -69784,10 +69786,11 @@ for (var _i = 0; _i < up.length; _i++) {
       panel.childNodes[4].childNodes[4].style.display = 'none';
     }
 
-    panel.childNodes[6].style.display = 'none'; // panel.childNodes[8].style.display = 'none';
+    panel.childNodes[6].style.display = 'none';
+    panel.childNodes[8].style.display = 'none'; // panel.childNodes[8].style.display = 'none';
 
-    panel.childNodes[8].childNodes[0].childNodes[0].style.display = 'block';
-    panel.childNodes[10].childNodes[0].childNodes[0].style.display = 'none';
+    panel.childNodes[10].childNodes[0].childNodes[0].style.display = 'block';
+    panel.childNodes[12].childNodes[0].childNodes[0].style.display = 'none';
   });
 }
 
