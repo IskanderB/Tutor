@@ -2,7 +2,15 @@
 @section('content')
   <div class="col-lg-9">
     <div class="card">
-      <div class="card-header">Задания</div>
+      <div class="card-header">
+        <span>Задания</span>
+        @if($is_tutor)
+        <span>для</span>
+        @else
+        <span>от </span>
+        @endif
+        <span><a href="/userPage/{{$studid}}">{{$stud_name}}</a></span>
+      </div>
 
       <div class="card-body">
         <div class="col-lg-10 tasks_box offset-lg-1" id='tasks_box'>

@@ -7,6 +7,7 @@ use App\Tasks;
 use App\Answers;
 use App\File_tasks;
 use App\File_answers;
+use App\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use App;
@@ -16,7 +17,7 @@ class TasksPageController extends Controller
 
     public function index(Request $request)
     {
-      
+
       $count = new Tasks();
       // $date = date_create('2000-01-01');
       // echo date_format($date, 'Y-m-d H:i:s');
@@ -28,7 +29,14 @@ class TasksPageController extends Controller
         'is_tutor' => Auth::user()->is_tutor,
         'count_new' => $count->countTask(),
         'studid' => $request->studid,
+        'stud_name' => $this->getName($request->studid),
       ]);
+    }
+
+    private function getName($studid)
+    {
+      $name = new User();
+      return $name->getUser($studid)[0]->full_name;
     }
 
     public function upload(Request $request)

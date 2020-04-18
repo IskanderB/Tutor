@@ -2,7 +2,7 @@
   <ul class="user_if_list">
     <li>
       <div class="li_box">
-        <a href="/tutoraccount">
+        <a href="/userPage/{{Auth::id()}}">
           <div class="user_name_box">
             <h5><i class="fa fa-graduation-cap" aria-hidden="true"></i> {{Auth::user()->name}}</h5>
           </div>

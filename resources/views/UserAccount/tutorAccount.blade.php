@@ -31,7 +31,7 @@
 
                     <div class="user_name_wrap">
                       <div class="user_name">
-                        {{$user->name}}
+                        <a href="/userPage/{{$user->id}}">{{$user->name}}</a>
                       </div>
                     </div>
                   </div>
@@ -88,7 +88,7 @@
 
                     <div class="user_name_wrap">
                       <div class="user_name">
-                        {{$friend->name}}
+                        <a href="/userPage/{{$friend->id}}">{{$friend->name}}</a>
                       </div>
                     </div>
                   </div>

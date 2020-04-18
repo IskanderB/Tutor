@@ -27,4 +27,14 @@ class Friends extends Model
       ])->delete();
 
     }
+
+    public function isFriends($id)
+    {
+      $auth_id = Auth::id();
+      return $this
+      ->where([
+        ['first_id', '=', $id],
+        ['second_id', '=', $auth_id],
+      ])->count();
+    }
 }

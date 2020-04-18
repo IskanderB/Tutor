@@ -3,7 +3,7 @@
       <div class="col-lg-8 offset-lg-2">
         <div class="chat_name_box row">
           <span class="chat_name align-items-center"">
-            <a href="#"><h5>{{stud.full_name}}</h5></a>
+            <a :href="`${stud.page_path}`"><h5>{{stud.full_name}}</h5></a>
           </span>
         </div>
         <div class="chat_box">
@@ -25,12 +25,12 @@
                 <div class="message_box">
                   <div class="message_not_img d-flex">
                   <div class="message_icon">
-                    <a href="#">{{iter.position}}</a>
+                    <a :href="`${iter.page_path}`">{{iter.position}}</a>
                   </div>
                   <div class="message_info">
                     <div class="message_name_time d-flex">
                       <div class="message_name bottom_line">
-                        <a href="#">{{iter.from_user}}</a>
+                        <a :href="`${iter.page_path}`">{{iter.from_user}}</a>
                       </div>
                       <div class="message_time d-flex">
                         <div class="message_short_time bottom_line" :data-hint="`${iter.full_time}`">

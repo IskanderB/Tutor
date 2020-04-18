@@ -37,13 +37,10 @@ class UserAccountController extends Controller
 
   public function checkFriends()
   {
-    $friends_Friends = Friends::select('first_id', 'second_id')->where('first_id', Auth::id())->orWhere('second_id', Auth::id())->get();
+    $friends_Friends = Friends::select('first_id', 'second_id')->where('first_id', Auth::id())->get();
     $friends_id = [];
     foreach ($friends_Friends as $friend) {
-      if($friend->first_id == Auth::id())
       $friends_id[] = $friend->second_id;
-      else
-      $friends_id[] = $friend->first_id;
     }
     return User::select('name', 'id', 'is_tutor')->whereIn('id', $friends_id)->orderBy('name')->get();
   }

@@ -57,6 +57,8 @@ Route::get('/append/friend/{friend_id}', 'FriendsController@append')->name('appe
 Route::get('/delete/friend/{friend_id}', 'FriendsController@delete')->name('delete-friend')->middleware(['auth', 'confirmed']);
 
 Route::post('/append/comment', 'CommentsController@append')->name('append-comment')->middleware(['auth', 'confirmed']);
+
+Route::get('/userPage/{user_id}', 'UserPageController@index')->name('userPage')->middleware(['auth', 'confirmed']);
 // Route::post('messages', function(Illuminate\Http\Request $request){
 //   App\Events\Message::dispatch($request->input('body'))
 // });

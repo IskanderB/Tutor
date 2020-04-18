@@ -15,7 +15,8 @@ class TutorChatController extends Controller
     public function redirect(Request $request)
     {
       $checkAccountPage = true;
-      $stud = User::select('id', 'full_name', 'name', 'is_tutor')->where('id', '=', $request->studid)->get();
+      $stud = User::select('id', 'full_name', 'name', 'is_tutor', \DB::raw("CONCAT('/userPage/',id) as page_path"))
+      ->where('id', '=', $request->studid)->get();
       $resMessagesFromDB = Chat::select()->where([
         ['from_user', '=', Auth::id()],
         ['to_user', '=', $request->studid],
@@ -44,10 +45,12 @@ class TutorChatController extends Controller
         if($value->from_user == $authors[0]->id){
           $from_user = $authors[0]->name;
           $is_tutor = $authors[0]->is_tutor;
+          $page_path = "/userPage/{$authors[0]->id}";
         }
         else{
           $from_user = $authors[1]->name;
           $is_tutor = $authors[1]->is_tutor;
+          $page_path = "/userPage/{$authors[1]->id}";
         }
 
 
@@ -69,6 +72,7 @@ class TutorChatController extends Controller
           'full_time' => $value->created_at->format("Y-m-d H:i:s"),
           'position' => $position,
           'images_path' => $images_path,
+          'page_path' => $page_path,
         );
       }
 

@@ -39,6 +39,11 @@
   height: 50%;
   margin-top: 22px;
 }
+.account_box .users_wrap .users_box .users_list li .li_box .user .user_wrap .user_name_wrap .user_name a:hover {
+  text-decoration: underline;
+  height: 50%;
+  margin-top: 22px;
+}
 .account_box .users_wrap .users_box .users_list li .li_box .user .app_friend {
   margin-right: 20px;
   margin-top: 14px;

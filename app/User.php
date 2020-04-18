@@ -97,4 +97,9 @@ class User extends Authenticatable
       ]);
       return $is_confirmed;
     }
+
+    public function getUser($id)
+    {
+      return $this->select()->where('id', '=', $id)->get();
+    }
 }

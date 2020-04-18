@@ -56488,7 +56488,7 @@ var render = function() {
     _c("div", { staticClass: "col-lg-8 offset-lg-2" }, [
       _c("div", { staticClass: "chat_name_box row" }, [
         _c("span", { staticClass: "chat_name align-items-center" }, [
-          _c("a", { attrs: { href: "#" } }, [
+          _c("a", { attrs: { href: "" + _vm.stud.page_path } }, [
             _c("h5", [_vm._v(_vm._s(_vm.stud.full_name))])
           ])
         ])
@@ -56524,7 +56524,7 @@ var render = function() {
                   _c("div", { staticClass: "message_box" }, [
                     _c("div", { staticClass: "message_not_img d-flex" }, [
                       _c("div", { staticClass: "message_icon" }, [
-                        _c("a", { attrs: { href: "#" } }, [
+                        _c("a", { attrs: { href: "" + iter.page_path } }, [
                           _vm._v(_vm._s(iter.position))
                         ])
                       ]),
@@ -56535,9 +56535,11 @@ var render = function() {
                             "div",
                             { staticClass: "message_name bottom_line" },
                             [
-                              _c("a", { attrs: { href: "#" } }, [
-                                _vm._v(_vm._s(iter.from_user))
-                              ])
+                              _c(
+                                "a",
+                                { attrs: { href: "" + iter.page_path } },
+                                [_vm._v(_vm._s(iter.from_user))]
+                              )
                             ]
                           ),
                           _vm._v(" "),
