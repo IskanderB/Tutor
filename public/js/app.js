@@ -2492,10 +2492,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return uploadFile;
     }(),
     fileInputRemove: function fileInputRemove(event) {
-      if (event.target.files.length <= 10) {
-        this.files = Array.from(event.target.files);
-        this.filesOrder = this.files.slice();
-        this.isDNone = "block";
+      // console.log(event.target.files);
+      var length = event.target.files.length;
+
+      for (var i = 0; i < length; i++) {
+        if (event.target.files[i].size > 10000000) {
+          // $(this).val('');
+          break;
+        } else {
+          if (event.target.files.length <= 10) {
+            this.files = Array.from(event.target.files);
+            this.filesOrder = this.files.slice();
+            this.isDNone = "block";
+          }
+        }
       }
     },
     resFull: function resFull(a) {
@@ -69901,13 +69911,35 @@ $(document).ready(function () {
 $("#upload").on("change", function () {
   if ($("#upload")[0].files.length > 10) {
     alert("Вы не можете загружать более 10 файлов");
-    $(this).val(false);
+    $(this).val('');
   }
 });
 $("#t_files").on("change", function () {
   if ($("#t_files")[0].files.length > 20) {
     alert("Вы не можете загружать более 20 файлов");
     $(this).val('');
+  }
+});
+$('#t_files').bind('change', function () {
+  var length = this.files.length;
+
+  for (var i = 0; i < length; i++) {
+    if (this.files[i].size > 10000000) {
+      $(this).val('');
+      alert("Размер каждого файла не должен превышать 10 Мб");
+      break;
+    }
+  }
+});
+$('#upload').on('change', function () {
+  var length = this.files.length;
+
+  for (var i = 0; i < length; i++) {
+    if (this.files[i].size > 10000000) {
+      // $(this).val('');
+      alert("Размер каждого файла не должен превышать 10 Мб");
+      break;
+    }
   }
 });
 

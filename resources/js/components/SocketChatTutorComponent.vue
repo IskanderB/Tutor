@@ -346,11 +346,23 @@
             },
 
             fileInputRemove(event) {
-              if(event.target.files.length <= 10){
-                this.files = Array.from(event.target.files);
-                this.filesOrder = this.files.slice();
-                this.isDNone = "block";
+              // console.log(event.target.files);
+              let length = event.target.files.length;
+              for (var i = 0; i < length; i++) {
+                if (event.target.files[i].size > 10000000) {
+                  // $(this).val('');
+
+                  break;
+                }
+                else{
+                  if(event.target.files.length <= 10){
+                    this.files = Array.from(event.target.files);
+                    this.filesOrder = this.files.slice();
+                    this.isDNone = "block";
+                  }
+                }
               }
+
             },
 
             resFull(a) {

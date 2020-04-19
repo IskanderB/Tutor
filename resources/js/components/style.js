@@ -260,7 +260,7 @@ $(document).ready(function() {
 $("#upload").on("change", function() {
     if ($("#upload")[0].files.length > 10) {
         alert("Вы не можете загружать более 10 файлов");
-        $(this).val(false);
+        $(this).val('');
     }
 });
 
@@ -269,4 +269,30 @@ $("#t_files").on("change", function() {
         alert("Вы не можете загружать более 20 файлов");
         $(this).val('');
     }
+
+
+});
+
+$('#t_files').bind('change', function() {
+
+  let length = this.files.length;
+  for (var i = 0; i < length; i++) {
+    if (this.files[i].size > 10000000) {
+      $(this).val('');
+      alert("Размер каждого файла не должен превышать 10 Мб");
+      break;
+    }
+  }
+});
+
+$('#upload').on('change', function() {
+
+  let length = this.files.length;
+  for (var i = 0; i < length; i++) {
+    if (this.files[i].size > 10000000) {
+      // $(this).val('');
+      alert("Размер каждого файла не должен превышать 10 Мб");
+      break;
+    }
+  }
 });

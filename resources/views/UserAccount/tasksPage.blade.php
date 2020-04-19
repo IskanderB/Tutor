@@ -30,12 +30,7 @@
                     @if(is_null($task['task']['task_cont']['name']))
                       <h5>{{'Задание'}}</h5>
                     @else
-                      <h5>
-                        {{mb_substr($task['task']['task_cont']['name'], 0, 27)}}
-                        @if(strlen($task['task']['task_cont']['name']) > 27)
-                        {{'...'}}
-                        @endif
-                      </h5>
+                      <h5>{{$task['task']['task_cont']['name']}}</h5>
                     @endif
 
                     <h5><span>(№</span><span>{{$task['task']['task_cont']['id']}}</span><span>)</span></h5>
