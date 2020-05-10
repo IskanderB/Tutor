@@ -83,38 +83,45 @@
           </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row d-none">
+          <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right"></label>
+          <div class="col-lg-6 col-md-8">
+            <input type="text" id="status" class="form-control" name="status" value="tutor"  maxlength="140">
+          </div>
+        </div>
+
+        <div class="form-group row d-none">
           <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right">Номер школы</label>
           <div class="col-lg-6 col-md-8">
-            <input type="text" id="full_name" class="form-control" name="number_school" value="{{ old('number_school') }}"  maxlength="30">
+            <input type="text" id="full_name" class="form-control" name="number_school" value=""  maxlength="30">
           </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row d-none">
           <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right">Класс</label>
           <div class="col-lg-6 col-md-8">
-            <input type="text" id="full_name" class="form-control" name="number_class" value="{{ old('number_class') }}"  maxlength="10">
+            <input type="text" id="full_name" class="form-control" name="number_class" value=""  maxlength="10">
           </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row d-none">
           <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right">Предмет(ы)</label>
           <div class="col-lg-6 col-md-8">
-            <input type="text" id="full_name" class="form-control" name="subject" value="{{ old('subject') }}"  maxlength="40">
+            <input type="text" id="full_name" class="form-control" name="subject" value=""  maxlength="40">
           </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row d-none">
           <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right">Оценка по предмету(ам)</label>
           <div class="col-lg-6 col-md-8">
-            <input type="text" id="full_name" class="form-control" name="mark" value="{{ old('mark') }}"  maxlength="50">
+            <input type="text" id="full_name" class="form-control" name="mark" value=""  maxlength="50">
           </div>
         </div>
 
-        <div class="form-group row">
+        <div class="form-group row d-none">
           <label for="full_name" class="col-lg-3 col-md-3 col-form-label text-md-right">Цель занятий</label>
           <div class="col-lg-6 col-md-8">
-            <input type="text" id="full_name" class="form-control" name="goal" value="{{ old('goal') }}"  maxlength="200">
+            <input type="text" id="full_name" class="form-control" name="goal" value=""  maxlength="200">
           </div>
         </div>
 

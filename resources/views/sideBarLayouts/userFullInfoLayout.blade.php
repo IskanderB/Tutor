@@ -89,7 +89,7 @@
         </div>
       </div>
     </li>
-
+    @if(!Auth::user()->is_tutor)
     <li>
       <div class="li_box d-flex justify-content-between">
         <div class="info_key">
@@ -165,6 +165,7 @@
         </div>
       </div>
     </li>
+    @endif
   </ul>
 
   <div class="user_info_full_btn justify-content-between">

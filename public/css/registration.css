@@ -1,3 +1,9 @@
+.content_self .container .row .choose_reg_box .btn_choose_reg .btn_choose_reg {
+  margin-right: 10px;
+}
+#btn_choose_reg {
+  margin-right: 20px;
+}
 .navbar-laravel {
   box-shadow: 0 2px 4px red;
 }

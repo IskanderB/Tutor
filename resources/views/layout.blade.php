@@ -6,7 +6,7 @@
            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-   <title>Tutor</title>
+   <title>Tutorib</title>
    <link rel="shortcut icon" href="{{URL::asset('images/title.png')}}" type="image/x-icon">
    <link rel="stylesheet" href="{{URL::asset('css/magnific-popup.css')}}">
    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700" rel="stylesheet">
@@ -29,7 +29,7 @@
           <div class="logo_text_icon d-flex">
             <a href="/"> <i class="fa fa-graduation-cap" aria-hidden="true"></i></a>
               <div class="logo_text">
-                <a href="/">Tutor</a>
+                <a href="/">Tutorib</a>
               </div>
           </div>
           <div class="menu_bar" id="menu_bar">
@@ -55,7 +55,7 @@
               </li>
 
               <li class="menu__item">
-                <a href="#">
+                <a href="/materials">
                   <div>
                     Материалы
                   </div>
@@ -63,7 +63,7 @@
               </li>
 
               <li class="menu__item">
-                <a href="#">
+                <a href="/reviews">
                   <div>
                     Отзывы
                   </div>
@@ -121,11 +121,11 @@
             </ul>-->
 
             <ol class="list-counter-circle">
-              <li><a href="#">Решу ЕГЭ</a></li>
-              <li><a href="#">Сдам ГИА</a></li>
-              <li><a href="#">ФИПИ</a></li>
-              <li><a href="#">Александр Ларин</a></li>
-              <li><a href="#">EXAMER</a></li>
+              <li><a href="https://ege.sdamgia.ru/">Решу ЕГЭ</a></li>
+              <li><a href="https://sdamgia.ru/">Сдам ГИА</a></li>
+              <li><a href="https://fipi.ru/">ФИПИ</a></li>
+              <li><a href="https://alexlarin.net/">Александр Ларин</a></li>
+              <li><a href="https://examer.ru/">EXAMER</a></li>
             </ol>
           </div>
 
@@ -145,7 +145,7 @@
                 <div class="d-flex logo_footer_box">
                   <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                   <div class="logo_text">
-                    Tutor
+                    Tutorib
                   </div>
                 </div>
               </a>
@@ -166,7 +166,7 @@
               </li>
 
               <li class="menu__item">
-                <a href="#">
+                <a href="/materials">
                   <div>
                     Материалы
                   </div>
@@ -174,7 +174,7 @@
               </li>
 
               <li class="menu__item">
-                <a href="#">
+                <a href="/reviews">
                   <div>
                     Отзывы
                   </div>

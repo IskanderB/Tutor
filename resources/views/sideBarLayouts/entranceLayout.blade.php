@@ -28,7 +28,7 @@
       <label class="form-check-label" for="exampleCheck1">Запомнить меня</label>
     </div>
     <button type="submit" class="btn btn-primary">Вход</button>
-    <a href="/registration" class="btn btn-primary btn_registration">Регистрация</a>
+    <a href="/choosereg" class="btn btn-primary btn_registration">Регистрация</a>
   </form>
   <div class="a_password_foget">
     <a href="{{ route('fogotpassword') }}" class="">Забыли пароль?</a>

@@ -14,7 +14,11 @@
 
 Route::get('/', 'HomePageController@index')->name('/');
 
+Route::get('/choosereg', 'ChooseRegPageController@index')->name('choosereg')->middleware('guest');
+
 Route::get('/registration', 'RegistrationPageController@index')->name('registration')->middleware('guest');
+
+Route::get('/tutorreg', 'TutorRegPageController@index')->name('tutorreg')->middleware('guest');
 
 Auth::routes();
 
@@ -59,6 +63,10 @@ Route::get('/delete/friend/{friend_id}', 'FriendsController@delete')->name('dele
 Route::post('/append/comment', 'CommentsController@append')->name('append-comment')->middleware(['auth', 'confirmed']);
 
 Route::get('/userPage/{user_id}', 'UserPageController@index')->name('userPage')->middleware(['auth', 'confirmed']);
+
+Route::get('/materials', 'MaterialsPageController@index')->name('materials');
+
+Route::get('/reviews', 'ReviewsPageController@index')->name('reviews');
 // Route::post('messages', function(Illuminate\Http\Request $request){
 //   App\Events\Message::dispatch($request->input('body'))
 // });

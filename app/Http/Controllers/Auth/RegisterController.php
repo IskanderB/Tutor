@@ -98,6 +98,18 @@ class RegisterController extends Controller
             }
         }
 
+        if (isset($data['status'])) {
+          if ($data['status'] == 'tutor') {
+            $is_tutor = 1;
+          }
+          else {
+            $is_tutor = 0;
+          }
+        }
+        else {
+          $is_tutor = 0;
+        }
+
 
         return User::create([
             'name' => $data['name'],
@@ -111,6 +123,7 @@ class RegisterController extends Controller
             'subject' => $data['subject'],
             'mark' => $data['mark'],
             'goal' => $data['goal'],
+            'is_tutor' => $is_tutor,
                     ]);
 
 

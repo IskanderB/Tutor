@@ -86,6 +86,23 @@ header .container .row nav .menu .menu__item:hover a {
 .content_self {
   margin-top: 40px;
 }
+.content_self .text_author .lable_author h4 .tutorib_line {
+  text-decoration: underline;
+}
+.content_self .text_author .content_author h5 .tutorib_line {
+  text-decoration: underline;
+}
+.content_self .text_author .content_author div .tutorib_line {
+  text-decoration: underline;
+}
+.content_self .text_author .content_author div .tutorib_bold {
+  font-family: 'Fredoka One', cursive;
+}
+.content_self .text_author .content_author .list_basic_models li {
+  list-style-type: disc;
+  display: list-item;
+  margin-left: 70px;
+}
 .content_self .user_info {
   justify-content: center;
   background-color: #e4e7e5;
