@@ -17,8 +17,8 @@ class CreateFriendsTable extends Migration
             $table->bigIncrements('id');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
-            $table->integer('first_id');
-            $table->integer('second_id');
+            $table->integer('first_id')->nullable();;
+            $table->integer('second_id')->nullable();;
         });
     }
 

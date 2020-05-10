@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('full_name', 50)->default('Не заполнено');
             $table->string('address', 140)->default('Не заполнено');
             $table->string('number_school', 30)->default('Не заполнено');
-            $table->string('number_class', 10)->default('Не заполнено');
+            $table->string('number_class', 30)->default('Не заполнено');
             $table->string('subject', 40)->default('Не заполнено');
             $table->string('mark', 50)->default('Не заполнено');
             $table->string('goal', 200)->default('Не заполнено');
