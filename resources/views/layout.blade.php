@@ -141,7 +141,7 @@
         <div class="col-lg-2">
           <div class="logo_footer">
             <div class="logo_footer_wrap">
-              <a href="#">
+              <a href="/">
                 <div class="d-flex logo_footer_box">
                   <i class="fa fa-graduation-cap" aria-hidden="true"></i>
                   <div class="logo_text">
@@ -197,14 +197,28 @@
         <div class="col-lg-3 col-xl-4">
           <div class="icons_footer">
             <ul class="d-flex justify-content-center icons_footer_ul">
-              <li> <a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a> </li>
-              <li> <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a> </li>
+              <li> <a href="https://vk.com/sanek714"><i class="fa fa-vk" aria-hidden="true"></i></a> </li>
+              <li> <a href="https://github.com/IskanderB"><i class="fa fa-github" aria-hidden="true"></i></a> </li>
             </ul>
           </div>
         </div>
       </div>
     </div>
   </footer>
+
+  <div class="col-lg-12 powered_wrap">
+    <div class="powered_box">
+      <div class="powered">
+        Powered by VPS
+      </div>
+      <div class="name">
+        Александр Хуртин
+      </div>
+      <div class="contacts">
+        axurtin.rep@gmail.com
+      </div>
+    </div>
+  </div>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="{{URL::asset('js/app.js')}}"></script>

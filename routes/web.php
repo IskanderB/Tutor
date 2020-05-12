@@ -11,7 +11,6 @@
 |
 */
 
-
 Route::get('/', 'HomePageController@index')->name('/');
 
 Route::get('/choosereg', 'ChooseRegPageController@index')->name('choosereg')->middleware('guest');

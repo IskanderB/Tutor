@@ -7,7 +7,7 @@
 
   $current = $path . "/current";
 
-  $rero = "git@github.com:IskanderB/Tutor.git";
+  $repo = "git@github.com:IskanderB/Tutor.git";
 
   $branch = "master";
 
@@ -23,7 +23,7 @@
 
 @task('clone', ['on' => $on])
   mkdir -p {{ $release }}
-  git clone --depth l -b {{ $branch }} {{ $repo }} {{ $release }}
+  git clone --depth 1 -b {{ $branch }} {{ $repo }} {{ $release }}
   echo "#1 - Repository has been cloned"
 @endtask
 
@@ -56,8 +56,7 @@
   @foreach($chmods as $file)
     chmod -R 775 {{$release}}/{{$file}}
 
-    chmod -R 775 {{$user}}:www-data {{$release}}/{{$file}}
-
+    
     echo "Permissions have been set for {{$file}}"
   @endforeach
 

@@ -9,12 +9,12 @@
     <ul class="d-flex icons_ul">
       <li>
         <div class="icon_box">
-          <a href="#"><i class="fa fa-vk" aria-hidden="true"></i></a>
+          <a href="https://vk.com/sanek714"><i class="fa fa-vk" aria-hidden="true"></i></a>
         </div>
       </li>
       <li>
         <div class="icon_box">
-          <a href="#"><i class="fa fa-github" aria-hidden="true"></i></a>
+          <a href="https://github.com/IskanderB"><i class="fa fa-github" aria-hidden="true"></i></a>
         </div>
       </li>
     </ul>

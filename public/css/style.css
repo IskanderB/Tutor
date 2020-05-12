@@ -309,6 +309,17 @@ header .container .row nav .menu .menu__item:hover a {
   transition: 0.7s;
   color: inherit;
 }
+.powered_wrap {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.powered_wrap .powered_box {
+  display: inline-block;
+}
+.powered_wrap .powered_box div {
+  margin-bottom: 15px;
+  color: #989a99;
+}
 @media screen and (max-width: 1200px) {
   .content_self {
     margin-top: 40px;
