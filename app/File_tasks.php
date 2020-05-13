@@ -34,10 +34,12 @@ class File_tasks extends Model
 
   public function getFiles($ids)
   {
-    $files = \DB::select("SELECT * FROM (SELECT T.relationship, T.name, T.path, T.type FROM file_tasks T
-     GROUP BY T.relationship, T.name, T.path, T.type) F
-    WHERE relationship IN (".implode(',', $ids).")");
+    if (!empty($ids)) {
+      $files = \DB::select("SELECT * FROM (SELECT T.relationship, T.name, T.path, T.type FROM file_tasks T
+       GROUP BY T.relationship, T.name, T.path, T.type) F
+      WHERE relationship IN (".implode(',', $ids).")");
 
-    return $files;
+      return $files;
+    }
   }
 }

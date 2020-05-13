@@ -79,7 +79,7 @@ class Tasks extends Model
             'check' => $value->t_check,
             'mark' => $value->t_mark,
           ],
-            'task_files' => $this->getTaskFiles($value->t_id, $files_t),
+            'task_files' => $files_t,
           ],
           'answer' =>  [
             'answer_cont' =>  [
@@ -90,7 +90,7 @@ class Tasks extends Model
               'mark' => $value->a_mark,
               'relationship' => $value->a_relationship,
           ],
-            'answer_files' => $this->getTaskFiles($value->a_id, $files_a),
+            'answer_files' => $files_a,
             'answer_comment' => [
               'grade' => $value->c_grade,
               'comment' => $value->c_comment,
@@ -103,6 +103,7 @@ class Tasks extends Model
 
     public function getTaskFiles($id, $arr_data)
     {
+      dd($arr_data);
       foreach ($arr_data as $key => $value) {
         if($value->relationship != $id) unset($arr_data[$key]);
       }
