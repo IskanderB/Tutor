@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\App;
 class HttpsProtocol
 {
   public function handle($request, Closure $next){
-    if (empty($_SERVER['HTTPS']) ) {
-        return redirect()->secure($request->path());
+    // if (empty($_SERVER['HTTPS']) ) {
+    if (!$request->secure()) {
+      // dd(secure($request->path()));
+        return redirect(secure_url($request->path()));
     }
     return $next($request);
   }

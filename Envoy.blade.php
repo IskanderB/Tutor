@@ -55,8 +55,8 @@
 
   @foreach($chmods as $file)
     chmod -R 775 {{$release}}/{{$file}}
+    chown -R {{$user}}:www-data {{$release}}/{{$file}}
 
-    
     echo "Permissions have been set for {{$file}}"
   @endforeach
 
