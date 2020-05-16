@@ -1,5 +1,4 @@
 <?php
-use Illuminate\Support\Facades\URL;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -69,4 +68,3 @@ Route::get('/reviews', 'ReviewsPageController@index')->name('reviews');
 // Route::post('messages', function(Illuminate\Http\Request $request){
 //   App\Events\Message::dispatch($request->input('body'))
 // });
-// URL::forceScheme('https');
